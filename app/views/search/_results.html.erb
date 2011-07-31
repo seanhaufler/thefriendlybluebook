@@ -1,0 +1,6 @@
+<% @results.each do |result| %>
+    <div class="result draggable">
+        <%= "#{result.department_abbr} #{result.number}" %><br />
+        <%= result.section %>
+    </div>
+<% end %>

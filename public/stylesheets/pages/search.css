@@ -1,0 +1,155 @@
+body 
+{  
+    background: #AAA;
+}
+
+.header
+{
+    padding: 20px 40px;
+}
+
+.searchPage
+{
+    width: 960px;
+    margin: 0px auto;
+}
+
+.searchPage .searchControls
+{
+    float: left;
+    position: relative;
+}
+
+.searchPage .searchControls .buckets
+{
+    position: relative;
+    margin: 20px 0px 10px 15px;
+}
+
+.searchPage .searchControls .buckets .count
+{
+    border: solid 1px #FFF;
+    padding: 1px 4px 9px 6px; 
+    top: 27px;
+    
+    color: #FFF; 
+    background: #0E4C92;
+}
+
+.searchPage .searchControls .buckets .tooltip
+{
+    background: #FFF;
+    top: -13px;
+}
+
+.searchPage .searchControls .buckets img:first-child
+{
+    margin: 0px 30px 0px 40px;
+}
+
+.searchPage .searchControls .buckets img
+{
+    margin: 0px 30px;
+}
+
+.searchPage .searchControls .searchContainer
+{
+    margin: 0px 40px 40px 0px;
+    padding: 20px;
+    width: 320px;
+    background: #FFF;
+}
+
+.searchPage .searchControls .searchContainer .section
+{
+    border-bottom: solid 1px #A9A9A9; 
+    margin-bottom: 20px; 
+    padding-bottom: 10px;
+}
+
+.searchPage .searchControls .searchContainer .checkbox
+{
+    margin: 0px 5px 10px 0px;
+}
+
+.searchPage .searchControls .searchContainer .dow .checkbox
+{
+    margin: 0px 28px 10px 0px;
+}
+
+.searchPage .searchControls .searchContainer .checkboxContainer
+{
+    float: left;
+    width: 75px;
+}
+
+.searchPage .searchControls .searchContainer #ycpsSuggestions
+{
+    position: absolute;
+    background: white;
+    border: solid 1px #213984;
+    margin-top: -11px;
+    display: none;
+}
+
+.searchPage .searchControls .searchContainer .suggestion
+{
+    padding: 5px;
+    width: 308px;
+}
+
+.searchPage .searchControls .searchContainer .suggestion span
+{
+    font-weight: bold;
+}
+
+.searchPage .searchControls .searchContainer .separator
+{
+    position: absolute; 
+    margin: -30px 0px 0px 151px; 
+    background: white; 
+    padding: 0px 5px;
+}
+
+.searchPage .searchRendering
+{
+    position: relative;
+    float: left;
+    width: 560px;
+}
+
+.searchPage .searchRendering .result
+{
+    width: 60px;    
+    height:40px;
+    padding: 20px 10px;
+
+    background: #FFF;
+    text-align: center;
+    
+    border: solid 1px;
+    border-radius:40px; 
+    -moz-border-radius: 40px; 
+    -webkit-border-radius: 40px; 
+    -o-border-radius: 40px;
+}
+
+.searchPage .searchRendering .mapType
+{
+    margin: 30px 0px 20px 380px;
+}
+
+.searchPage .searchRendering .activeButton
+{
+    background:  #555;
+    color: #FFF;
+}
+.searchPage .searchRendering .activeButton:active
+{
+    background:  #555;
+}
+
+.searchPage .searchRendering .results
+{
+    position: relative;
+}

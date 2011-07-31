@@ -1,0 +1,55 @@
+/* Declarations for custom font-sizes */
+.size8 { font-size: 8px; }
+.size9 { font-size: 9px; }
+.size10 { font-size: 10px; }
+.size11 { font-size: 11px; }
+.size12 { font-size: 12px; }
+.size13 { font-size: 13px; }
+.size14 { font-size: 14px; }
+.size15 { font-size: 15px; }
+.size16 { font-size: 16px; }
+.size17 { font-size: 17px; }
+.size18 { font-size: 18px; }
+.size19 { font-size: 19px; }
+.size20 { font-size: 20px; }
+.size21 { font-size: 21px; }
+.size22 { font-size: 22px; }
+.size23 { font-size: 23px; }
+.size24 { font-size: 24px; }
+.size28 { font-size: 28px; }
+.size32 { font-size: 32px; }
+.size36 { font-size: 36px; }
+.size40 { font-size: 40px; }
+.size48 { font-size: 48px; }
+
+/* Font Style & Weight */
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.normal { font-weight: normal; }
+
+/* Font Alignment */
+.righted { text-align: right; }
+.lefted { text-align: left; }
+.centered { text-align: center; }
+.justify { text-align: justify; }
+
+/* Rotate text to align vertically */
+.verticallyRotated {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg);	
+    -o-transform: rotate(-90deg)
+}
+
+/* Link Decoration */
+.hover_under { text-decoration: none; }
+.hover_under:hover { text-decoration:underline; }
+
+/* Custom fonts for theme */
+.std_font,
+input,
+textarea {    
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", 
+        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}

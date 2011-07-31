@@ -1,0 +1,93 @@
+# == Schema Information
+# Schema version: 20110726063157
+#
+# Table name: courses
+#
+#  id                      :integer         not null, primary key
+#  department              :string(255)
+#  department_abbr         :string(255)
+#  oci_id                  :integer
+#  number                  :integer
+#  section                 :integer
+#  title                   :string(255)
+#  professor               :string(255)
+#  description             :text
+#  prerequisites           :string(255)
+#  time_one_start          :datetime
+#  time_one_end            :datetime
+#  time_two_start          :datetime
+#  time_two_end            :datetime
+#  time_three_start        :datetime
+#  time_three_end          :datetime
+#  final_exam_time         :datetime
+#  semester                :string(255)
+#  starred                 :boolean
+#  L1                      :boolean
+#  L2                      :boolean
+#  L3                      :boolean
+#  L4                      :boolean
+#  L5                      :boolean
+#  QR                      :boolean
+#  WR                      :boolean
+#  Hu                      :boolean
+#  Sc                      :boolean
+#  So                      :boolean
+#  readings_in_translation :boolean
+#  category                :string(255)
+#  created_at              :datetime
+#  updated_at              :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  department: MyString
+  number: 1
+  section: 1
+  title: MyString
+  professor: MyString
+  time_one_start: 2011-07-25 23:31:57
+  time_one_end: 2011-07-25 23:31:57
+  time_two_start: 2011-07-25 23:31:57
+  time_two_end: 2011-07-25 23:31:57
+  time_three_start: 2011-07-25 23:31:57
+  time_three_end: 2011-07-25 23:31:57
+  semester: MyString
+  L1: false
+  L2: false
+  L3: false
+  L4: false
+  L5: false
+  QR: false
+  WR: false
+  Hu: false
+  Sc: false
+  So: false
+  readings_in_translation: false
+  category: MyString
+
+two:
+  department: MyString
+  number: 1
+  section: 1
+  title: MyString
+  professor: MyString
+  time_one_start: 2011-07-25 23:31:57
+  time_one_end: 2011-07-25 23:31:57
+  time_two_start: 2011-07-25 23:31:57
+  time_two_end: 2011-07-25 23:31:57
+  time_three_start: 2011-07-25 23:31:57
+  time_three_end: 2011-07-25 23:31:57
+  semester: MyString
+  L1: false
+  L2: false
+  L3: false
+  L4: false
+  L5: false
+  QR: false
+  WR: false
+  Hu: false
+  Sc: false
+  So: false
+  readings_in_translation: false
+  category: MyString

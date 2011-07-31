@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20110726063157
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  email      :string(255)
+#  name       :string(255)
+#  taking     :string(255)
+#  shopping   :string(255)
+#  avoiding   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  taking: MyString
+  shopping: MyString
+  avoiding: MyString
+
+two:
+  email: MyString
+  taking: MyString
+  shopping: MyString
+  avoiding: MyString

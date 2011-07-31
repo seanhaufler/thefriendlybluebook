@@ -1,0 +1,18 @@
+<div class="landingPage">
+    The Friendly Bluebook
+
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+       FB.init({ 
+          appId: your app id, cookie:true, 
+          status:true, xfbml:true 
+       });
+    </script>
+
+    <div class="login round drop_shadow">
+        <fb:login-button width="500" max-rows="10">
+          Login with Facebook
+        </fb:login-button>
+    </div>
+</div>
