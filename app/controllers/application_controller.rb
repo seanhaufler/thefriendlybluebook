@@ -1,14 +1,11 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery
 
-  before_filter :check_cookie
-
-  def check_cookie
-    # if we have a valid cookie
-    #redirect_to search_path and return
-    # else
-    #redirect_to root_path and return
-  end
+  # Facebook App Secrets
+  $FB_APP_ID = "102218646546092"
+  $FB_APP_SECRET = ""
 
   # Design considerations
   $STANDARD_STYLESHEETS = ["bluebook/classes", "bluebook/colors", 

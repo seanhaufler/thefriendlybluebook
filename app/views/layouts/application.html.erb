@@ -22,9 +22,6 @@
     e.async = true;
     document.getElementById('fb-root').appendChild(e);
   }());
-  FB.Event.subscribe('auth.login', function(response) {
-    alert(response);
-  });
   FB.api('/me', function(response) {
       if (location.pathname === "/" && response.email.indexOf("@yale.edu") === 
             response.email.length - 9) {

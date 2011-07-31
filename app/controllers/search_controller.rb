@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  include SearchHelper
+  before_filter :check_cookie, :only => [:index]
 
 =begin
   @params: none

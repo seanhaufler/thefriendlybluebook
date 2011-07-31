@@ -1,4 +1,6 @@
 class BluebookController < ApplicationController
+  include BluebookHelper
+  before_filter :check_cookie, :only => [:index]
 
 =begin
   @params: none
