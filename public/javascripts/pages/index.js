@@ -1,6 +1,6 @@
 Bluebook.FBLogin = function() {
-    alert(JSON.stringify(response));
     FB.login(function(response) {
+        alert(JSON.stringify(response));
         if (response.session && response.session.sig) {
             alert('Welcome!  Fetching your information.... ');
             FB.api('/me', function(response) {
