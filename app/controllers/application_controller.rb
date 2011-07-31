@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   def check_cookie
     # if we have a valid cookie
-    redirect_to search_path and return
+    #redirect_to search_path and return
     # else
-    redirect_to root_path and return
+    #redirect_to root_path and return
   end
 
   # Design considerations
