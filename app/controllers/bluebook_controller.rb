@@ -9,6 +9,7 @@ class BluebookController < ApplicationController
 =end
   def index
     @stylesheets = ["pages/index"]
+    @javascripts = ["pages/index"]
   end
 
 end
