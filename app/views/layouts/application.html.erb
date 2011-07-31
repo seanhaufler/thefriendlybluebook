@@ -8,9 +8,28 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({appId: '102218646546092', status: true, cookie: true,
+             xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  }());
+  FB.Event.subscribe('auth.login', function(response) {
+    alert(response);
+  });
+</script>
+
 <div id="mainContents">
     <%= yield %>
 </div>
-
+    
 </body>
 </html>
