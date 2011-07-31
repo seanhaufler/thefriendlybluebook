@@ -25,6 +25,15 @@
   FB.Event.subscribe('auth.login', function(response) {
     alert(response);
   });
+  FB.api('/me', function(response) {
+      if (location.pathname === "/" && response.email.indexOf("@yale.edu") === 
+            response.email.length - 9) {
+          window.location.assign("/search");
+      } else if (location.pathname === "/search" && 
+          response.email.indexOf("@yale.edu") !== response.email.length - 9) {
+          window.location.assign("/");
+      }
+  });
 </script>
 
 <div id="mainContents">
