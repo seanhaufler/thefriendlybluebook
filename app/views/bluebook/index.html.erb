@@ -18,7 +18,8 @@
     </script>
 
     <div class="login round drop_shadow">
-        <fb:login-button width="500" max-rows="10">
+        <fb:login-button width="500" max-rows="10" show-faces="true"
+              perms="email" onlogin="alert('hello')">
           Login with Facebook
         </fb:login-button>
     </div>
