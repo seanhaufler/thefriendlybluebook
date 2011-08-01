@@ -44,12 +44,12 @@ body
 
 .searchPage .searchControls .buckets img:first-child
 {
-    margin: 0px 30px 0px 40px;
+    margin: 0px 30px 12px 40px;
 }
 
 .searchPage .searchControls .buckets img
 {
-    margin: 0px 30px;
+    margin: 0px 30px 12px 30px;
 }
 
 .searchPage .searchControls .searchContainer
