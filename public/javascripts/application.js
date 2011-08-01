@@ -20,7 +20,7 @@ $(function() {
 			      // First, we make sure it's not in the bucket
 			      type = $(this).attr("data-type");
 			      bucket = Bluebook.User.buckets[type];
-			      if ($(ui.draggable).attr("data-id") in bucket) {
+			      if (!($(ui.draggable).attr("data-id") in bucket)) {
                 // Push in the new element and update the count
                 bucket.push(ui.draggable.attr("data-id"));
                 count = $("#count" + type).html();
