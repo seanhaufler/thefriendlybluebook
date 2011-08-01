@@ -19,3 +19,12 @@ Bluebook.Facebook.updateInfo = function() {
         Bluebook.request.send();
     });
 }
+
+// getFriends(): Queue off a request for the user's friends
+Bluebook.Facebook.getFriends = function() {
+    // Send a request to FB API
+    FB.api('/me/friends', function(response) {
+        Bluebook.Facebook.friends = response.data;
+        alert(JSON.stringify(Bluebook.Facebook.friends));    
+    });
+}
