@@ -12,15 +12,17 @@ $(function() {
 		
 		$(".droppable").droppable({
 			  drop: function(event, ui) {
-				    alert($(this).attr("id"));
+			      // TODO: PUT IN BUCKET
 			  },
 
 			  over: function(event, ui) {
 			      $(this).animate({ width: 60 }, 300)
+			      $("#count" + $(this).attr("data-type")).animate({"top": "39px"});
 			  },
 
 			  out: function(event, ui) {
 			      $(this).animate({ width: 48 }, 300)
+			      $("#count" + $(this).attr("data-type")).animate({"top": "27px"});
 			  },
 		});
 });
