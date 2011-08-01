@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  include UsersHelper
   before_filter :get_user
 
 =begin
@@ -11,18 +12,44 @@ class UsersController < ApplicationController
   The following adds a course to the user's bucket
 =end
   def add
+    # Provide a switch based on which bucket specified
+    case params[:bucket].downcase
+      when "taking"
+        @user.taking.delete(params[:course].to_i)
+
+      when "shopping"
+        @user.taking.delete(params[:course].to_i)
+
+      when "avoiding"
+        @user.taking.delete(params[:course].to_i)
+    end
+
+    @user.save
     render :nothing => true and return
   end
 
 =begin
-  @params: uid, name, email
-  @path: /update
+  @params: bucket, course
+  @path: /add
   @before_filter: get_user
   @method: POST
 
-  The following updates a user's information in the db
+  The following removes a course from the user's bucket
 =end
   def remove
+    # Provide a switch based on which bucket specified
+    case params[:bucket].downcase
+      when "taking"
+        @user.taking << params[:course].to_i
+
+      when "shopping"
+        @user.taking << params[:course].to_i
+
+      when "avoiding"
+        @user.taking << params[:course].to_i
+    end
+
+    @user.save
     render :nothing => true and return
   end
 
