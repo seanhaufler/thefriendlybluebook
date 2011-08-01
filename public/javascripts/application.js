@@ -30,6 +30,12 @@ $(function() {
       			      Bluebook.request.open("POST", ("/add?type=" + type +
                     "&course=" + ui.draggable.attr("data-id")), true);
                 Bluebook.request.send();
+
+                // Make a flash for the count
+                $("#count" + type).switchClass("count", "countHighlight");
+                setTimeout(function() {
+                    $("#count" + type).switchClass("countHighlight", "count");
+                  }, 1000);
             }
             
 			      // Hide the tooltips and revert the sizes

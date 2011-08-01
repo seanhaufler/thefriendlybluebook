@@ -36,6 +36,16 @@ body
     background: #0E4C92;
 }
 
+.searchPage .searchControls .buckets .countHighlight
+{
+    border: solid 1px #0E4C92;
+    padding: 1px 4px 9px 6px; 
+    top: 27px;
+    
+    color: #0E4C92; 
+    background: #FFF;
+}
+
 .searchPage .searchControls .buckets .tooltip
 {
     background: #FFF;

@@ -68,31 +68,6 @@
     background: -webkit-linear-gradient(#4B94D9, #15446E);  
 }
 .blueButton:active { background: #0E4C92; }
-    
-/* Styling for tabbed page viewing */
-.leftHandModule {
-    width: 260px; 
-    border-right: solid 1px;
-    padding: 20px 0px;
-}
-
-.rightHandModule {
-    width: 647px; 
-    padding: 20px 0px;
-}
-
-.tabContainer {
-    text-align: right;
-    padding: 10px;
-    width: 240px;
-}
-
-/* Boxes in viewing */
-.CHbox {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: solid 1px #DAEAF2;
-}
 
 /* Tooltips */
 .tooltip { 
@@ -103,7 +78,7 @@
     font-size: 12px;
     display: none;
 }
-.count {
+.count, .countHighlight {
     border-radius:12px; 
     -moz-border-radius: 12px; 
     -webkit-border-radius: 12px; 
