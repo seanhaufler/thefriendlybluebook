@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # Facebook App Secrets
   $FB_APP_ID = "102218646546092"
-  $FB_APP_SECRET = ""
+  $FB_APP_SECRET = "658fe4d28d7334f87f1434e1cc939e86"
 
   # Design considerations
   $STANDARD_STYLESHEETS = ["bluebook/classes", "bluebook/colors", 
