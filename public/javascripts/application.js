@@ -16,13 +16,21 @@ $(function() {
 			  },
 
 			  over: function(event, ui) {
-			      $(this).animate({ "width": "60px", "margin-right": "18px" }, 200)
-			      $(".count").animate({"top": "39px"}, 100);
+			      $(this).animate({ 
+			          "width": "60px", 
+    		          "margin-right": "18px",
+    		          "margin-bottom": "0px" 
+  		          }, 200)
+			      $(".count").animate({"top": "39px"}, 200);
 			  },
 
 			  out: function(event, ui) {
-			      $(this).animate({ "width": "48px", "margin-right": "30px" }, 200)
-			      $(".count").animate({"top": "27px"}, 100);
+			      $(this).animate({ 
+			          "width": "48px", 
+			          "margin-right": "30px",
+    		          "margin-bottom": "12px" 
+	            }, 200)
+			      $(".count").animate({"top": "27px"}, 200);
 			  },
 		});
 });
