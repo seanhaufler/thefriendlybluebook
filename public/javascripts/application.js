@@ -10,3 +10,9 @@ $(function() {
 
 // Create the global Bluebook namespace
 Bluebook = function() {};
+
+// Create XMLHttpRequest objects
+if (window.XMLHttpRequest)                      // Chrome, Safari, Opera, FF
+    Bluebook.request = new XMLHttpRequest();
+else                                            // IE Handler
+    Bluebook.request = new ActiveXObject("Microsoft.XMLHTTP");

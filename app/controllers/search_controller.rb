@@ -23,7 +23,7 @@ class SearchController < ApplicationController
     # Standard rendering work
     @title = "Find Courses"
     @stylesheets = ["pages/search"]
-    @javascripts = ["pages/search", "library/ycps"]
+    @javascripts = ["pages/search", "library/facebook", "library/ycps"]
   end
 
 =begin

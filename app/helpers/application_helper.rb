@@ -51,7 +51,6 @@ module ApplicationHelper
     token = token.split("&")
     token.map{|item| 
       tokens = item.split("=")
-      print tokens[1]
       arguments[tokens[0]] = tokens[1]
     }
 
@@ -60,6 +59,15 @@ module ApplicationHelper
     arguments.sort.each do |kvpair|
       if kvpair.first != "sig"
         payload = payload + kvpair.first + "=" + kvpair.last
+      end
+
+      # Do the extra work of queuing the user creation if the user doesn't exist
+      if kvpair.first == "uid"
+        User.find_or_create_by_facebook_id(kvpair.last.to_i)
+      end
+
+      if kvpair.first == "access_token"
+        @access_token = kvpair.last
       end
     end
 
@@ -72,9 +80,21 @@ module ApplicationHelper
         arguments
     end
   end
-  
 
-#$user = json_decode(file_get_contents(
+=begin
+  @params: Object
+
+  Take an object and make a JSON string of it
+=end
+  def to_JSON(object)
+    json = "{ "
+    object.attributes.each do |key, val|
+      json = json + "'#{key}': '#{val}', "
+    end
+    json = json + " }"
+  end
+  
+#access_token=102218646546092%7C2.AQC3cg_y4l0AptXw.3600.1312167600.1-829745507%7CYUBtcBqcx4J7eMY40N-zTxkFm5w
 #    'https://graph.facebook.com/me?access_token=' .
 #    $cookie['access_token']));
 
