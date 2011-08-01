@@ -11,10 +11,12 @@ Bluebook.Facebook = function() {};
  */
 
 // updateInfo(): Queue off an information update
-Bluebook.Facebook.updateInfo = function(access_token) {
+Bluebook.Facebook.updateInfo = function() {
     // Change information in DB
-    Bluebook.request.open("GET", 'https://graph.facebook.com/me?access_token='
-        + access_token, true);
-    Bluebook.request.send();
-    Bluebook.request.onreadystatechange = function() { alert('hi'); }
+    FB.api('/me', function(response) {
+        alert(JSON.stringify(response))
+        Bluebook.request.open("POST", ("/update?uid=" + response.uid +
+            "&email=" + response.email + "&name=" + response.name), true);
+        Bluebook.request.send();
+    });
 }
