@@ -204,6 +204,7 @@ class SearchController < ApplicationController
             break
           end
         end
+      end
       
     end
     @friends = friends
