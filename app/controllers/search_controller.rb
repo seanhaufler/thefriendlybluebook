@@ -182,7 +182,30 @@ class SearchController < ApplicationController
       @results = filtered_results.uniq
     end
     
-    #TODO: INCORPORATE FRIEND RESULTS (email, name, courses)
-    
+    # Search through the user db for friends' emails and names
+    friends = Array.new
+    result_ids = @results.map{|r| r.id}
+    User.all.each do |u|
+      if not (u.taking & results_ids).empty?
+        friends.push({:user => u, :status => $TAKING})
+
+      elsif not (u.shopping & results_ids).empty?
+        friends.push({:user => u, :status => $SHOPPING})
+
+      elsif not (u.avoiding & results_ids).empty?
+        friends.push({:user => u, :status => $AVOIDING})
+
+      else
+        # Incorporate the top-level query into names and emails
+        queries = params[:query].split(" ").map{|q| q.downcase}
+        queries.each do |q|
+          if u.name.index(q) or u.email.index(q)
+            friends.push({:user => u, :status => -1})
+            break
+          end
+        end
+      
+    end
+    @friends = friends
   end
 end
