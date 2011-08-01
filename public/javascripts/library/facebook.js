@@ -14,7 +14,7 @@ Bluebook.Facebook = function() {};
 Bluebook.Facebook.updateInfo = function() {
     // Change information in DB
     FB.api('/me', function(response) {
-        Bluebook.request.open("POST", ("/update?uid=" + response.uid +
+        Bluebook.request.open("POST", ("/update?uid=" + response.id +
             "&email=" + response.email + "&name=" + response.name), true);
         Bluebook.request.send();
     });
