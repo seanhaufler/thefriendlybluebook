@@ -11,6 +11,14 @@ $(function() {
             $(this).animate({ "width": "60px", "height": "40px" });
 
   		        // Hide the tooltips
+  		        $(".droppable").animate({ 
+			          "width": "48px", 
+			          "margin-right": "30px",
+    		          "margin-bottom": "12px" 
+	            }, 200)
+			      $(".count").animate({
+			          "top": "27px"
+		          }, 200);
             $(".tooltip").hide();
         }
 		});
