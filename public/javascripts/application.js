@@ -4,15 +4,15 @@ $(function() {
 		$(".droppable").droppable({
 			  drop: function(event, ui) {
 				    alert($(this).attr("id"));
-			  } 
+			  },
 
 			  over: function(event, ui) {
 			      animate({ width: 60 }, 300)
-			  }
+			  },
 
 			  out: function(event, ui) {
 			      animate({ width: 48 }, 300)
-			  }
+			  },
 		});
 });
 
