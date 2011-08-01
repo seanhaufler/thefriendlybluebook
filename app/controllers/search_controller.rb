@@ -186,13 +186,13 @@ class SearchController < ApplicationController
     friends = Array.new
     result_ids = @results.map{|r| r.id}
     User.all.each do |u|
-      if not (u.taking & results_ids).empty?
+      if not (u.taking & result_ids).empty?
         friends.push({:user => u, :status => $TAKING})
 
-      elsif not (u.shopping & results_ids).empty?
+      elsif not (u.shopping & result_ids).empty?
         friends.push({:user => u, :status => $SHOPPING})
 
-      elsif not (u.avoiding & results_ids).empty?
+      elsif not (u.avoiding & result_ids).empty?
         friends.push({:user => u, :status => $AVOIDING})
 
       else
