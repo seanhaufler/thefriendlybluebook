@@ -24,7 +24,7 @@ class BluebookController < ApplicationController
   The following updates a user's information in the db
 =end
   def update
-    user = User.find_or_create_by_facebook_id(params[:uid])
+    user = User.find_or_create_by_facebook_id(params[:uid].to_i)
     user.update_attributes({:name => params[:name], :email => params[:email]})
   end
 
