@@ -9,6 +9,9 @@ $(function() {
 
         stop: function(event, ui) {
             $(this).animate({ "width": "60px", "height": "40px" });
+
+  		        // Hide the tooltips
+            $(".tooltip").hide();
         }
 		});
 		
