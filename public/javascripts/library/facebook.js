@@ -25,6 +25,5 @@ Bluebook.Facebook.getFriends = function() {
     // Send a request to FB API
     FB.api('/me/friends', function(response) {
         Bluebook.Facebook.friends = response.data;
-        alert(JSON.stringify(Bluebook.Facebook.friends));    
     });
 }

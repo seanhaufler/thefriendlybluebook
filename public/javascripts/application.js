@@ -1,9 +1,9 @@
 // Perform the initial drag and drop loading
 $(function() {
 		$(".draggable").draggable({
+        revert: true,
+      
         start: function(event, ui) {
-            // TODO: CAPTURE ORIGINAL POSITION
-        
             $(this).animate({ "width": "40px", "height": "20px" });
         },
 
