@@ -9,17 +9,6 @@ $(function() {
 
         stop: function(event, ui) {
             $(this).animate({ "width": "60px", "height": "40px" });
-
-  		        // Hide the tooltips
-  		        $(".droppable").animate({ 
-			          "width": "48px", 
-			          "margin-right": "30px",
-    		          "margin-bottom": "12px" 
-	            }, 200)
-			      $(".count").animate({
-			          "top": "27px"
-		          }, 200);
-            $(".tooltip").hide();
         }
 		});
 		
@@ -30,6 +19,17 @@ $(function() {
 			      // TODO: UPDATE COUNT
 
 			      // TODO: SEND A POST REQUEST
+
+			      // Hide the tooltips and revert the sizes
+  		        $(".droppable").animate({ 
+			          "width": "48px", 
+			          "margin-right": "30px",
+    		          "margin-bottom": "12px" 
+	            }, 200)
+			      $(".count").animate({
+			          "top": "27px"
+		          }, 200);
+            $(".tooltip").hide();
 			  },
 
 			  over: function(event, ui) {
