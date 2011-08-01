@@ -13,7 +13,7 @@
             </div>
             <div id="countTaking" class="count" style="left: 21px">0</div>
             <%= image_tag "search/buckets/taking.png", :class => "droppable",
-                  :id => "takingTarget", :data-type => "Taking",
+                  :id => "takingTarget", 'data-type' => "Taking",
                   :onmouseover => "$('#tooltipTaking').show();",
                   :onmouseout =>  "$('#tooltipTaking').hide();" %>
                   
@@ -22,7 +22,7 @@
             </div>
             <div id="countShopping" class="count" style="left: 135px">0</div>
             <%= image_tag "search/buckets/shopping.png", :class => "droppable",
-                  :id => "shoppingTarget", :data-type => "Shopping",
+                  :id => "shoppingTarget", 'data-type' => "Shopping",
                   :onmouseover => "$('#tooltipShopping').show();",
                   :onmouseout =>  "$('#tooltipShopping').hide();" %>
                   
@@ -31,7 +31,7 @@
             </div>
             <div id="countAvoiding" class="count" style="left: 245px">0</div>
             <%= image_tag "search/buckets/avoiding.png", :class => "droppable",
-                  :id => "avoidingTarget", :data-type => "Avoiding",
+                  :id => "avoidingTarget", 'data-type' => "Avoiding",
                   :onmouseover => "$('#tooltipAvoiding').show();",
                   :onmouseout =>  "$('#tooltipAvoiding').hide();" %>
         </div>
