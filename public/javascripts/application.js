@@ -21,7 +21,9 @@ $(function() {
     		          "margin-right": "18px",
     		          "margin-bottom": "0px" 
   		          }, 200)
-			      $(".count").animate({"top": "39px"}, 200);
+			      $("#count" + $(this).attr("data-type")).animate({
+			          "top": "39px"
+		          }, 200);
 			  },
 
 			  out: function(event, ui) {
@@ -30,7 +32,9 @@ $(function() {
 			          "margin-right": "30px",
     		          "margin-bottom": "12px" 
 	            }, 200)
-			      $(".count").animate({"top": "27px"}, 200);
+			      $("#count" + $(this).attr("data-type")).animate({
+			          "top": "27px"
+		          }, 200);
 			  },
 		});
 });
