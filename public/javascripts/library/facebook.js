@@ -7,7 +7,7 @@ Bluebook.Facebook = function() {};
  * The following is a prototype for the getting the user's facebook info
  *
  * @params: none
- * @methods: updateInfo
+ * @methods: updateInfo, getFriends
  */
 
 // updateInfo(): Queue off an information update

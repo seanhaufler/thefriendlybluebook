@@ -2,6 +2,7 @@
 $(function() {
 		$(".draggable").draggable({
         revert: true,
+        revertDuration: 300,
       
         start: function(event, ui) {
             $(this).animate({ "width": "40px", "height": "20px" });
@@ -13,13 +14,24 @@ $(function() {
 		});
 		
 		$(".droppable").droppable({
-			  drop: function(event, ui) {
-			      // TODO: CHECK IF IN BUCKET
-
-			      // TODO: UPDATE COUNT
-
-			      // TODO: SEND A POST REQUEST
-
+			  
+        /* Dropping Function */
+        drop: function(event, ui) {
+			      // First, we make sure it's not in the bucket
+			      type = $(this).attr("data-type");
+			      bucket = Bluebook.User.buckets[type];
+			      if ($(ui.draggable).attr("data-id") in bucket) {
+                // Push in the new element and update the count
+                bucket.push(ui.draggable.attr("data-id"));
+                count = $("#count" + type).html();
+                $("#count" + type).html(parseInt(count) + 1);
+			      
+      			      // Finally, we queue off a POST request to the server
+      			      Bluebook.request.open("POST", ("/add?type=" + type +
+                    "&course=" + ui.draggable.attr("data-id")), true);
+                Bluebook.request.send();
+            }
+            
 			      // Hide the tooltips and revert the sizes
   		        $(".droppable").animate({ 
 			          "width": "48px", 
@@ -32,6 +44,7 @@ $(function() {
             $(".tooltip").hide();
 			  },
 
+        /* Mouseover Function */
 			  over: function(event, ui) {
 			      $(this).animate({ 
 			          "width": "60px", 
@@ -46,6 +59,7 @@ $(function() {
             $("#tooltip" + $(this).attr("data-type")).show();
 			  },
 
+        /* Mouseout Function */
 			  out: function(event, ui) {
 			      $(this).animate({ 
 			          "width": "48px", 

@@ -1,5 +1,5 @@
 <% @results.each do |result| %>
-    <div class="result draggable">
+    <div class="result draggable" data-id="<%= result.id %>">
         <%= "#{result.department_abbr} #{result.number}" %><br />
         <%= result.section %>
     </div>

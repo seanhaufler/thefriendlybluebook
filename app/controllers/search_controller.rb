@@ -23,7 +23,8 @@ class SearchController < ApplicationController
     # Standard rendering work
     @title = "Find Courses"
     @stylesheets = ["pages/search"]
-    @javascripts = ["pages/search", "library/facebook", "library/ycps"]
+    @javascripts = ["pages/search", "library/facebook", "library/user",
+      "library/ycps"]
   end
 
 =begin
@@ -186,17 +187,18 @@ class SearchController < ApplicationController
     friends = Array.new
     result_ids = @results.map{|r| r.id}
     User.all.each do |u|
-      if not (u.taking & result_ids).empty?
-        friends.push({:user => u, :status => $TAKING})
+      # See if the user is taking, shopping, or avoiding any of the results
+      taking = (u.taking & result_ids)
+      shopping = (u.shopping & result_ids)
+      avoiding = (u.avoiding & result_ids)
 
-      elsif not (u.shopping & result_ids).empty?
-        friends.push({:user => u, :status => $SHOPPING})
+      # We add the user in if there was an overlap
+      if not (taking.empty? and shopping.empty? and avoiding.empty?)
+        friends.push({:user => u, :taking => taking, :shopping => shopping,
+          :avoiding => avoiding})
 
-      elsif not (u.avoiding & result_ids).empty?
-        friends.push({:user => u, :status => $AVOIDING})
-
+      # Incorporate the top-level query into names and emails
       else
-        # Incorporate the top-level query into names and emails
         queries = params[:query].split(" ").map{|q| q.downcase}
         queries.each do |q|
           if u.name.index(q) or u.email.index(q)

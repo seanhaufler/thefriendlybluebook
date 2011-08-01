@@ -65,10 +65,6 @@ module ApplicationHelper
       if kvpair.first == "uid"
         User.find_or_create_by_facebook_id(kvpair.last.to_i)
       end
-
-      if kvpair.first == "access_token"
-        @access_token = kvpair.last
-      end
     end
 
     # Check the validation to make sure it's a valid key
