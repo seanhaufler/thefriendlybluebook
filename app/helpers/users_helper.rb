@@ -10,10 +10,7 @@ module UsersHelper
 
     # Valid user
     if args
-      logger.debug args
-      logger.debug args['uid']
-      logger.debug User.find(args['uid'])
-      @user = User.find(args['uid'])
+      @user = User.find_by_facebook_id(args['uid'])
 
     # Invalid user
     else
