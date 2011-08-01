@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :get_user
 
 =begin
-  @params: bucket, course
+  @params: type, course
   @path: /add
   @before_filter: get_user
   @method: POST
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 =end
   def add
     # Provide a switch based on which bucket specified
-    case params[:bucket].downcase
+    case params[:type].downcase
       when "taking"
         @user.taking.delete(params[:course].to_i)
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
 =begin
-  @params: bucket, course
+  @params: type, course
   @path: /add
   @before_filter: get_user
   @method: POST
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 =end
   def remove
     # Provide a switch based on which bucket specified
-    case params[:bucket].downcase
+    case params[:type].downcase
       when "taking"
         @user.taking << params[:course].to_i
 
