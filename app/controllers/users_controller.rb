@@ -15,13 +15,13 @@ class UsersController < ApplicationController
     # Provide a switch based on which bucket specified
     case params[:type].downcase
       when "taking"
-        @user.taking.delete(params[:course].to_i)
+        @user.taking << params[:course].to_i
 
       when "shopping"
-        @user.taking.delete(params[:course].to_i)
+        @user.shopping << params[:course].to_i
 
       when "avoiding"
-        @user.taking.delete(params[:course].to_i)
+        @user.avoiding << params[:course].to_i
     end
 
     @user.save
@@ -40,13 +40,13 @@ class UsersController < ApplicationController
     # Provide a switch based on which bucket specified
     case params[:type].downcase
       when "taking"
-        @user.taking << params[:course].to_i
+        @user.taking.delete(params[:course].to_i)
 
       when "shopping"
-        @user.taking << params[:course].to_i
+        @user.shopping.delete(params[:course].to_i)
 
       when "avoiding"
-        @user.taking << params[:course].to_i
+        @user.avoiding.delete(params[:course].to_i)
     end
 
     @user.save
