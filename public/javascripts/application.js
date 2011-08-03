@@ -25,9 +25,11 @@ $(function() {
                 Bluebook.User.addItem(type, id);
 
                 // Make a flash for the count
-                $("#count" + type).switchClass("count", "countHighlight");
+                $("#count" + Bluebook.capitalize(type)).switchClass("count", 
+                    "countHighlight");
                 setTimeout(function() {
-                    $("#count" + type).switchClass("countHighlight", "count");
+                    $("#count" + Bluebook.capitalize(type)).switchClass(
+                        "countHighlight", "count");
                   }, 1000);
             }
             
