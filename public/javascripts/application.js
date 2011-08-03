@@ -19,9 +19,8 @@ $(function() {
         drop: function(event, ui) {
 			      // First, we make sure it's not in the bucket
 			      type = $(this).attr("data-type");
-			      bucket = Bluebook.User.buckets[type];
 			      id = parseInt(ui.draggable.attr("data-id"));
-			      if (!Bluebook.User.findCourseByBucket(bucket, id)) {
+			      if (!Bluebook.User.findCourseByBucket(type, id)) {
                 // Add the single item to the user's bucket
                 Bluebook.User.addItem(type, id);
 
