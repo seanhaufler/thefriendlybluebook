@@ -4,6 +4,6 @@
         <%= result.section %>
     </div>
     <script>
-        Bluebook.Search.courses.push(<%= result.to_JSON %>);
+        Bluebook.Search.courses.push(<%= to_JSON(result) %>);
     </script>
 <% end %>
