@@ -3,4 +3,7 @@
         <%= "#{result.department_abbr} #{result.number}" %><br />
         <%= result.section %>
     </div>
+    <script>
+        Bluebook.Search.courses.push(<%= result.to_JSON %>);
+    </script>
 <% end %>

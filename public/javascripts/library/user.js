@@ -44,7 +44,7 @@ Bluebook.User.addItem = function(bucket, id) {
 
     // Push it into the correct bucket
     Bluebook.User.buckets[bucket].push(
-        Bluebook.User.findCourseByBucket(bucket, id));
+        Bluebook.User.findCourseByBucket(Bluebook.Search.courses, id));
     Bluebook.User.refreshBucket(bucket);
     
     // Avoid following the link

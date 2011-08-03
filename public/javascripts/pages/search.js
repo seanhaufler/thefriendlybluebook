@@ -11,8 +11,9 @@ Bluebook.Search = function() {};
  * @methods: showPeopleMap, showCourseMap, autocomplete
  */
 
-// Set a variable for which one is highlighted
+// Set a variable for which one is highlighted and global var for courses
 Bluebook.Search.autohighlighted = -1;
+Bluebook.Search.courses = [];
 
 // showPeopleMap(): Update the map view to show friends results
 Bluebook.Search.showPeopleMap = function() {
