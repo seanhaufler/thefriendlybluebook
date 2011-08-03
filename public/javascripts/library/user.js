@@ -89,7 +89,7 @@ Bluebook.User.refreshBucket = function(bucket) {
             $(container).html(
                 "<div class='title'>" + 
                     course.department_abbr + " " + course.number + ": " +
-                    Bluebook.truncate(course.title, 70) + 
+                    Bluebook.truncate(course.title, 40) + 
                 "</div>" +
                 "<div class='remove'>" +
                     "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
