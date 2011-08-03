@@ -78,6 +78,7 @@ Bluebook.User.refreshBucket = function(bucket) {
         $("#tooltip" + Bluebook.capitalize(bucket) + "Empty").hide();
 
         // Iterate through each bucket and fill it up
+        $("#tooltip" + Bluebook.capitalize(bucket) + "List").empty();
         for (i in Bluebook.User.buckets[bucket]) {
             var course =  Bluebook.User.buckets[bucket][i];
         
@@ -85,7 +86,7 @@ Bluebook.User.refreshBucket = function(bucket) {
             $(container).html(
                 "<div class='title'>" + 
                     course.department_abbr + " " + course.number + ": " +
-                    course.title + 
+                    Bluebook.truncate(course.title, 70) + 
                 "</div>" +
                 "<div class='remove'>" +
                     "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
