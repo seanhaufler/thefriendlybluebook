@@ -11,7 +11,100 @@ Bluebook.User = function() {};
  */
 
 Bluebook.User.buckets = {
-  "Taking": [],
-  "Shopping": [],
-  "Avoiding": []
+    "taking": [],
+    "shopping": [],
+    "avoiding": []
 }
+
+// findCourseByBucket(): Find a specific course in a specific bucket
+Bluebook.User.findCourseByBucket = function(bucket, id) {
+    for (i in Bluebook.User.buckets[bucket]) {
+        if (Bluebook.User.buckets[bucket][i].id === id)
+            return Bluebook.User.buckets[bucket][i];
+    }
+
+    return undefined;
+}
+
+// findCourseByBucket(): Find a specific course in a specific bucket
+Bluebook.User.findCourseIndexByBucket = function(bucket, id) {
+    for (i in Bluebook.User.buckets[bucket]) {
+        if (Bluebook.User.buckets[bucket][i].id === id)
+            return i;
+    }
+
+    return undefined;
+}
+
+// addItem(): Add an item to the user's bucket
+Bluebook.User.addItem = function(bucket, id) {
+    Bluebook.request.open("POST", ("/add?type=" + bucket +
+      "&course=" + id), true);
+    Bluebook.request.send();
+
+    // Push it into the correct bucket
+    Bluebook.User.buckets[bucket].push(
+        Bluebook.User.findCourseByBucket(bucket, id));
+    Bluebook.User.refreshBucket(bucket);
+    
+    // Avoid following the link
+    return false;
+}
+
+// removeItem(): Remove an item to the user's bucket
+Bluebook.User.removeItem = function(bucket, id) {
+    Bluebook.request.open("POST", ("/remove?type=" + bucket +
+      "&course=" + id), true);
+    Bluebook.request.send();
+
+    // Remove it from the correct bucket
+    Bluebook.User.buckets[bucket].splice(
+        Bluebook.User.findCourseIndexByBucket(bucket, id), 1);
+    Bluebook.User.refreshBucket(bucket);
+
+    // Avoid following the link
+    return false;
+}
+
+// refreshBucket(): Put the right information into the user's bucket flyout
+Bluebook.User.refreshBucket = function(bucket) {
+    // Check if the bucket is empty
+    if (Bluebook.User.buckets[bucket].length === 0) {
+        $("#tooltip" + Bluebook.capitalize(bucket) + "Empty").show();
+        $("#tooltip" + Bluebook.capitalize(bucket) + "List").hide();
+
+    // The bucket isn't empty, fill 'er up
+    } else {
+        $("#tooltip" + Bluebook.capitalize(bucket) + "Empty").hide();
+
+        // Iterate through each bucket and fill it up
+        for (i in Bluebook.User.buckets[bucket]) {
+            var course =  Bluebook.User.buckets[bucket][i];
+        
+            container = document.createElement("div");
+            $(container).html(
+                "<div class='title'>" + 
+                    course.department_abbr + " " + course.number + ": " +
+                    course.title + 
+                "</div>" +
+                "<div class='remove'>" +
+                    "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
+                        bucket + "', '" + course.id + 
+                        "')\" class='hover_under'>Remove</a>" +
+                "</div>" +
+                "<div class='clear''></div>" +
+                "<div class='desc'>" +
+                    Bluebook.truncate(course.description, 100) + 
+                "</div>"
+            );
+            $("#tooltip" + Bluebook.capitalize(bucket) + 
+                "List").append(container);
+        }
+        
+        $("#tooltip" + Bluebook.capitalize(bucket) + "List").show();
+    }
+
+    // Reflect the count in the little UI
+    $("#count" + Bluebook.capitalize(bucket)).html(
+        Bluebook.User.buckets[bucket].length);
+};

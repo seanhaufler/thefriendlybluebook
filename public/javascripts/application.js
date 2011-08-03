@@ -26,10 +26,7 @@ $(function() {
                 count = $("#count" + type).html();
                 $("#count" + type).html(parseInt(count) + 1);
 			      
-      			      // Finally, we queue off a POST request to the server
-      			      Bluebook.request.open("POST", ("/add?type=" + type +
-                    "&course=" + ui.draggable.attr("data-id")), true);
-                Bluebook.request.send();
+                Bluebook.User.addItem(type, ui.draggable.attr("data-id"));
 
                 // Make a flash for the count
                 $("#count" + type).switchClass("count", "countHighlight");
@@ -91,3 +88,15 @@ if (window.XMLHttpRequest)                      // Chrome, Safari, Opera, FF
     Bluebook.request = new XMLHttpRequest();
 else                                            // IE Handler
     Bluebook.request = new ActiveXObject("Microsoft.XMLHTTP");
+
+// Standard capitalization function
+Bluebook.capitalize = function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Standard truncate function
+Bluebook.truncate = function(string, length) {
+    if (string.length > length)
+        return string.substring(0, length) + "...";
+    return string;
+}

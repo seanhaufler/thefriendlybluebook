@@ -71,7 +71,6 @@
 
 /* Tooltips */
 .tooltip { 
-    border: solid 1px; 
     position: absolute; 
     padding: 1px; 
     z-index: 10;

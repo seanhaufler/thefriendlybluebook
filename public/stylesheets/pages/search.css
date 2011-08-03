@@ -46,10 +46,50 @@ body
     background: #FFF;
 }
 
+.searchPage .searchControls .buckets .tooltipArrow
+{
+    position: absolute;
+    display: none;
+    top: 40px;
+}
+
 .searchPage .searchControls .buckets .tooltip
 {
     background: #FFF;
-    top: -13px;
+    top: 60px;
+    left: -15px;
+    width: 320px;
+    padding: 20px;
+}
+
+.searchPage .searchControls .buckets .tooltip span
+{
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.searchPage .searchControls .buckets .tooltip .desc
+{
+    font-size: 11px;
+    color: gray;
+}
+
+.searchPage .searchControls .buckets .tooltip .title
+{
+    margin-top: 5px;
+    float: left;
+}
+
+.searchPage .searchControls .buckets .tooltip .remove
+{
+    font-size: 10px;
+    padding-top: 6px;
+    float: right;
+}
+
+.searchPage .searchControls .buckets .tooltip .remove a
+{
+    color: #4B94D9;
 }
 
 .searchPage .searchControls .buckets img:first-child

@@ -1,0 +1,15 @@
+// Iterate through each of the user's taking options
+<% @taking.each do |course| %>
+  Bluebook.User.buckets.taking.push(<%= to_JSON(course) %>);
+<% end %>
+Bluebook.User.refreshBucket("taking");
+
+<% @shopping.each do |course| %>
+  Bluebook.User.buckets.shopping.push(<%= to_JSON(course) %>);
+<% end %>
+Bluebook.User.refreshBucket("shopping");
+
+<% @avoiding.each do |course| %>
+  Bluebook.User.buckets.avoiding.push(<%= to_JSON(course) %>);
+<% end %>
+Bluebook.User.refreshBucket("avoiding");

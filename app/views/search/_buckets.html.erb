@@ -1,0 +1,92 @@
+<div class="buckets">
+    <div class="grid_2" style="width: 95px" 
+         onmouseover="$('#tooltipTaking').show();
+            $('#tooltipTakingArrow').show();"
+         onmouseout="$('#tooltipTaking').hide();
+            $('#tooltipTakingArrow').hide();">
+
+        <%= image_tag "search/tooltips/arrow.png",
+              :id => "tooltipTakingArrow",
+              :class => "tooltipArrow", :width => 20,
+              :style => "left: 8px" %>
+        <div id="tooltipTaking" class="tooltip round
+              drop_shadow"> 
+            <span style="color: #00B945">
+                Classes You're Taking
+            </span>
+            <div id="tooltipTakingEmpty">
+                You are not signed up to take any classes yet
+            </div>
+            <div id="tooltipTakingList"></div>
+        </div>
+        
+        <div id="countTaking" class="count" style="left: 28px">
+            <%= @takingCount %>
+        </div>
+        
+        <%= image_tag "search/buckets/taking.png", 
+              :class => "droppable", :id => "takingTarget", 
+              'data-type' => "Taking" %>
+    </div>
+    
+    <div class="grid_2" style="width: 100px"
+         onmouseover="$('#tooltipShopping').show();
+            $('#tooltipShoppingArrow').show();"
+         onmouseout="$('#tooltipShopping').hide();
+            $('#tooltipShoppingArrow').hide();">
+
+        <%= image_tag "search/tooltips/arrow.png",
+              :id => "tooltipShoppingArrow",
+              :class => "tooltipArrow", :width => 20,
+              :style => "left: 115px" %>
+        <div id="tooltipShopping" class="tooltip round 
+              drop_shadow"> 
+            <span style="color: #FF9700">
+                Classes You're Shopping
+            </span> 
+            <div id="tooltipShoppingEmpty">
+                You are not signed up to shop any classes yet
+            </div>
+            <div id="tooltipShoppingList"></div>
+        </div>
+        
+        <div id="countShopping" class="count" style="left: 135px">
+            <%= @shoppingCount %>
+        </div>
+        
+        <%= image_tag "search/buckets/shopping.png", 
+              :class => "droppable", :id => "shoppingTarget", 
+              'data-type' => "Shopping" %>
+    </div>
+    
+    <div class="grid_2"
+         onmouseover="$('#tooltipAvoiding').show();
+            $('#tooltipAvoidingArrow').show();"
+         onmouseout="$('#tooltipAvoiding').hide();
+            $('#tooltipAvoidingArrow').hide();">      
+
+        <%= image_tag "search/tooltips/arrow.png", 
+              :id => "tooltipAvoidingArrow",
+              :class => "tooltipArrow", :width => 20,
+              :style => "left: 225px" %>
+        <div id="tooltipAvoiding" class="tooltip round
+              drop_shadow"> 
+            <span style="color: red">
+                Classes You're Avoiding
+            </span> 
+            <div id="tooltipAvoidingEmpty">
+                You have not put any classes in the list to avoid
+            </div>
+            <div id="tooltipAvoidingList"></div>
+        </div>
+        
+        <div id="countAvoiding" class="count" style="left: 245px">
+            <%= @avoidingCount %>
+        </div>
+        
+        <%= image_tag "search/buckets/avoiding.png", 
+              :class => "droppable", :id => "avoidingTarget", 
+              'data-type' => "Avoiding" %>
+    </div>
+    <div class="clear"></div>
+</div>

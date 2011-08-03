@@ -1,5 +1,3 @@
-<%= render 'search/facebook_scripts' %>
-
 <div class="header bgThemeGradient white size24">
         The Friendly Bluebook
         <span class="gray size15"> Plan Your Schedule with Friends</span>
@@ -7,28 +5,8 @@
 
 <div class="searchPage">
     <div class="searchControls">
-        <div class="buckets">
-            <div id="tooltipTaking" class="tooltip" style="left:14px"> 
-                I'm Taking This! 
-            </div>
-            <div id="countTaking" class="count" style="left: 21px">0</div>
-            <%= image_tag "search/buckets/taking.png", :class => "droppable",
-                  :id => "takingTarget", 'data-type' => "Taking" %>
-                  
-            <div id="tooltipShopping" class="tooltip" style="left:96px"> 
-                Not Sure... Gonna Shop This 
-            </div>
-            <div id="countShopping" class="count" style="left: 135px">0</div>
-            <%= image_tag "search/buckets/shopping.png", :class => "droppable",
-                  :id => "shoppingTarget", 'data-type' => "Shopping" %>
-                  
-            <div id="tooltipAvoiding" class="tooltip" style="left:220px"> 
-                Definitely Avoiding This 
-            </div>
-            <div id="countAvoiding" class="count" style="left: 245px">0</div>
-            <%= image_tag "search/buckets/avoiding.png", :class => "droppable",
-                  :id => "avoidingTarget", 'data-type' => "Avoiding" %>
-        </div>
+        <%= render "search/buckets" %>
+        <script><%= render "search/user_buckets.js.erb" %></script>
 
         <div class="searchContainer round drop_shadow">
             <%= render "search/form" %>

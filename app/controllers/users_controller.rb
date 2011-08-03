@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
 =begin
   @params: type, course
-  @path: /add
+  @path: /remove
   @before_filter: get_user
   @method: POST
 
@@ -43,12 +43,14 @@ class UsersController < ApplicationController
         @user.taking.delete(params[:course].to_i)
 
       when "shopping"
+        logger.debug "HEYYYY"
         @user.shopping.delete(params[:course].to_i)
 
       when "avoiding"
         @user.avoiding.delete(params[:course].to_i)
     end
-
+    
+    logger.debug params[:course].to_s + "AAA"
     @user.save
     render :nothing => true and return
   end
