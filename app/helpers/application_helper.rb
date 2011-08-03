@@ -85,7 +85,7 @@ module ApplicationHelper
   def to_JSON(object)
     json = "{ "
     object.attributes.each do |key, val|
-      json = json + "'#{key}': '#{val}', "
+      json = json + "'#{key}': '#{val.gsub("'", "\\\\'")}', "
     end
     json = json + " }"
   end
