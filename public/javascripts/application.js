@@ -43,36 +43,41 @@ $(function() {
 			          "top": "27px"
 		          }, 200);
             $(".tooltip").hide();
+            $(".tooltipArrow").hide();
 			  },
 
         /* Mouseover Function */
 			  over: function(event, ui) {
+			      type = Bluebook.capitalize($(this).attr("data-type"));
 			      $(this).animate({ 
 			          "width": "60px", 
     		          "margin-right": "18px",
     		          "margin-bottom": "0px" 
   		          }, 200)
-			      $("#count" + $(this).attr("data-type")).animate({
+			      $("#count" + type).animate({
 			          "top": "39px"
 		          }, 200);
 
 		        // Show the tooltips for the event
-            $("#tooltip" + $(this).attr("data-type")).show();
+            $("#tooltip" + type).show();
+            $("#tooltip" + type + "Arrow").show();
 			  },
 
         /* Mouseout Function */
 			  out: function(event, ui) {
+			      type = Bluebook.capitalize($(this).attr("data-type"));
 			      $(this).animate({ 
 			          "width": "48px", 
 			          "margin-right": "30px",
     		          "margin-bottom": "12px" 
 	            }, 200)
-			      $("#count" + $(this).attr("data-type")).animate({
+			      $("#count" + type).animate({
 			          "top": "27px"
 		          }, 200);
 
   		        // Hide the tooltips for the event
-            $("#tooltip" + $(this).attr("data-type")).hide();
+            $("#tooltip" + type).hide();
+            $("#tooltip" + type + "Arrow").hide();
 
 			  },
 		});
