@@ -18,9 +18,12 @@ Bluebook.User.buckets = {
 
 // findCourseByBucket(): Find a specific course in a specific bucket
 Bluebook.User.findCourseByBucket = function(bucket, id) {
-    for (i in Bluebook.User.buckets[bucket]) {
-        if (Bluebook.User.buckets[bucket][i].id === id)
-            return Bluebook.User.buckets[bucket][i];
+    if (bucket === "taking" || bucket === "shopping" || bucket === "avoiding")
+        bucket = Bluebook.User.buckets[bucket];
+
+    for (i in bucket) {
+        if (bucket[i].id === id)
+            return bucket[i];
     }
 
     return undefined;
