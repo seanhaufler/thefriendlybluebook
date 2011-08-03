@@ -20,7 +20,7 @@ $(function() {
 			      // First, we make sure it's not in the bucket
 			      type = $(this).attr("data-type");
 			      bucket = Bluebook.User.buckets[type];
-			      if (!Bluebook.User.findCourseByBucket(bucket, parseInt(id)) {
+			      if (!Bluebook.User.findCourseByBucket(bucket, parseInt(id))) {
                 // Add the single item to the user's bucket
                 Bluebook.User.addItem(type, ui.draggable.attr("data-id"));
 
