@@ -20,12 +20,8 @@ $(function() {
 			      // First, we make sure it's not in the bucket
 			      type = $(this).attr("data-type");
 			      bucket = Bluebook.User.buckets[type];
-			      if (bucket.indexOf($(ui.draggable).attr("data-id")) < 0) {
-                // Push in the new element and update the count
-                bucket.push(ui.draggable.attr("data-id"));
-                count = $("#count" + type).html();
-                $("#count" + type).html(parseInt(count) + 1);
-			      
+			      if (!Bluebook.User.findCourseByBucket(bucket, parseInt(id)) {
+                // Add the single item to the user's bucket
                 Bluebook.User.addItem(type, ui.draggable.attr("data-id"));
 
                 // Make a flash for the count
