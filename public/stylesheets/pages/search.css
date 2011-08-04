@@ -179,7 +179,9 @@ body
     width: 560px;
 }
 
-.searchPage .searchRendering .friendResults
+.searchPage .searchRendering .friendResults, 
+.searchPage .searchRendering .courseResults
+.searchPage .searchRendering .noResults
 {
     display: none;
 }

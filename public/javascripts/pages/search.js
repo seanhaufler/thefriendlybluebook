@@ -21,6 +21,11 @@ Bluebook.Search.showPeopleMap = function() {
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");
     $(".searchRendering .mapType .friendButton").addClass("activeButton");
 
+    // Fade out the courses and show the friends
+    $(".courseResults").fadeOut(function() {
+        $(".friendResults").fadeIn();
+    });
+
     // Avoid following link
     return false;
 };
@@ -31,6 +36,11 @@ Bluebook.Search.showCourseMap = function() {
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");
     $(".searchRendering .mapType .courseButton").addClass("activeButton");
     
+    // Fade out the people and show the courses
+    $(".friendResults").fadeOut(function() {
+        $(".courseResults").fadeIn();
+    });
+
     // Avoid following link
     return false;
 };

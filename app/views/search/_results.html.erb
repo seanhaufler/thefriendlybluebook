@@ -1,4 +1,10 @@
 <div class="courseResults">
+    <% if @results.empty? %>
+        <div class="noResults">
+            No courses matched your search
+        </div>
+    <% end %>
+
     <% @results.each do |result| %>
         <div class="result draggable" data-id="<%= result.id %>">
             <%= "#{result.department_abbr} #{result.number}" %><br />
@@ -11,11 +17,17 @@
 </div>
 
 <div class="friendResults">
+    <div class="noResults">
+        None of your friends matched your search
+    </div>
+
     <% @friends.each do |friend| %>
         <div class="friendResult" data-fb-id="<%= friend[:user].facebook_id %>">
             <%= image_tag "https://graph.facebook.com/#{
                   friend[:user].facebook_id}/picture" %>
-            <%= friend[:user].name %>
+            <div>
+                <%= friend[:user].name %>
+            </div>
             <%= raw((friend[:taking].map{ |result| 
                   "<span style='color: #00B945'>
                       #{result.department_abbr} #{result.number}
