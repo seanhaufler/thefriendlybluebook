@@ -17,6 +17,10 @@ Bluebook.Search.courses = [];
 
 // showPeopleMap(): Update the map view to show friends results
 Bluebook.Search.showPeopleMap = function() {
+    // Make sure we aren't still loading the page
+    if ($(".loadingResults").css("display") !== "none")
+        return;
+        
     // First, we switch the backgrounding on the buttons
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");
     $(".searchRendering .mapType .friendButton").addClass("activeButton");
@@ -32,6 +36,10 @@ Bluebook.Search.showPeopleMap = function() {
 
 // showCourseMap(): Update the map to show course based results
 Bluebook.Search.showCourseMap = function() {
+    // Make sure we aren't still loading the page
+    if ($(".loadingResults").css("display") !== "none")
+        return;
+
     // First, we switch the backgrounding on the buttons
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");
     $(".searchRendering .mapType .courseButton").addClass("activeButton");
