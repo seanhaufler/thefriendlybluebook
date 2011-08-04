@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110731002728) do
+ActiveRecord::Schema.define(:version => 20110804033443) do
 
   create_table "courses", :force => true do |t|
     t.string   "department"
@@ -53,15 +53,17 @@ ActiveRecord::Schema.define(:version => 20110731002728) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "new"
   end
 
   create_table "users", :force => true do |t|
     t.integer  "facebook_id"
     t.string   "email"
     t.string   "name"
-    t.string   "taking"
-    t.string   "shopping"
-    t.string   "avoiding"
+    t.text     "taking"
+    t.text     "shopping"
+    t.text     "avoiding"
+    t.text     "taken"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

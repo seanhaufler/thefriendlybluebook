@@ -4,9 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :facebook_id
       t.string :email
       t.string :name
-      t.string :taking
-      t.string :shopping
-      t.string :avoiding
+      t.text :taking
+      t.text :shopping
+      t.text :avoiding
+      t.text :taken
 
       t.timestamps
     end
