@@ -181,7 +181,7 @@ body
 
 .searchPage .searchRendering .friendResults, 
 .searchPage .searchRendering .courseResults,
-.searchPage .searchRendering .noResults
+.searchPage .searchRendering .friendResults .noResults
 {
     display: none;
 }
