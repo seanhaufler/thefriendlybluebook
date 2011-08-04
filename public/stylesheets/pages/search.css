@@ -186,6 +186,15 @@ body
     display: none;
 }
 
+.searchPage .searchRendering .noResults,
+.searchPage .searchRendering .loadingResults
+{
+    width: 560px;
+    text-align: center;
+    margin-top:40px;
+    font-size: 18px;
+}
+
 .searchPage .searchRendering .result
 {
     width: 60px;    
@@ -204,7 +213,7 @@ body
 
 .searchPage .searchRendering .mapType
 {
-    margin: 30px 0px 20px 380px;
+    margin: 40px 0px 20px 380px;
 }
 
 .searchPage .searchRendering .activeButton
