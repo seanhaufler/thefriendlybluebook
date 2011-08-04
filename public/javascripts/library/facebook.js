@@ -41,6 +41,6 @@ Bluebook.Facebook.getFriends = function() {
         });
 
         // Display all the friend results
-        $(".friendResult").show();
+        $(".friendResults").show();
     });
 }

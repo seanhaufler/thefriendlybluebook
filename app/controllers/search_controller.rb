@@ -202,9 +202,11 @@ class SearchController < ApplicationController
     result_ids = @results.map{|r| r.id}
     User.all.each do |u|
       # See if the user is taking, shopping, or avoiding any of the results
-      taking = (u.taking & result_ids)
-      shopping = (u.shopping & result_ids)
-      avoiding = (u.avoiding & result_ids)
+      taking = (u.taking & result_ids)[0..2].map{|course| Course.find(course)}
+      shopping = (u.shopping & result_ids)[0..2].map{|course| 
+        Course.find(course)}
+      avoiding = (u.avoiding & result_ids)[0..2].map{|course| 
+        Course.find(course)}
 
       # We add the user in if there was an overlap
       if not (taking.empty? and shopping.empty? and avoiding.empty?)

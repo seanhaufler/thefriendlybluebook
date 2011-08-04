@@ -179,6 +179,11 @@ body
     width: 560px;
 }
 
+.searchPage .searchRendering .friendResults
+{
+    display: none;
+}
+
 .searchPage .searchRendering .result
 {
     width: 60px;    

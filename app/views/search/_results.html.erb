@@ -1,17 +1,33 @@
-<% @results.each do |result| %>
-    <div class="result draggable" data-id="<%= result.id %>">
-        <%= "#{result.department_abbr} #{result.number}" %><br />
-        <%= result.section %>
-    </div>
-    <script>
-        Bluebook.Search.courses.push(<%= to_JSON(result) %>);
-    </script>
-<% end %>
+<div class="courseResults">
+    <% @results.each do |result| %>
+        <div class="result draggable" data-id="<%= result.id %>">
+            <%= "#{result.department_abbr} #{result.number}" %><br />
+            <%= result.section %>
+        </div>
+        <script>
+            Bluebook.Search.courses.push(<%= to_JSON(result) %>);
+        </script>
+    <% end %>
+</div>
 
-<% @friends.each do |friend| %>
-    <div class="friendResult" data-fb-id="<%= friend[:user].facebook_id %>">
-        <%= image_tag "https://graph.facebook.com/#{
-              friend[:user].facebook_id}/picture" %>
-        <%= friend[:user].name %>
-    </div>
-<% end %>
+<div class="friendResults">
+    <% @friends.each do |friend| %>
+        <div class="friendResult" data-fb-id="<%= friend[:user].facebook_id %>">
+            <%= image_tag "https://graph.facebook.com/#{
+                  friend[:user].facebook_id}/picture" %>
+            <%= friend[:user].name %>
+            <%= raw(friend[:taking].map{ |result| 
+                  "<span style='color: #00B945'>
+                      #{result.department_abbr} #{result.number}
+                   </span>"} +
+                friend[:shopping].map{ |result| 
+                  "<span style='color: #FF9700'>
+                      #{result.department_abbr} #{result.number}
+                   </span>"} + 
+                friend[:avoiding].map{ |result| 
+                  "<span style='color: red'>
+                      #{result.department_abbr} #{result.number}
+                   </span>"}).join(", ") %>
+        </div>
+    <% end %>
+</div>
