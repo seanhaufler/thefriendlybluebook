@@ -27,12 +27,13 @@ Bluebook.Facebook.getFriends = function() {
         friends = response.data;
 
         // Create a shortlist of id's of friends
+        Bluebook.Facebook.friends = new Array();
         for (i in friends) {
             Bluebook.Facebook.friends.push(friends[i].id);
         }
 
         // Remove elements from the DOM that aren't friends
-        $(".friendResult").each(function(friend) {
+        $.each($(".friendResult"), function(index, friend) {
             if (Bluebook.Facebook.friends.indexOf($(friend).attr("data-fb-id"))
                   < 0) {
                   $(friend).remove();
