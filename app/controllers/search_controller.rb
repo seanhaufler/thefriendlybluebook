@@ -202,30 +202,32 @@ class SearchController < ApplicationController
     friends = Array.new
     result_ids = @results.map{|r| r.id}
     User.all.each do |u|
-      # See if the user is taking, shopping, or avoiding any of the results
-      taking = (u.taking & result_ids)[0..2].map{|course| Course.find(course)}
-      shopping = (u.shopping & result_ids)[0..2].map{|course| 
-        Course.find(course)}
-      avoiding = (u.avoiding & result_ids)[0..2].map{|course| 
-        Course.find(course)}
-
-      # We add the user in if there was an overlap
-      if not (taking.empty? and shopping.empty? and avoiding.empty?)
-        friends.push({:user => u, :status => 0, :taking => taking, 
-          :shopping => shopping, :avoiding => avoiding})
-
       # Incorporate the top-level query into names and emails
-      else
-        queries = params[:query].split(" ").map{|q| q.to_s.downcase}
-        queries.each do |q|
-          if u.name.index(q) or u.email.index(q)
-            friends.push({:user => u, :status => -1, :taking => [], 
-              :shopping => [], :avoiding => []})
-            break
-          end
+      added = false
+      queries = params[:query].split(" ").map{|q| q.to_s.downcase}
+      queries.each do |q|
+        if u.name.index(q) or u.email.index(q)
+          friends.push({:user => u, :status => -1, :taking => u.taking, 
+            :shopping => u.shopping, :avoiding => u.avoiding})
+          added = true
+          break
         end
       end
-      
+
+      if not added
+          # See if the user is taking, shopping, or avoiding any of the results
+          taking = (u.taking & result_ids)[0..2].map{|course| Course.find(course)}
+          shopping = (u.shopping & result_ids)[0..2].map{|course| 
+            Course.find(course)}
+          avoiding = (u.avoiding & result_ids)[0..2].map{|course| 
+            Course.find(course)}
+
+          # We add the user in if there was an overlap
+          if not (taking.empty? and shopping.empty? and avoiding.empty?)
+            friends.push({:user => u, :status => 0, :taking => taking, 
+              :shopping => shopping, :avoiding => avoiding})
+          end
+      end
     end
     @friends = friends
   end
