@@ -62,7 +62,7 @@ body
     padding: 20px;
 }
 
-.searchPage .searchControls .buckets .tooltip .header
+.searchPage .searchControls .buckets .tooltip .bucketHeader
 {
     font-size: 15px;
     text-decoration: underline;
