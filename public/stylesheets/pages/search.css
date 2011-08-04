@@ -230,6 +230,21 @@ body
 .searchPage .searchRendering .friendResult
 {
     width: 250px;
+    font-size: 11px;
+    padding-top: 15px;
+    height: 55px;
+}
+
+.searchPage .searchRendering .friendResult .image
+{
+    padding-top: 5px;
+    width: 50px;
+}
+
+.searchPage .searchRendering .friendResult .name
+{
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .searchPage .searchRendering .mapType
