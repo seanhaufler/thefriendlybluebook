@@ -62,7 +62,7 @@ body
     padding: 20px;
 }
 
-.searchPage .searchControls .buckets .tooltip span
+.searchPage .searchControls .buckets .tooltip .header
 {
     font-size: 15px;
     text-decoration: underline;
@@ -88,7 +88,7 @@ body
 .searchPage .searchControls .buckets .tooltip .courseItem
 {
     border-top: solid 1px #A9A9A9;
-    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .searchPage .searchControls .buckets .tooltip .remove

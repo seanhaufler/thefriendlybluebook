@@ -87,7 +87,7 @@ Bluebook.User.refreshBucket = function(bucket) {
         
             container = document.createElement("div");
             $(container).html(
-                "<div class='title' " + (i === 0 ? "style='border: none'" : "") 
+                "<div class='title' " + (i == 0 ? "style='border: none'" : "") 
                         + ">" + 
                     "<div class='number'>" + 
                         course.department_abbr + " " + course.number + 
