@@ -80,6 +80,11 @@ body
     float: left;
 }
 
+.searchPage .searchControls .buckets .tooltip .courseItem
+{
+    border-bottom: solid 1px gray;
+}
+
 .searchPage .searchControls .buckets .tooltip .remove
 {
     font-size: 10px;

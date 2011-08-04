@@ -88,7 +88,9 @@ Bluebook.User.refreshBucket = function(bucket) {
             container = document.createElement("div");
             $(container).html(
                 "<div class='title'>" + 
-                    course.department_abbr + " " + course.number + ": " +
+                    "<b>" + 
+                        course.department_abbr + " " + course.number + 
+                    "</b>: " +
                     Bluebook.truncate(course.title, 35) + 
                 "</div>" +
                 "<div class='remove'>" +
@@ -100,7 +102,9 @@ Bluebook.User.refreshBucket = function(bucket) {
                 "<div class='desc'>" +
                     Bluebook.truncate(course.description, 120) + 
                 "</div>"
-            );
+            ).attr({
+                "class": "courseItem"
+            });
             $("#tooltip" + Bluebook.capitalize(bucket) + 
                 "List").append(container);
         }
