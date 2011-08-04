@@ -9,6 +9,9 @@
 <% end %>
 
 <% @friends.each do |friend| %>
-    <%= image_tag "https://graph.facebook.com/#{friend[:user].facebook_id}/picture" %>
-    <%= friend[:user].name %>
+    <div class="friendResult" data-fb-id="<%= friend[:user].facebook_id %>">
+        <%= image_tag "https://graph.facebook.com/#{
+              friend[:user].facebook_id}/picture" %>
+        <%= friend[:user].name %>
+    </div>
 <% end %>

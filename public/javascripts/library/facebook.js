@@ -24,6 +24,22 @@ Bluebook.Facebook.updateInfo = function() {
 Bluebook.Facebook.getFriends = function() {
     // Send a request to FB API
     FB.api('/me/friends', function(response) {
-        Bluebook.Facebook.friends = response.data;
+        friends = response.data;
+
+        // Create a shortlist of id's of friends
+        for (i in friends) {
+            Bluebook.Facebook.friends.push(friends[i].id);
+        }
+
+        // Remove elements from the DOM that aren't friends
+        $(".friendResult").each(function(friend) {
+            if (Bluebook.Facebook.friends.indexOf($(friend).attr("data-fb-id"))
+                  < 0) {
+                  $(friend).remove();
+            }
+        });
+
+        // Display all the friend results
+        $(".friendResult").show();
     });
 }
