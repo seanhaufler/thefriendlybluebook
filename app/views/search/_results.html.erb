@@ -9,6 +9,6 @@
 <% end %>
 
 <% @friends.each do |friend| %>
-    <%= image_tag "https://graph.facebook.com/#{friend.user.facebook_id}/picture" %>
-    <%= friend.user.name %>
+    <%= image_tag "https://graph.facebook.com/#{friend[:user].facebook_id}/picture" %>
+    <%= friend[:user].name %>
 <% end %>
