@@ -18,11 +18,11 @@ class SearchController < ApplicationController
     # Otherwise don't do anything
     else
       @results = []
+      @friends = []
     end
 
     # Get the user from the cookie and the classes count
     get_user
-    @user = User.find(1)
 
     # Get each of the user's buckets
     @taking = @user.taking.map{|course| Course.find(course)}

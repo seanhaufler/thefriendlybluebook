@@ -7,3 +7,8 @@
         Bluebook.Search.courses.push(<%= to_JSON(result) %>);
     </script>
 <% end %>
+
+<%= @friends.each do |friend| %>
+    <%= image_tag "https://graph.facebook.com/#{friend.facebook_id}/picture" %>
+    <%= friend.name %>
+<% end %>
