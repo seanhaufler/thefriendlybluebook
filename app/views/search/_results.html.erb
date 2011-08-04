@@ -8,7 +8,7 @@
     </script>
 <% end %>
 
-<%= @friends.each do |friend| %>
+<% @friends.each do |friend| %>
     <%= image_tag "https://graph.facebook.com/#{friend.facebook_id}/picture" %>
     <%= friend.name %>
 <% end %>

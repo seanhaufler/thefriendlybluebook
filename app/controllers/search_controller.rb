@@ -182,15 +182,15 @@ class SearchController < ApplicationController
       filtered_results = Array.new
       
       # Incorporate this through a find_all
-      queries = params[:query].split(" ").map{|q| q.downcase}
+      queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
         filtered_results.concat(results.find_all{ |result|
-          result.department.downcase.index(q) or
-          result.department_abbr.downcase.index(q) or
-          result.title.downcase.index(q) or
-          result.professor.downcase.index(q) or
-          result.description.downcase.index(q) or
-          result.prerequisites.downcase.index(q)
+          result.department.to_s.downcase.index(q) or
+          result.department_abbr.to_s.downcase.index(q) or
+          result.title.to_s.downcase.index(q) or
+          result.professor.to_s.downcase.index(q) or
+          result.description.to_s.downcase.index(q) or
+          result.prerequisites.to_s.downcase.index(q)
         })
       end
 
@@ -213,7 +213,7 @@ class SearchController < ApplicationController
 
       # Incorporate the top-level query into names and emails
       else
-        queries = params[:query].split(" ").map{|q| q.downcase}
+        queries = params[:query].split(" ").map{|q| q.to_s.downcase}
         queries.each do |q|
           if u.name.index(q) or u.email.index(q)
             friends.push({:user => u, :status => -1})
