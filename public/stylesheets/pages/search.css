@@ -80,9 +80,15 @@ body
     float: left;
 }
 
+.searchPage .searchControls .buckets .tooltip .title .number
+{
+    font-weight: bold;
+}
+
 .searchPage .searchControls .buckets .tooltip .courseItem
 {
-    border-bottom: solid 1px gray;
+    border-bottom: solid 1px #A9A9A9;
+    padding-bottom: 10px;
 }
 
 .searchPage .searchControls .buckets .tooltip .remove
