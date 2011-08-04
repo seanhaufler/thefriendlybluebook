@@ -76,7 +76,7 @@ body
 
 .searchPage .searchControls .buckets .tooltip .title
 {
-    margin-top: 5px;
+    margin-top: 10px;
     float: left;
 }
 
@@ -87,8 +87,8 @@ body
 
 .searchPage .searchControls .buckets .tooltip .courseItem
 {
-    border-bottom: solid 1px #A9A9A9;
-    padding-bottom: 10px;
+    border-top: solid 1px #A9A9A9;
+    padding-top: 10px;
 }
 
 .searchPage .searchControls .buckets .tooltip .remove

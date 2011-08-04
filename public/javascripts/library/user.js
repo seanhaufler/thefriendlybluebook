@@ -87,10 +87,11 @@ Bluebook.User.refreshBucket = function(bucket) {
         
             container = document.createElement("div");
             $(container).html(
-                "<div class='title'>" + 
-                    "<b>" + 
+                "<div class='title' " + (i === 0 ? "style='border: none'" : "") 
+                        + ">" + 
+                    "<div class='number'>" + 
                         course.department_abbr + " " + course.number + 
-                    "</b>: " +
+                    "</div>: " +
                     Bluebook.truncate(course.title, 35) + 
                 "</div>" +
                 "<div class='remove'>" +
