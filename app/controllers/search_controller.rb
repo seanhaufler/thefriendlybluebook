@@ -210,15 +210,16 @@ class SearchController < ApplicationController
 
       # We add the user in if there was an overlap
       if not (taking.empty? and shopping.empty? and avoiding.empty?)
-        friends.push({:user => u, :taking => taking, :shopping => shopping,
-          :avoiding => avoiding})
+        friends.push({:user => u, :status => 0, :taking => taking, 
+          :shopping => shopping, :avoiding => avoiding})
 
       # Incorporate the top-level query into names and emails
       else
         queries = params[:query].split(" ").map{|q| q.to_s.downcase}
         queries.each do |q|
           if u.name.index(q) or u.email.index(q)
-            friends.push({:user => u, :status => -1})
+            friends.push({:user => u, :status => -1, :taking => [], 
+              :shopping => [], :avoiding => []})
             break
           end
         end
