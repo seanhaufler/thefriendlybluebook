@@ -68,7 +68,8 @@ body
     text-decoration: underline;
 }
 
-.searchPage .searchControls .buckets .tooltip .desc
+.searchPage .searchControls .buckets .tooltip .desc,
+.searchPage .searchRendering .courseResult .description
 {
     font-size: 11px;
     color: gray;
@@ -192,31 +193,48 @@ body
     width: 560px;
     text-align: center;
     margin-top:40px;
-    font-size: 18px;.searchPage .searchRendering .noResults
-{
-    display: none;
-}
+    font-size: 18px;
 }
 
 .searchPage .searchRendering .result
 {
-    width: 60px;    
-    height:40px;
-    padding: 20px 10px;
+    padding: 20px;
+    margin-bottom: 10px;
 
     background: #FFF;
-    text-align: center;
-    
-    border: solid 1px;
-    border-radius:40px; 
-    -moz-border-radius: 40px; 
-    -webkit-border-radius: 40px; 
-    -o-border-radius: 40px;
+    overflow:hidden;
+    max-height: 100px;
+}
+
+.searchPage .searchRendering .courseResult
+{
+    width: 510px;
+}
+
+.searchPage .searchRendering .courseResult .number
+{
+    font-weight: bold;
+}
+
+.searchPage .searchRendering .courseResult .professor
+{
+    font-style: italic;
+}
+
+.searchPage .searchRendering .courseResult .addendum
+{
+    font-size: 12px;
+    color: #0E4C92;
+}
+
+.searchPage .searchRendering .friendResult
+{
+    width: 250px;
 }
 
 .searchPage .searchRendering .mapType
 {
-    margin: 40px 0px 20px 380px;
+    margin: 38px 0px 24px 380px;
 }
 
 .searchPage .searchRendering .activeButton

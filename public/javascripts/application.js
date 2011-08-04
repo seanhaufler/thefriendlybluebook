@@ -5,11 +5,11 @@ $(function() {
         revertDuration: 300,
       
         start: function(event, ui) {
-            $(this).animate({ "width": "40px", "height": "20px" });
+            $(this).animate({ "width": "40px"});
         },
 
         stop: function(event, ui) {
-            $(this).animate({ "width": "60px", "height": "40px" });
+            $(this).animate({ "width": "510px" });
         }
 		});
 		

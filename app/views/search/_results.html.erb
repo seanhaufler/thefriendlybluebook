@@ -6,10 +6,43 @@
     <% end %>
 
     <% @results.each do |result| %>
-        <div class="result draggable" data-id="<%= result.id %>">
-            <%= "#{result.department_abbr} #{result.number}" %><br />
-            <%= result.section %>
+        <div class="courseResult result round drop_shadow draggable" 
+             data-id="<%= result.id %>">
+
+            <span class="number">
+                <%= "#{result.department_abbr} #{result.number}" %>
+                (<%= result.section %>): 
+            </span>
+            <%= result.title %><%= result.starred ? "*" : "" %>,
+            <span class="professor"><%= result.professor %></span>
+
+            <br />
+
+            <div class="addendum">
+                <%= result.time_string %>
+                <%= result.final_exam_time ? "Final exam" : "No final exam" %>
+                <%= result.reading_period ? ", Meets during reading period" : "" %>
+                <br />
+
+                <% skills = Array.new %>
+                <% result.L1 ? skills << "L1" : "" %>
+                <% result.L2 ? skills << "L2" : "" %>
+                <% result.L3 ? skills << "L3" : "" %>
+                <% result.L4 ? skills << "L4" : "" %>
+                <% result.L5 ? skills << "L5" : "" %>
+                <% result.QR ? skills << "QR" : "" %>
+                <% result.WR ? skills << "WR" : "" %>
+                <% result.Hu ? skills << "Hu" : "" %>
+                <% result.Sc ? skills << "Sc" : "" %>
+                <% result.So ? skills << "So" : "" %>
+                <%= skills.join(", ") %>
+            </div>
+
+            <div class="description">
+                <%= truncate result.description, :length => 250 %>
+            </div>
         </div>
+        
         <script>
             Bluebook.Search.courses.push(<%= to_JSON(result) %>);
         </script>
@@ -22,7 +55,8 @@
     </div>
 
     <% @friends.each do |friend| %>
-        <div class="friendResult" data-fb-id="<%= friend[:user].facebook_id %>">
+        <div class="friendResult result round drop_shadow" 
+             data-fb-id="<%= friend[:user].facebook_id %>">
             <%= image_tag "https://graph.facebook.com/#{
                   friend[:user].facebook_id}/picture" %>
             <div>
