@@ -207,8 +207,10 @@ class SearchController < ApplicationController
       queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
         if u.name.index(q) or u.email.index(q)
-          friends.push({:user => u, :status => -1, :taking => u.taking, 
-            :shopping => u.shopping, :avoiding => u.avoiding})
+          friends.push({:user => u, :status => -1, 
+            :taking => u.taking.map{ |course| Course.find(course) }, 
+            :shopping => u.shopping.map{ |course| Course.find(course) }, 
+            :avoiding => u.avoiding.map{ |course| Course.find(course) } })
           added = true
           break
         end
@@ -224,10 +226,8 @@ class SearchController < ApplicationController
 
           # We add the user in if there was an overlap
           if not (taking.empty? and shopping.empty? and avoiding.empty?)
-            friends.push({:user => u, :status => 0, :taking => taking.map{
-              |course| Course.find(course)}, :shopping => shopping.map{ |course| 
-              Course.find(course)}, :avoiding => avoiding.map{|course| 
-              Course.find(course)} })
+            friends.push({:user => u, :status => 0, :taking => taking, 
+              :shopping => shopping, :avoiding => avoiding})
           end
       end
     end
