@@ -224,8 +224,10 @@ class SearchController < ApplicationController
 
           # We add the user in if there was an overlap
           if not (taking.empty? and shopping.empty? and avoiding.empty?)
-            friends.push({:user => u, :status => 0, :taking => taking, 
-              :shopping => shopping, :avoiding => avoiding})
+            friends.push({:user => u, :status => 0, :taking => taking.map{
+              |course| Course.find(course)}, :shopping => shopping.map{ |course| 
+              Course.find(course)}, :avoiding => avoiding.map{|course| 
+              Course.find(course)} })
           end
       end
     end
