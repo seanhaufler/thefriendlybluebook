@@ -65,6 +65,11 @@
                 <span class="name">
                     <%= friend[:user].name %>
                 </span><br />
+                <% if friend[:empty] %>
+                    <span style="font-style: italic"> 
+                        No courses added to buckets 
+                    </span>
+                <% end %>
                 <%= raw((friend[:taking].map{ |result| 
                       "<span style='color: #00B945'>
                           #{result.department_abbr} #{result.number}

@@ -207,7 +207,9 @@ class SearchController < ApplicationController
       queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
         if u.name.index(q) or u.email.index(q)
-          friends.push({:user => u, :status => -1, 
+          friends.push({:user => u, 
+            :empty => (u.taking.empty? and u.shopping.empty? and 
+              u.avoiding.empty?), 
             :taking => u.taking.map{ |course| Course.find(course) }, 
             :shopping => u.shopping.map{ |course| Course.find(course) }, 
             :avoiding => u.avoiding.map{ |course| Course.find(course) } })
