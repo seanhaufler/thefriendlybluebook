@@ -9,6 +9,17 @@
         <div class="courseResult result round drop_shadow draggable" 
              data-id="<%= result.id %>">
 
+            <% if result.new or result.gut %>
+                <div class="badge">
+                    <% if result.gut %>
+                        <div class="overlay round">Gut</div>
+                    <% end %>
+                    <% if result.new %>
+                        <div class="overlay round">New</div>
+                    <% end %>
+                </div>
+            <% end %>
+
             <span class="number">
                 <%= "#{result.department_abbr} #{result.number}" %>
                 (<%= result.section %>): 

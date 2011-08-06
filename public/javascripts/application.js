@@ -4,13 +4,14 @@ $(function() {
         revert: true,
         revertDuration: 300,
       
-        start: function(event, ui) {
-            $(this).animate({ "width": "40px"});
-        },
+//        ----- ANIMATION IS BROKEN -----        
+//        start: function(event, ui) {
+//            $(this).animate({ "width": "40px"});
+//        },
 
-        stop: function(event, ui) {
-            $(this).animate({ "width": "510px" });
-        }
+//        stop: function(event, ui) {
+//            $(this).animate({ "width": "510px" });
+//        }
 		});
 		
 		$(".droppable").droppable({

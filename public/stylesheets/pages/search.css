@@ -26,14 +26,25 @@ body
     margin: 20px 0px 10px 15px;
 }
 
-.searchPage .searchControls .buckets .count
+.searchPage .searchControls .buckets .count,
+.searchPage .searchRendering .courseResult .badge .overlay
 {
-    border: solid 1px #FFF;
-    padding: 1px 4px 9px 6px; 
-    top: 27px;
-    
+    border: solid 1px #000;
     color: #FFF; 
     background: #0E4C92;
+}
+
+.searchPage .searchRendering .courseResult .badge .overlay
+{
+    padding: 3px 4px;
+    float: left;
+    margin-right: 4px;
+}
+
+.searchPage .searchControls .buckets .count
+{
+    padding: 1px 4px 9px 6px; 
+    top: 27px;
 }
 
 .searchPage .searchControls .buckets .countHighlight
@@ -202,13 +213,13 @@ body
     margin-bottom: 10px;
 
     background: #FFF;
-    overflow:hidden;
     max-height: 100px;
 }
 
 .searchPage .searchRendering .courseResult
 {
     width: 510px;
+    position: relative;
 }
 
 .searchPage .searchRendering .courseResult .number
@@ -227,9 +238,20 @@ body
     color: #0E4C92;
 }
 
+.searchPage .searchRendering .courseResult .badge
+{
+    color: blue;
+    position: absolute;
+    top: -10px;
+    left: -15px;
+}
+
+
 .searchPage .searchRendering .friendResult
 {
-    width: 250px;
+    width: 230px;
+    float: left;
+    margin-right: 10px;
     font-size: 11px;
     padding-top: 15px;
     height: 55px;
