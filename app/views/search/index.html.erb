@@ -1,15 +1,15 @@
 <div class="header bgThemeGradient white size24">
-        The Friendly Bluebook
-        <span class="gray size15"> Plan Your Schedule with Friends</span>
+    The Friendly Bluebook
+    <span class="gray size15"> Plan Your Schedule with Friends</span>
 </div>
 
 <div class="searchPage">
     <div class="searchControls">
-        <%= render "search/buckets" %>
-        <script><%= render "search/user_buckets.js.erb" %></script>
+        <%= render "search/buckets/containers.html.erb" %>
+        <script><%= render "search/buckets/scripts.js.erb" %></script>
 
         <div class="searchContainer round drop_shadow">
-            <%= render "search/form" %>
+            <%= render "search/form/form" %>
         </div>
     </div>
 
@@ -33,7 +33,8 @@
                 Loading, please do not reload the page...<br />
                 <%= image_tag "search/loading.gif" %>
             </div>
-            <%= render 'search/results' %>
+            <%= render 'search/results/courses' %>
+            <%= render 'search/results/friends' %>
         </div>
     </div>
 </div>
