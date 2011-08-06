@@ -263,6 +263,11 @@ body
     width: 50px;
 }
 
+.searchPage .searchRendering .friendResult .information
+{
+    width: 170px;
+}
+
 .searchPage .searchRendering .friendResult .name
 {
     font-size: 18px;
