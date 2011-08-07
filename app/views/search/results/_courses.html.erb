@@ -7,7 +7,9 @@
 
     <% @results.each do |result| %>
         <div class="courseResult result round drop_shadow draggable" 
-             data-id="<%= result.id %>">
+             data-id="<%= result.id %>"
+             onmouseover="$('#courseFlyout<%= result.id %>').show()"
+             onmouseout="$('#courseFlyout<%= result.id %>').hide()">
 
             <% if result.new or result.gut %>
                 <div class="badge">
@@ -33,6 +35,8 @@
                 <%= result.time_string %>
                 <%= result.final_exam_time ? "Final exam" : "No final exam" %>
                 <%= result.reading_period ? ", Meets during reading period" : "" %>
+                <%= result.readings_in_translation ? 
+                      ", Has readings in translation" : "" %>
                 <br />
 
                 <% skills = Array.new %>
@@ -51,6 +55,78 @@
 
             <div class="description">
                 <%= truncate result.description, :length => 250 %>
+                <% if result.prerequisites %>
+                    <div style="margin-top: 5px;">
+                        Prerequisites: <%= result.prerequisites %>
+                    </div>
+                <% end %>
+            </div>
+
+            <%= link_to "Click Here for OCI Listing", 
+                "http://students.yale.edu/oci/resultDetail.jsp?course=#{
+                  result.oci_id}&term=201103", :class => "hover_under" %>
+
+            <div class="flyout round drop_shadow" 
+                 id="courseFlyout<%= result.id %>">
+                <div class="arrow">
+                    <%= image_tag "search/tooltips/arrow_right.png",
+                          :width => 20 %>
+                </div>
+
+                <div class="header" style='color: #00B945'>
+                    Friends Taking <%= "#{result.department_abbr} 
+                      #{result.number}" %>
+                </div>       
+                <% if not @takingMap[result.id] %>
+                    <div class="listing">
+                        None of your friends are taking this
+                    </div>
+                <% else %>
+                  <% @takingMap[result.id].each do |user| %>
+                      <div class="listing">
+                          <%= image_tag "https://graph.facebook.com/#{
+                                user.facebook_id}/picture" %>
+                          <%= user.name %>
+                      </div>
+                  <% end %>
+                <% end %>
+                                         
+                <div class="header" style='color: #FF9700'>
+                    Friends Shopping <%= "#{result.department_abbr} 
+                      #{result.number}" %>
+                </div>
+                <% if not @shoppingMap[result.id] %>
+                    <div class="listing">
+                        None of your friends are taking this
+                    </div>
+                <% else %>
+                  <% @shoppingMap[result.id].each do |user| %>
+                      <div class="listing">
+                          <%= image_tag "https://graph.facebook.com/#{
+                                user.facebook_id}/picture" %>
+                          <%= user.name %>
+                      </div>
+                  <% end %>
+                <% end %>
+                          
+                <div class="header" style='color: red'>
+                    Friends Avoiding <%= "#{result.department_abbr} 
+                      #{result.number}" %>
+                </div>
+                <% if not @avoidingMap[result.id] %>
+                    <div class="listing">
+                        None of your friends are taking this
+                    </div>
+                <% else %>
+                  <% @avoidingMap[result.id].each do |user| %>
+                      <div class="listing">
+                          <%= image_tag "https://graph.facebook.com/#{
+                                user.facebook_id}/picture" %>
+                          <%= user.name %>
+                      </div>
+                  <% end %>
+                <% end %>
+                          
             </div>
         </div>
         

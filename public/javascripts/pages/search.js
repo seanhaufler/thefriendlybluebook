@@ -19,7 +19,7 @@ Bluebook.Search.courses = [];
 Bluebook.Search.showPeopleMap = function() {
     // Make sure we aren't still loading the page
     if ($(".loadingResults").css("display") !== "none")
-        return;
+        return false;
         
     // First, we switch the backgrounding on the buttons
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");
@@ -38,7 +38,7 @@ Bluebook.Search.showPeopleMap = function() {
 Bluebook.Search.showCourseMap = function() {
     // Make sure we aren't still loading the page
     if ($(".loadingResults").css("display") !== "none")
-        return;
+        return false;
 
     // First, we switch the backgrounding on the buttons
     $(".searchRendering .mapType .activeButton").removeClass("activeButton");

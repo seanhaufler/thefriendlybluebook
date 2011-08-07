@@ -23,7 +23,7 @@ class SearchController < ApplicationController
 
     # Get the user from the cookie and the classes count
     get_user
-    #@user = User.find(1)
+    @user = User.find(1)
 
     # Get each of the user's buckets
     @taking = @user.taking.map{|course| Course.find(course)}
@@ -207,13 +207,20 @@ class SearchController < ApplicationController
       queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
         if u.name.index(q) or u.email.index(q)
+          # Map out each course the user is taking, shopping, and avoiding
+          taking = u.taking.map{ |course| Course.find(course) }
+          shopping = u.shopping.map{ |course| Course.find(course) }
+          avoiding = u.avoiding.map{ |course| Course.find(course) }
+
+          # Add the friend and all their classes to the friends array
           friends.push({:user => u, 
             :empty => (u.taking.empty? and u.shopping.empty? and 
               u.avoiding.empty?), 
-            :taking => u.taking.map{ |course| Course.find(course) }, 
-            :shopping => u.shopping.map{ |course| Course.find(course) }, 
-            :avoiding => u.avoiding.map{ |course| Course.find(course) } })
+            :taking => taking, :shopping => shopping, :avoiding => avoiding, 
+            :taking_full => taking, :shopping_full => shopping, 
+            :avoiding_full => avoiding })
           added = true
+          
           break
         end
       end
@@ -229,8 +236,38 @@ class SearchController < ApplicationController
           # We add the user in if there was an overlap
           if not (taking.empty? and shopping.empty? and avoiding.empty?)
             friends.push({:user => u, :status => 0, :taking => taking, 
-              :shopping => shopping, :avoiding => avoiding})
+              :shopping => shopping, :avoiding => avoiding,
+              :taking_full => u.taking.map{ |course| Course.find(course) }, 
+              :shopping_full => u.shopping.map{ |course| Course.find(course) }, 
+              :avoiding_full => u.avoiding.map{ |course| Course.find(course) }})
+            added = true
           end
+      end
+
+      # If we added the person to the list then there was an intersection so we
+      #   add this person to the places in the hash map they belong for the 
+      #   flyout
+      if added
+        # Hash map for taking
+        @takingMap ||= Array.new
+        u.taking.each do |course|
+            @takingMap[course.to_i] ||= Array.new
+            @takingMap[course.to_i].push(u)
+        end
+
+        # Hash map for shopping
+        @shoppingMap ||= Array.new
+        u.shopping.each do |course|
+            @shoppingMap[course.to_i] ||= Array.new
+            @shoppingMap[course.to_i].push(u)
+        end
+
+        # Hash map for avoiding
+        @avoidingMap ||= Array.new
+        u.avoiding.each do |course|
+            @avoidingMap[course.to_i] ||= Array.new
+            @avoidingMap[course.to_i].push(u)
+        end
       end
     end
     @friends = friends

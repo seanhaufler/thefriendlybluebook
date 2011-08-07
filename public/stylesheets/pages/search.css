@@ -61,12 +61,16 @@ body
 {
     position: absolute;
     display: none;
-    top: 40px;
+    
+    top: 41px;
+    z-index: 20;
 }
 
 .searchPage .searchControls .buckets .tooltip
 {
     background: #FFF;
+    border: solid 1px #000;
+    
     top: 60px;
     left: -15px;
     width: 320px;
@@ -105,13 +109,14 @@ body
 
 .searchPage .searchControls .buckets .tooltip .remove
 {
-    font-size: 10px;
     padding-top: 6px;
     float: right;
 }
 
-.searchPage .searchControls .buckets .tooltip .remove a
+.searchPage .searchControls .buckets .tooltip .remove a,
+.searchPage .searchRendering .results .courseResults .courseResult a
 {
+    font-size: 11px;
     color: #4B94D9;
 }
 
@@ -191,6 +196,26 @@ body
     width: 560px;
 }
 
+.searchPage .searchRendering .mapType
+{
+    margin: 38px 0px 24px 389px;
+}
+
+.searchPage .searchRendering .activeButton
+{
+    background:  #555;
+    color: #FFF;
+}
+.searchPage .searchRendering .activeButton:active
+{
+    background:  #555;
+}
+
+.searchPage .searchRendering .results
+{
+    position: relative;
+}
+
 .searchPage .searchRendering .friendResults, 
 .searchPage .searchRendering .courseResults,
 .searchPage .searchRendering .friendResults .noResults
@@ -218,7 +243,7 @@ body
 
 .searchPage .searchRendering .courseResult
 {
-    width: 510px;
+    width: 520px;
     position: relative;
 }
 
@@ -249,8 +274,9 @@ body
 
 .searchPage .searchRendering .friendResult
 {
-    width: 230px;
+    width: 235px;
     float: left;
+    position: relative;
     margin-right: 10px;
     font-size: 11px;
     padding-top: 15px;
@@ -274,22 +300,56 @@ body
     font-weight: 500;
 }
 
-.searchPage .searchRendering .mapType
+.searchPage .searchRendering .result .flyout
 {
-    margin: 38px 0px 24px 380px;
+    display: none;
+    position: absolute;
+    width: 300px;
+
+    background: white;
+    padding: 0px 10px 10px 10px;
+    border: solid 1px #000;
+
+    top: -10px;
 }
 
-.searchPage .searchRendering .activeButton
+.searchPage .searchRendering .result .flyout .header
 {
-    background:  #555;
-    color: #FFF;
-}
-.searchPage .searchRendering .activeButton:active
-{
-    background:  #555;
+    font-size: 15px;
+    padding: 0px;
+    text-decoration: underline;
+    margin-top: 10px;
 }
 
-.searchPage .searchRendering .results
+.searchPage .searchRendering .result .flyout .arrow
 {
-    position: relative;
+    position: absolute;
+    left: 320px;
+    z-index: 20;
+    top: 10px;
+}
+
+.searchPage .searchRendering .result .flyout .listing
+{
+    margin: 5px 0px 0px 10px;
+}
+
+.searchPage .searchRendering .courseResult .flyout
+{
+    right: 565px;
+}
+
+.searchPage .searchRendering .friendResult .flyout
+{
+    right: 280px;
+}
+
+.searchPage .searchRendering .friendResult .flyout .courseTitle
+{
+    font-weight: bold;
+}
+
+.searchPage .searchRendering .friendResult .flyout .professor
+{
+    font-style: italic;
 }
