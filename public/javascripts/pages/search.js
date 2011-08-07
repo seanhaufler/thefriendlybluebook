@@ -82,20 +82,56 @@ Bluebook.Search.commentKeyup = function(field) {
         return;
     }
 
-    // Enter key
-    if (e.keyCode == 13) {
-        // No shift key lock, submit comment
-        if (!Bluebook.Search.shiftKeyPressed) {
+    // Enter key w/o shift key lock
+    if (e.keyCode == 13 &&
+        !Bluebook.Search.shiftKeyPressed &&
+        $(field).val() !== "") {
             // Submit a POST request to the server to log the comment
             Bluebook.request.open("POST", ("/comment?course=" + 
               $(field).attr("data-course") + "&content=" + $(field).val()), 
               true);
             Bluebook.request.send();
 
+            // Create a container for the comment
+            var comment = document.createElement("div");
+            $(comment).attr({
+                "class": "comment"
+            }).css({
+                "display": "none"
+            });
+
+            // User's name
+            var userInfo = document.createElement("div");
+            $(userInfo).attr({
+                "class": "user"
+            }).html(Bluebook.Facebook.name);
+
+            // Current date
+            var dateInfo = document.createElement("div");
+            $(dateInfo).attr({
+                "class": "date"
+            }).html((new Date()).strftime("%I:%M %p, %b %d"));
+
+            // Clear div
+            var clear = document.createElement("div");
+            $(clear).attr({
+                "class": "clear"
+            });
+
+            // Create a comment container
+            var content = document.createElement("div");
+            $(content).attr({
+                "class": "content"
+            }).html($(field).val());
+
+            // Append all the information and fade it in
+            $(comment).append(userInfo, dateInfo, clear, content);
+            $(comment).insertAfter(field);
+            $(comment).fadeIn();
+
             // Clear the field and blur it
             $(field).val('');
             $(field).blur();
-        }
     }
 };
 

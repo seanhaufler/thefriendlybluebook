@@ -44,7 +44,7 @@ class SearchController < ApplicationController
     @title = "Find Courses"
     @stylesheets = ["pages/search"]
     @javascripts = ["pages/search", "library/facebook", "library/user",
-      "library/ycps"]
+      "library/ycps", "jquery/autoresize", "jquery/strftime"]
   end
 
 =begin

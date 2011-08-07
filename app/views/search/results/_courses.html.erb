@@ -139,10 +139,18 @@
                       :onkeyup => "Bluebook.Search.commentKeyup(this)"  
                 %>
                 <% result.comments.each do |comment| %>
-                    <div class="comment<%= comment[$COMMENT_FB_ID] %>">
-                        <%= comment[$COMMENT_USER] %>
-                        <%= comment[$COMMENT_DATE] %>
-                        <%= comment[$COMMENT_CONTENT] %>
+                    <div class="comment comment<%= comment[$COMMENT_FB_ID] %>">
+                        <div class="user">
+                            <%= comment[$COMMENT_USER] %>
+                        </div>
+                        <div class="date">
+                            <%= comment[$COMMENT_DATE].strftime("%l:%M %p, %b %d") %>
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="content">
+                            <%= comment[$COMMENT_CONTENT] %>
+                        </div>
                     </div>
                 <% end %> 
             </div>
