@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   $SHOPPING = 1
   $AVOIDING = 2
 
+  $COMMENT_FB_ID = 0
+  $COMMENT_USER = 1
+  $COMMENT_CONTENT = 2
+  $COMMENT_DATE = 3
+
   # Design considerations
   $STANDARD_STYLESHEETS = ["bluebook/classes", "bluebook/colors", 
     "bluebook/elements", "bluebook/typography", "gs/gs", "gs/reset", "gs/text",

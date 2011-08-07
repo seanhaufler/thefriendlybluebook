@@ -11,6 +11,11 @@ class SearchController < ApplicationController
   The following renders the homepage for our application
 =end
   def index
+    # Create empty hash maps for when the user queries
+    @takingMap = Hash.new
+    @shoppingMap = Hash.new
+    @avoidingMap = Hash.new
+
     # If someone has submitted something then search
     if params[:query]
       search
@@ -206,7 +211,7 @@ class SearchController < ApplicationController
       added = false
       queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
-        if u.name.index(q) or u.email.index(q)
+        if u.name.to_s.index(q) or u.email.to_s.index(q)
           # Map out each course the user is taking, shopping, and avoiding
           taking = u.taking.map{ |course| Course.find(course) }
           shopping = u.shopping.map{ |course| Course.find(course) }
@@ -249,21 +254,18 @@ class SearchController < ApplicationController
       #   flyout
       if added
         # Hash map for taking
-        @takingMap ||= Array.new
         u.taking.each do |course|
             @takingMap[course.to_i] ||= Array.new
             @takingMap[course.to_i].push(u)
         end
 
         # Hash map for shopping
-        @shoppingMap ||= Array.new
         u.shopping.each do |course|
             @shoppingMap[course.to_i] ||= Array.new
             @shoppingMap[course.to_i].push(u)
         end
 
         # Hash map for avoiding
-        @avoidingMap ||= Array.new
         u.avoiding.each do |course|
             @avoidingMap[course.to_i] ||= Array.new
             @avoidingMap[course.to_i].push(u)

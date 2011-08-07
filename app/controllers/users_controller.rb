@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  include UsersHelper
   before_filter :get_user
 
 =begin

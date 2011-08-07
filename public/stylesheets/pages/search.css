@@ -12,12 +12,14 @@ body
 {
     width: 960px;
     margin: 0px auto;
+    position: relative;
 }
 
 .searchPage .searchControls
 {
     float: left;
-    position: relative;
+    position: absolute;
+    top: 0px;
 }
 
 .searchPage .searchControls .buckets
@@ -193,6 +195,7 @@ body
 {
     position: relative;
     float: left;
+    left: 400px;
     width: 560px;
 }
 
@@ -220,7 +223,7 @@ body
 .searchPage .searchRendering .courseResults,
 .searchPage .searchRendering .friendResults .noResults
 {
-    display: none;
+/*    display: none;*/
 }
 
 .searchPage .searchRendering .noResults,
@@ -238,7 +241,6 @@ body
     margin-bottom: 10px;
 
     background: #FFF;
-    max-height: 100px;
 }
 
 .searchPage .searchRendering .courseResult
@@ -337,6 +339,12 @@ body
 .searchPage .searchRendering .courseResult .flyout
 {
     right: 565px;
+}
+
+.searchPage .searchRendering .courseResult .flyout .commentForm
+{
+    width: 285px;
+    margin-top: 20px;
 }
 
 .searchPage .searchRendering .friendResult .flyout

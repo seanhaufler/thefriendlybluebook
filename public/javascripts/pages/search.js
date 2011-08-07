@@ -11,9 +11,10 @@ Bluebook.Search = function() {};
  * @methods: showPeopleMap, showCourseMap, autocomplete
  */
 
-// Set a variable for which one is highlighted and global var for courses
+// Set a variable for which one is highlighted, course results, shift key press
 Bluebook.Search.autohighlighted = -1;
 Bluebook.Search.courses = [];
+Bluebook.Search.shiftKeyPressed = false;
 
 // showPeopleMap(): Update the map view to show friends results
 Bluebook.Search.showPeopleMap = function() {
@@ -53,6 +54,51 @@ Bluebook.Search.showCourseMap = function() {
     return false;
 };
 
+// commentKeydown(): Bind an onkeydown listener to the comment form
+Bluebook.Search.commentKeydown = function(field) {
+    // First, we capture the event and normalize for IE
+    e = event || window.event;
+
+    // Shift key (escape enter)
+    if (e.keyCode == 16) {
+        Bluebook.Search.shiftKeyPressed = true;
+        return;
+    }
+
+    // Enter key
+    if (e.keyCode == 13 && !Bluebook.Search.shiftKeyPressed) {
+        return false;
+    }
+};
+
+// commentKeyup(): Bind an onkeyup listener to the comment form
+Bluebook.Search.commentKeyup = function(field) {
+    // First, we capture the event and normalize for IE
+    e = event || window.event;
+
+    // Shift key (release enter)
+    if (e.keyCode == 16) {
+        Bluebook.Search.shiftKeyPressed = false;
+        return;
+    }
+
+    // Enter key
+    if (e.keyCode == 13) {
+        // No shift key lock, submit comment
+        if (!Bluebook.Search.shiftKeyPressed) {
+            // Submit a POST request to the server to log the comment
+            Bluebook.request.open("POST", ("/comment?course=" + 
+              $(field).attr("data-course") + "&content=" + $(field).val()), 
+              true);
+            Bluebook.request.send();
+
+            // Clear the field and blur it
+            $(field).val('');
+            $(field).blur();
+        }
+    }
+};
+
 // preventKeystrokes(): Take actions in autocomplete based on keystrokes
 Bluebook.Search.preventKeystrokes = function() {
     // First, we capture the event and normalize for IE
@@ -87,7 +133,7 @@ Bluebook.Search.preventKeystrokes = function() {
         $("#ycpsSuggestions").hide();
         return false;
     }
-}
+};
 
 // autocomplete(): Fill in the datalist options using binary search
 Bluebook.Search.autocomplete = function(Object) {
@@ -154,7 +200,7 @@ Bluebook.Search.autocomplete = function(Object) {
 
     // Show the results
     $("#ycpsSuggestions").show();
-}
+};
 
 // highlightItem(): Puts the autosuggest item in a hoverstate
 Bluebook.Search.highlightItem = function(item) {
@@ -163,7 +209,7 @@ Bluebook.Search.highlightItem = function(item) {
       "color": "white"
     });
     Bluebook.Search.autohighlighted = parseInt(item);
-}
+};
 
 // dehighlightItem(): Puts the autosuggest item in a non-hoverstate
 Bluebook.Search.dehighlightAll = function() {
@@ -172,7 +218,7 @@ Bluebook.Search.dehighlightAll = function() {
       "color": "black"
     });
     Bluebook.Search.autohighlighted = -1;
-}
+};
 
 // clearForm(): Clear out the form's hint
 Bluebook.Search.clearForm = function(Object, token) {
@@ -182,7 +228,7 @@ Bluebook.Search.clearForm = function(Object, token) {
         return true;
     }
     return false;
-}
+};
 
 // restoreForm(): Restore the form's hint on blur
 Bluebook.Search.restoreForm = function(Object, token) {
@@ -192,4 +238,4 @@ Bluebook.Search.restoreForm = function(Object, token) {
         return true;
     }
     return false;
-}
+};

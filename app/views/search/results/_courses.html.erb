@@ -54,7 +54,7 @@
             </div>
 
             <div class="description">
-                <%= truncate result.description, :length => 250 %>
+                <%= result.description %>
                 <% if result.prerequisites %>
                     <div style="margin-top: 5px;">
                         Prerequisites: <%= result.prerequisites %>
@@ -126,7 +126,25 @@
                       </div>
                   <% end %>
                 <% end %>
-                          
+
+                <%= text_area_tag "commentForm#{result.id}",
+                      "Say Something About This Course...",
+                      :class => "textInput textInputHint commentForm",
+                      'data-course' => result.id,
+                      :onfocus => "Bluebook.Search.clearForm(this, 
+                        'Say Something About This Course...')",
+                      :onblur => "Bluebook.Search.restoreForm(this, 
+                        'Say Something About This Course...')",
+                      :onkeydown => "return Bluebook.Search.commentKeydown(this);",
+                      :onkeyup => "Bluebook.Search.commentKeyup(this)"  
+                %>
+                <% result.comments.each do |comment| %>
+                    <div class="comment<%= comment[$COMMENT_FB_ID] %>">
+                        <%= comment[$COMMENT_USER] %>
+                        <%= comment[$COMMENT_DATE] %>
+                        <%= comment[$COMMENT_CONTENT] %>
+                    </div>
+                <% end %> 
             </div>
         </div>
         

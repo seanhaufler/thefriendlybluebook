@@ -13,3 +13,11 @@ Bluebook.User.refreshBucket("shopping");
   Bluebook.User.buckets.avoiding.push(<%= to_JSON(course) %>);
 <% end %>
 Bluebook.User.refreshBucket("avoiding");
+
+// Create a scroll listener to keep the item scrolling
+window.onscroll = function() {
+    if (window.scrollY > 75)
+        $(".searchPage .searchControls").css("position", "fixed");
+    else
+        $(".searchPage .searchControls").css("position", "absolute");
+}
