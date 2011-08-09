@@ -73,6 +73,8 @@ body
     background: #FFF;
     border: solid 1px #000;
     
+    z-index: 10;
+    
     top: 60px;
     left: -15px;
     width: 320px;
@@ -333,6 +335,7 @@ body
     padding: 0px 10px 10px 10px;
     border: solid 1px #000;
 
+    z-index: 10;
     top: -10px;
 }
 
