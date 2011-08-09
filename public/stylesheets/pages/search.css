@@ -359,6 +359,8 @@ body
 .searchPage .searchRendering .result .flyout .listing
 {
     margin: 5px 0px 0px 10px;
+    font-size: 12px;
+    text-align: left;
 }
 
 .searchPage .searchRendering .result .flyout .listing .text
