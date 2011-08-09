@@ -82,16 +82,15 @@
                         None of your friends are taking this
                     </div>
                     <% @takingMap[result.id].each do |user| %>
-                          <div class="courseFlyoutFriend listing"
-                               data-fb-id="<%= user.facebook_id %>" >
-                              <%= image_tag "https://graph.facebook.com/#{
-                                    user.facebook_id}/picture", :width => 20 %>
-                              <div class="text">
-                                  <%= user.name %>
-                              </div>
-                              <div class="clear"></div>
-                          </div>
-                      <% end %>
+                        <div class="courseFlyoutFriend listing"
+                             data-fb-id="<%= user.facebook_id %>" >
+                            <%= image_tag "https://graph.facebook.com/#{
+                                  user.facebook_id}/picture", :width => 20 %>
+                            <div class="text">
+                                <%= user.name %>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
                     <% end %>
                 </div>
                                          
@@ -104,16 +103,15 @@
                         None of your friends are shopping this
                     </div>
                     <% @shoppingMap[result.id].each do |user| %>
-                          <div class="courseFlyoutFriend listing"
-                               data-fb-id="<%= user.facebook_id %>">
-                              <%= image_tag "https://graph.facebook.com/#{
-                                    user.facebook_id}/picture", :width => 20 %>
-                              <div class="text">
-                                  <%= user.name %>
-                              </div>
-                              <div class="clear"></div>
-                          </div>
-                      <% end %>
+                        <div class="courseFlyoutFriend listing"
+                             data-fb-id="<%= user.facebook_id %>">
+                            <%= image_tag "https://graph.facebook.com/#{
+                                  user.facebook_id}/picture", :width => 20 %>
+                            <div class="text">
+                                <%= user.name %>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
                     <% end %>
                 </div>
                           
@@ -125,18 +123,16 @@
                     <div class="noResults listing">
                         None of your friends are avoiding this
                     </div>
-                    <div class
                     <% @avoidingMap[result.id].each do |user| %>
-                          <div class="courseFlyoutFriend listing"
-                               data-fb-id="<%= user.facebook_id %>">
-                              <%= image_tag "https://graph.facebook.com/#{
-                                    user.facebook_id}/picture", :width => 20 %>
-                              <div class="text">
-                                  <%= user.name %>
-                              </div>
-                              <div class="clear"></div>
-                          </div>
-                      <% end %>
+                        <div class="courseFlyoutFriend listing"
+                             data-fb-id="<%= user.facebook_id %>">
+                            <%= image_tag "https://graph.facebook.com/#{
+                                  user.facebook_id}/picture", :width => 20 %>
+                            <div class="text">
+                                <%= user.name %>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
                     <% end %>
                 </div>
 
