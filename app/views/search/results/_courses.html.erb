@@ -78,7 +78,7 @@
                         Friends Taking <%= "#{result.department_abbr} 
                           #{result.number}" %>
                     </div>       
-                    <div class="noFriends listing">
+                    <div class="noResults listing">
                         None of your friends are taking this
                     </div>
                     <% (@takingMap[result.id] || []).each do |user| %>
@@ -99,7 +99,7 @@
                         Friends Shopping <%= "#{result.department_abbr} 
                           #{result.number}" %>
                     </div>
-                    <div class="noFriends listing">
+                    <div class="noResults listing">
                         None of your friends are shopping this
                     </div>
                     <% (@shoppingMap[result.id] || []).each do |user| %>
@@ -120,7 +120,7 @@
                         Friends Avoiding <%= "#{result.department_abbr} 
                           #{result.number}" %>
                     </div>
-                    <div class="noFriends listing">
+                    <div class="noResults listing">
                         None of your friends are avoiding this
                     </div>
                     <% (@avoidingMap[result.id] || []).each do |user| %>
