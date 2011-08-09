@@ -10,8 +10,6 @@ Bluebook.Facebook = function() {};
  * @methods: updateInfo, getFriends
  */
 
-Bluebook.Facebook.name = "";
-
 // updateInfo(): Queue off an information update
 Bluebook.Facebook.updateInfo = function() {
     // Change information in DB
