@@ -64,7 +64,8 @@
 
             <%= link_to "Click Here for OCI Listing", 
                 "http://students.yale.edu/oci/resultDetail.jsp?course=#{
-                  result.oci_id}&term=201103", :class => "hover_under" %>
+                  result.oci_id}&term=201103", :class => "hover_under",
+                  :target => "_blank" %>
 
             <div class="flyout round drop_shadow" 
                  id="courseFlyout<%= result.id %>">
