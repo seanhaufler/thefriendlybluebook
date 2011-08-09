@@ -1,6 +1,6 @@
 body 
 {  
-    background: #B7B7B7;
+    background: #C0C0C0;
 }
 
 .header
@@ -199,6 +199,27 @@ body
     width: 560px;
 }
 
+.searchPage .searchRendering .firstRun
+{
+    font-size: 15px;
+    margin: 50px 0px 0px 80px;
+    padding: 20px 50px;
+    width: 400px;
+}
+
+.searchPage .searchRendering .firstRun .welcome
+{
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.searchPage .searchRendering .firstRun .advice
+{
+    list-style: decimal;
+}
+
 .searchPage .searchRendering .mapType
 {
     margin: 38px 0px 24px 389px;
@@ -223,7 +244,7 @@ body
 .searchPage .searchRendering .courseResults,
 .searchPage .searchRendering .friendResults .noResults
 {
-/*    display: none;*/
+    display: none;
 }
 
 .searchPage .searchRendering .noResults,

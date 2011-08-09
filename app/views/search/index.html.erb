@@ -14,28 +14,32 @@
     </div>
 
     <div class="searchRendering">
-        <div class="mapType">
-            <a href="" class="silverButton friendButton activeButton"
-               style="border-right: none;" 
-               onclick="return Bluebook.Search.showPeopleMap()">
-                Friend View
-            </a>
-            <a href="" class="silverButton courseButton" 
-               onclick="return Bluebook.Search.showCourseMap()">
-                Class View
-            </a>
-            <div class="clear"></div>
-        </div>
-        <div class="clear"></div>
-        
-        <div class="results">
-            <div class="loadingResults">
-                Loading, please do not reload the page...<br />
-                <%= image_tag "search/loading.gif" %>
+        <% if not params[:query] %>
+            <%= render 'search/welcome/default' %>
+        <% else %>
+            <div class="mapType">
+                <a href="" class="silverButton friendButton activeButton"
+                   style="border-right: none;" 
+                   onclick="return Bluebook.Search.showPeopleMap()">
+                    My Friends
+                </a>
+                <a href="" class="silverButton courseButton" 
+                   onclick="return Bluebook.Search.showCourseMap()">
+                    Courses
+                </a>
+                <div class="clear"></div>
             </div>
-            <%= render 'search/results/courses' %>
-            <%= render 'search/results/friends' %>
-            <script><%= render 'search/results/scripts.js.erb' %></script>
-        </div>
+            <div class="clear"></div>
+            
+            <div class="results">
+                <div class="loadingResults">
+                    Loading, please do not reload the page...<br />
+                    <%= image_tag "search/loading.gif" %>
+                </div>
+                <%= render 'search/results/courses' %>
+                <%= render 'search/results/friends' %>
+                <script><%= render 'search/results/scripts.js.erb' %></script>
+            </div>
+        <% end %>
     </div>
 </div>
