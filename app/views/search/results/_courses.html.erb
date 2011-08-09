@@ -73,71 +73,72 @@
                           :width => 20 %>
                 </div>
 
-                <div class="header" style='color: #00B945'>
-                    Friends Taking <%= "#{result.department_abbr} 
-                      #{result.number}" %>
-                </div>       
-                <% if not @takingMap[result.id] %>
-                    <div class="listing">
+                <div class="taking">
+                    <div class="header" style='color: #00B945'>
+                        Friends Taking <%= "#{result.department_abbr} 
+                          #{result.number}" %>
+                    </div>       
+                    <div class="noResults listing">
                         None of your friends are taking this
                     </div>
-                <% else %>
-                  <% @takingMap[result.id].each do |user| %>
-                      <div class="courseFlyoutFriend listing"
-                           data-fb-id="<%= user.facebook_id %>" >
-                          <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture", :width => 20 %>
-                          <div class="text">
-                              <%= user.name %>
+                    <% @takingMap[result.id].each do |user| %>
+                          <div class="courseFlyoutFriend listing"
+                               data-fb-id="<%= user.facebook_id %>" >
+                              <%= image_tag "https://graph.facebook.com/#{
+                                    user.facebook_id}/picture", :width => 20 %>
+                              <div class="text">
+                                  <%= user.name %>
+                              </div>
+                              <div class="clear"></div>
                           </div>
-                          <div class="clear"></div>
-                      </div>
-                  <% end %>
-                <% end %>
+                      <% end %>
+                    <% end %>
+                </div>
                                          
-                <div class="header" style='color: #FF9700'>
-                    Friends Shopping <%= "#{result.department_abbr} 
-                      #{result.number}" %>
-                </div>
-                <% if not @shoppingMap[result.id] %>
-                    <div class="listing">
-                        None of your friends are taking this
+                <div class="shopping">
+                    <div class="header" style='color: #FF9700'>
+                        Friends Shopping <%= "#{result.department_abbr} 
+                          #{result.number}" %>
                     </div>
-                <% else %>
-                  <% @shoppingMap[result.id].each do |user| %>
-                      <div class="courseFlyoutFriend listing"
-                           data-fb-id="<%= user.facebook_id %>">
-                          <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture", :width => 20 %>
-                          <div class="text">
-                              <%= user.name %>
+                    <div class="noResults listing">
+                        None of your friends are shopping this
+                    </div>
+                    <% @shoppingMap[result.id].each do |user| %>
+                          <div class="courseFlyoutFriend listing"
+                               data-fb-id="<%= user.facebook_id %>">
+                              <%= image_tag "https://graph.facebook.com/#{
+                                    user.facebook_id}/picture", :width => 20 %>
+                              <div class="text">
+                                  <%= user.name %>
+                              </div>
+                              <div class="clear"></div>
                           </div>
-                          <div class="clear"></div>
-                      </div>
-                  <% end %>
-                <% end %>
+                      <% end %>
+                    <% end %>
+                </div>
                           
-                <div class="header" style='color: red'>
-                    Friends Avoiding <%= "#{result.department_abbr} 
-                      #{result.number}" %>
-                </div>
-                <% if not @avoidingMap[result.id] %>
-                    <div class="listing">
-                        None of your friends are taking this
+                <div class="avoiding">
+                    <div class="header" style='color: red'>
+                        Friends Avoiding <%= "#{result.department_abbr} 
+                          #{result.number}" %>
                     </div>
-                <% else %>
-                  <% @avoidingMap[result.id].each do |user| %>
-                      <div class="courseFlyoutFriend listing"
-                           data-fb-id="<%= user.facebook_id %>">
-                          <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture", :width => 20 %>
-                          <div class="text">
-                              <%= user.name %>
+                    <div class="noResults listing">
+                        None of your friends are avoiding this
+                    </div>
+                    <div class
+                    <% @avoidingMap[result.id].each do |user| %>
+                          <div class="courseFlyoutFriend listing"
+                               data-fb-id="<%= user.facebook_id %>">
+                              <%= image_tag "https://graph.facebook.com/#{
+                                    user.facebook_id}/picture", :width => 20 %>
+                              <div class="text">
+                                  <%= user.name %>
+                              </div>
+                              <div class="clear"></div>
                           </div>
-                          <div class="clear"></div>
-                      </div>
-                  <% end %>
-                <% end %>
+                      <% end %>
+                    <% end %>
+                </div>
 
                 <%= text_area_tag "commentForm#{result.id}",
                       "Say Something About This Course...",

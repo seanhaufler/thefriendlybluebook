@@ -41,6 +41,14 @@ Bluebook.Facebook.getFriends = function() {
         $.each($(".courseFlyoutFriend"), Bluebook.Facebook.removeFromDOM);
         $.each($(".comment"), Bluebook.Facebook.removeFromDOM);
 
+        // Iterate through each set of friend renderings for flyout and check
+        $.each($(".courseResult .flyout .taking"), 
+            Bluebook.Facebook.showNull);
+        $.each($(".courseResult .flyout .shopping"), 
+            Bluebook.Facebook.showNull);
+        $.each($(".courseResult .flyout .avoiding"), 
+            Bluebook.Facebook.showNull);
+
         // Display all the friend results (if any) or a null message
         if (!$(".friendResult").length)
             $(".friendResults .noResults").show();
@@ -55,4 +63,10 @@ Bluebook.Facebook.removeFromDOM = function(index, friend) {
           < 0  && Bluebook.User.facebook_id != $(friend).attr("data-fb-id")) {
           $(friend).remove();
     }
+}
+
+// showNull(): Check if there are the correct flyout children and if there not
+//    show a null message
+Bluebook.Facebook.showNull = function(index, friend) {
+
 }
