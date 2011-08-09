@@ -305,8 +305,7 @@ body
     position: relative;
     margin-left: 10px;
     font-size: 11px;
-    padding-top: 15px;
-    height: 55px;
+    padding: 15px 0px;
 }
 
 .searchPage .searchRendering .friendResult .image
