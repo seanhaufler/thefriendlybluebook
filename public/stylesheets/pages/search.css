@@ -197,7 +197,7 @@ body
 {
     position: relative;
     float: left;
-    left: 400px;
+    left: 390px;
     width: 560px;
 }
 
@@ -303,7 +303,7 @@ body
     width: 235px;
     float: left;
     position: relative;
-    margin-right: 10px;
+    margin-left: 10px;
     font-size: 11px;
     padding-top: 15px;
     height: 55px;
