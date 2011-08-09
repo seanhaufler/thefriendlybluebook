@@ -69,5 +69,5 @@ Bluebook.Facebook.removeFromDOM = function(index, friend) {
 //    show a null message
 Bluebook.Facebook.showNull = function(index, friend) {
     if (!$(friend).children(".courseFlyoutFriend").length)
-        $(friend).children(".noResults").show();
+        $(friend).children(".noFriends").show();
 }
