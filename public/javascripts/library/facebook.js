@@ -68,5 +68,6 @@ Bluebook.Facebook.removeFromDOM = function(index, friend) {
 // showNull(): Check if there are the correct flyout children and if there not
 //    show a null message
 Bluebook.Facebook.showNull = function(index, friend) {
-
+    if (!$(friend).children(".courseFlyoutFriend").length)
+        $(friend).children(".noResults").show();
 }
