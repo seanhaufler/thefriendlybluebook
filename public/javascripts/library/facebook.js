@@ -19,7 +19,7 @@ Bluebook.Facebook.updateInfo = function() {
         Bluebook.request.send();
 
         // Update the user's name
-        Bluebook.Facebook.name = response.name;
+        Bluebook.User.username = response.name;
     });
 }
 

@@ -104,7 +104,7 @@ Bluebook.Search.commentKeyup = function(field) {
             var userInfo = document.createElement("div");
             $(userInfo).attr({
                 "class": "user"
-            }).html(Bluebook.Facebook.name);
+            }).html(Bluebook.User.username);
 
             // Current date
             var dateInfo = document.createElement("div");
