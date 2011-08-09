@@ -29,7 +29,6 @@ $(function() {
             return layover;
         },
       
-//        ----- ANIMATION IS BROKEN -----        
         start: function(event, ui) {
             // Hide all the extraneous things
             $(".flyout").css("opacity", "0");
