@@ -20,6 +20,7 @@ Bluebook.Facebook.updateInfo = function() {
 
         // Update the user's name
         Bluebook.User.username = response.name;
+        Bluebook.User.facebook_id = response.id;
     });
 }
 
@@ -51,7 +52,7 @@ Bluebook.Facebook.getFriends = function() {
 // removeFromDOM(): Remove a given element from the DOM in an iterator
 Bluebook.Facebook.removeFromDOM = function(index, friend) {
     if (Bluebook.Facebook.friends.indexOf($(friend).attr("data-fb-id"))
-          < 0) {
+          < 0  && Bluebook.User.facebook_id != $(friend).attr("data-fb-id")) {
           $(friend).remove();
     }
 }
