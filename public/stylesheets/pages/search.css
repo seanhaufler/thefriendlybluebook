@@ -360,6 +360,17 @@ body
     margin: 5px 0px 0px 10px;
 }
 
+.searchPage .searchRendering .result .flyout .listing .text
+{
+    float: left;
+    padding-left: 5px;
+}
+
+.searchPage .searchRendering .result .flyout .listing img
+{
+    float: left;
+}
+
 .searchPage .searchRendering .courseResult .flyout
 {
     right: 565px;

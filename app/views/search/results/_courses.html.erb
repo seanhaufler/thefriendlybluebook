@@ -85,8 +85,11 @@
                   <% @takingMap[result.id].each do |user| %>
                       <div class="listing">
                           <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture" %>
-                          <%= user.name %>
+                                user.facebook_id}/picture", :width => 20 %>
+                          <div class="text">
+                              <%= user.name %>
+                          </div>
+                          <div class="clear"></div>
                       </div>
                   <% end %>
                 <% end %>
@@ -103,8 +106,11 @@
                   <% @shoppingMap[result.id].each do |user| %>
                       <div class="listing">
                           <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture" %>
-                          <%= user.name %>
+                                user.facebook_id}/picture", :width => 20 %>
+                          <div class="text">
+                              <%= user.name %>
+                          </div>
+                          <div class="clear"></div>
                       </div>
                   <% end %>
                 <% end %>
@@ -121,8 +127,11 @@
                   <% @avoidingMap[result.id].each do |user| %>
                       <div class="listing">
                           <%= image_tag "https://graph.facebook.com/#{
-                                user.facebook_id}/picture" %>
-                          <%= user.name %>
+                                user.facebook_id}/picture", :width => 20 %>
+                          <div class="text">
+                              <%= user.name %>
+                          </div>
+                          <div class="clear"></div>
                       </div>
                   <% end %>
                 <% end %>
