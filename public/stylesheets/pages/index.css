@@ -6,7 +6,7 @@ body
 .landingPage
 {
     margin: auto;
-    width: 360px;
+    width: 320px;
 
     color: #FFF;
     font-size: 24px;
@@ -20,5 +20,32 @@ body
 
     color: #000;
     font-size: 15px;
-    text-align: center;
+}
+
+.landingPage .login .facebookButton
+{
+    border: solid 1px #29447E;
+    height: 40px;
+    width: 270px;
+    background: #5F78AB;
+}
+
+.landingPage .login .facebookButton .link
+{
+    font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+    font-size: 18px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.landingPage .login .facebookButton .text,
+.landingPage .login .facebookButton .image
+{
+    float: left;
+}
+
+.landingPage .login .facebookButton .text
+{
+    padding: 7px 0px 0px 20px;
 }

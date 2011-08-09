@@ -5,4 +5,6 @@ Bluebook.FBLogin = function() {
             window.location.assign("/search");
         }
      }, {scope: 'email'});
+
+     return false;
 };
