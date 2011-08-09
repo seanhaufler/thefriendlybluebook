@@ -83,7 +83,8 @@
                     </div>
                 <% else %>
                   <% @takingMap[result.id].each do |user| %>
-                      <div class="listing">
+                      <div class="courseFlyoutFriend listing"
+                           data-fb-id="<%= user.facebook_id %>" >
                           <%= image_tag "https://graph.facebook.com/#{
                                 user.facebook_id}/picture", :width => 20 %>
                           <div class="text">
@@ -104,7 +105,8 @@
                     </div>
                 <% else %>
                   <% @shoppingMap[result.id].each do |user| %>
-                      <div class="listing">
+                      <div class="courseFlyoutFriend listing"
+                           data-fb-id="<%= user.facebook_id %>">
                           <%= image_tag "https://graph.facebook.com/#{
                                 user.facebook_id}/picture", :width => 20 %>
                           <div class="text">
@@ -125,7 +127,8 @@
                     </div>
                 <% else %>
                   <% @avoidingMap[result.id].each do |user| %>
-                      <div class="listing">
+                      <div class="courseFlyoutFriend listing"
+                           data-fb-id="<%= user.facebook_id %>">
                           <%= image_tag "https://graph.facebook.com/#{
                                 user.facebook_id}/picture", :width => 20 %>
                           <div class="text">
@@ -148,12 +151,14 @@
                       :onkeyup => "Bluebook.Search.commentKeyup(this)"  
                 %>
                 <% result.comments.each do |comment| %>
-                    <div class="comment comment<%= comment[$COMMENT_FB_ID] %>">
+                    <div class="comment comment<%= comment[$COMMENT_FB_ID] %>"
+                         data-fb-id="<%= comment[$COMMENT_FB_ID] %>" >
                         <div class="user">
                             <%= comment[$COMMENT_USER] %>
                         </div>
                         <div class="date">
-                            <%= comment[$COMMENT_DATE].strftime("%l:%M %p, %b %d") %>
+                            <%= comment[$COMMENT_DATE].strftime("%l:%M %p, 
+                                  %b %d") %>
                         </div>
                         <div class="clear"></div>
 

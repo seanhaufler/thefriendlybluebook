@@ -35,13 +35,10 @@ Bluebook.Facebook.getFriends = function() {
             Bluebook.Facebook.friends.push(friends[i].id);
         }
 
-        // Remove elements from the DOM that aren't friends
-        $.each($(".friendResult"), function(index, friend) {
-            if (Bluebook.Facebook.friends.indexOf($(friend).attr("data-fb-id"))
-                  < 0) {
-                  $(friend).remove();
-            }
-        });
+        // Remove results from the DOM that aren't from friends
+        $.each($(".friendResult"), Bluebook.Facebook.removeFromDOM);
+        $.each($(".courseFlyoutFriend"), Bluebook.Facebook.removeFromDOM);
+        $.each($(".comment"), Bluebook.Facebook.removeFromDOM);
 
         // Display all the friend results (if any) or a null message
         if (!$(".friendResult").length)
@@ -49,4 +46,12 @@ Bluebook.Facebook.getFriends = function() {
         $(".loadingResults").hide();
         $(".friendResults").show();
     });
+}
+
+// removeFromDOM(): Remove a given element from the DOM in an iterator
+Bluebook.Facebook.removeFromDOM = function(index, friend) {
+    if (Bluebook.Facebook.friends.indexOf($(friend).attr("data-fb-id"))
+          < 0) {
+          $(friend).remove();
+    }
 }
