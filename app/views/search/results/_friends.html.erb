@@ -45,6 +45,11 @@
                 <div class="header" style='color: #00B945'>
                     Taking
                 </div>
+                <% if friend[:taking_full].empty %>
+                    <div class="listing">
+                        <%= friend[:user].name %> is not taking any classes
+                    </div>
+                <% end %>
                 <% friend[:taking_full].each do |course| %>
                     <div class="listing">
                         <span class="courseTitle">
@@ -54,9 +59,15 @@
                         <span class="professor"><%= course.professor %></span>
                     </div>
                 <% end %>
+
                 <div class="header" style='color: #FF9700'>
                     Shopping
                 </div>
+                <% if friend[:shopping_full].empty %>
+                    <div class="listing">
+                        <%= friend[:user].name %> is not shopping any classes
+                    </div>
+                <% end %>
                 <% friend[:shopping_full].each do |course| %>
                     <div class="listing">
                         <span class="courseTitle">
@@ -66,9 +77,15 @@
                         <span class="professor"><%= course.professor %></span>
                     </div>
                 <% end %>
+
                 <div class="header" style='color: red'>
                     Avoiding
                 </div>
+                <% if friend[:avoiding_full].empty %>
+                    <div class="listing">
+                        <%= friend[:user].name %> is not avoiding any classes
+                    </div>
+                <% end %>
                 <% friend[:avoiding_full].each do |course| %>
                     <div class="listing">
                         <span class="courseTitle">
