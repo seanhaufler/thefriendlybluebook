@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   include SearchHelper
-  #before_filter :check_cookie, :only => [:index]
+  before_filter :check_cookie, :only => [:index]
 
 =begin
   @params: none
@@ -28,7 +28,6 @@ class SearchController < ApplicationController
 
     # Get the user from the cookie and the classes count
     get_user
-    @user = User.find(1)
 
     # Get each of the user's buckets
     @taking = @user.taking.map{|course| Course.find(course)}
