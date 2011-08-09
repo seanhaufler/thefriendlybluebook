@@ -1,25 +1,55 @@
 // Perform the initial drag and drop loading
 $(function() {
+    var course;
+
 		$(".draggable").draggable({
         revert: true,
         revertDuration: 300,
+        cursorAt: { 
+            top: 18,
+            left: 55 
+        },
+        helper: function(event) {
+            // Make the item smaller and capture it's contents
+            course = $(this).children(".number").html();
+            layover = $(this).clone();
+            $(layover).html(
+                course.substring(0, course.indexOf(":"))
+            ).css({
+                "font-weight": "bold",
+                "background": "#0E4C92",
+                "color": "white",
+                "position": "absolute",
+                "width": "90px",
+                "height": "15px",
+                "padding": "10px",
+                "z-index": "30"
+            });
+
+            return layover;
+        },
       
 //        ----- ANIMATION IS BROKEN -----        
-//        start: function(event, ui) {
-//            $(this).animate({ "width": "40px"});
-//        },
+        start: function(event, ui) {
+            // Hide all the extraneous things
+            $(".flyout").css("opacity", "0");
+        },
 
-//        stop: function(event, ui) {
-//            $(this).animate({ "width": "510px" });
-//        }
+        stop: function(event, ui) {
+            // Show all the extraneous information
+            $(".flyout").css("opacity", "1");
+            $(".flyout").hide();
+        }
 		});
 		
 		$(".droppable").droppable({
 			  
         /* Dropping Function */
         drop: function(event, ui) {
+            var img = $(this).children(".bucketImage");
+        
 			      // First, we make sure it's not in the bucket
-			      type = $(this).attr("data-type");
+			      type = $(img).attr("data-type");
 			      id = ui.draggable.attr("data-id");
 			      if (!Bluebook.User.findCourseByBucket(type, id)) {
                 // Add the single item to the user's bucket
@@ -35,7 +65,7 @@ $(function() {
             }
             
 			      // Hide the tooltips and revert the sizes
-  		        $(".droppable").animate({ 
+  		        $(".droppable").children(".bucketImage").animate({ 
 			          "width": "48px", 
 			          "margin-right": "30px",
     		          "margin-bottom": "12px" 
@@ -49,8 +79,10 @@ $(function() {
 
         /* Mouseover Function */
 			  over: function(event, ui) {
-			      type = Bluebook.capitalize($(this).attr("data-type"));
-			      $(this).animate({ 
+            var img = $(this).children(".bucketImage");
+            
+			      type = Bluebook.capitalize($(img).attr("data-type"));
+			      $(img).animate({ 
 			          "width": "60px", 
     		          "margin-right": "18px",
     		          "margin-bottom": "0px" 
@@ -66,8 +98,10 @@ $(function() {
 
         /* Mouseout Function */
 			  out: function(event, ui) {
-			      type = Bluebook.capitalize($(this).attr("data-type"));
-			      $(this).animate({ 
+            var img = $(this).children(".bucketImage");
+            
+			      type = Bluebook.capitalize($(img).attr("data-type"));
+			      $(img).animate({ 
 			          "width": "48px", 
 			          "margin-right": "30px",
     		          "margin-bottom": "12px" 

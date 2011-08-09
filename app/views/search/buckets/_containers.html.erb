@@ -1,5 +1,5 @@
 <div class="buckets">
-    <div class="grid_2" style="width: 95px" 
+    <div class="grid_2 droppable" style="width: 95px" 
          onmouseover="$('#tooltipTaking').show();
             $('#tooltipTakingArrow').show();"
          onmouseout="$('#tooltipTaking').hide();
@@ -24,12 +24,11 @@
             <%= @takingCount %>
         </div>
         
-        <%= image_tag "search/buckets/taking.png", 
-              :class => "droppable", :id => "takingTarget", 
-              'data-type' => "taking" %>
+        <%= image_tag "search/buckets/taking.png", :id => "takingTarget", 
+              :class => "bucketImage", 'data-type' => "taking" %>
     </div>
     
-    <div class="grid_2" style="width: 100px"
+    <div class="grid_2 droppable" style="width: 100px"
          onmouseover="$('#tooltipShopping').show();
             $('#tooltipShoppingArrow').show();"
          onmouseout="$('#tooltipShopping').hide();
@@ -54,12 +53,11 @@
             <%= @shoppingCount %>
         </div>
         
-        <%= image_tag "search/buckets/shopping.png", 
-              :class => "droppable", :id => "shoppingTarget", 
-              'data-type' => "shopping" %>
+        <%= image_tag "search/buckets/shopping.png", :id => "shoppingTarget", 
+              :class => "bucketImage", 'data-type' => "shopping" %>
     </div>
     
-    <div class="grid_2"
+    <div class="grid_2 droppable"
          onmouseover="$('#tooltipAvoiding').show();
             $('#tooltipAvoidingArrow').show();"
          onmouseout="$('#tooltipAvoiding').hide();
@@ -84,9 +82,8 @@
             <%= @avoidingCount %>
         </div>
         
-        <%= image_tag "search/buckets/avoiding.png", 
-              :class => "droppable", :id => "avoidingTarget", 
-              'data-type' => "avoiding" %>
+        <%= image_tag "search/buckets/avoiding.png", :id => "avoidingTarget", 
+              :class => "bucketImage", 'data-type' => "avoiding" %>
     </div>
     <div class="clear"></div>
 </div>
