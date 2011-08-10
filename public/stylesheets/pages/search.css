@@ -199,7 +199,7 @@ body
     float: left;
     left: 390px;
     width: 560px;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
 }
 
 .searchPage .searchRendering .firstRun
