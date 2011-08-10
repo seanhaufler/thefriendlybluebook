@@ -1,12 +1,14 @@
+<% if preventNoResults %>
+    <div class="loadingResults">
+        Loading, please do not reload the page...<br />
+        <%= image_tag "search/loading.gif" %>
+    </div>
+<% end %>
+
 <div class="friendResults">
     <% if not preventNoResults %>
         <div class="noResults">
             None of your friends matched your search
-        </div>
-    <% else %>
-        <div class="loadingResults">
-            Loading, please do not reload the page...<br />
-            <%= image_tag "search/loading.gif" %>
         </div>
     <% end %>
     
