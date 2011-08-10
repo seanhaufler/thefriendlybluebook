@@ -306,6 +306,7 @@ body
     
     float: left;
     position: relative;
+    overflow: hidden;
     
     margin-left: 10px;
     font-size: 11px;
