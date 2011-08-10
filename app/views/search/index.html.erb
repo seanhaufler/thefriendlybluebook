@@ -16,6 +16,7 @@
     <div class="searchRendering">
         <% if not params[:query] %>
             <%= render 'search/welcome/default' %>
+            <%= render 'search/results/friends', :preventNoResults => true %>
         <% else %>
             <div class="mapType">
                 <a href="" class="silverButton friendButton activeButton"
@@ -37,7 +38,7 @@
                     <%= image_tag "search/loading.gif" %>
                 </div>
                 <%= render 'search/results/courses' %>
-                <%= render 'search/results/friends' %>
+                <%= render 'search/results/friends', :preventNoResults => nil %>
                 <script><%= render 'search/results/scripts.js.erb' %></script>
             </div>
         <% end %>

@@ -1,8 +1,10 @@
 <div class="friendResults">
-    <div class="noResults">
-        None of your friends matched your search
-    </div>
-
+    <% if not preventNoResults %>
+        <div class="noResults">
+            None of your friends matched your search
+        </div>
+    <% end %>
+    
     <% @friends.each do |friend| %>
         <div class="friendResult result round drop_shadow" 
              data-fb-id="<%= friend[:user].facebook_id %>"
@@ -18,7 +20,7 @@
                 </span><br />
                 <% if friend[:empty] %>
                     <span style="font-style: italic"> 
-                        No courses matching your search 
+                        No courses available for this friend 
                     </span>
                 <% end %>
                 <%= raw((friend[:taking].map{ |result| 

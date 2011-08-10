@@ -22,8 +22,20 @@ class SearchController < ApplicationController
 
     # Otherwise don't do anything
     else
-      @results = []
-      @friends = []
+      @results = Array.new
+      @friends = Array.new
+      User.all.map { |user| 
+        taking = user.taking.map{|course| Course.find(course)}
+        shopping = user.shopping.map{|course| Course.find(course)}
+        avoiding = user.avoiding.map{|course| Course.find(course)}
+
+        @friends << {:user => user, 
+            :empty => (user.taking.empty? and user.shopping.empty? and 
+              user.avoiding.empty?), 
+            :taking => taking, :shopping => shopping, :avoiding => avoiding, 
+            :taking_full => taking, :shopping_full => shopping, 
+            :avoiding_full => avoiding }
+      }
     end
 
     # Get the user from the cookie and the classes count
