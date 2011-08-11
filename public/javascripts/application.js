@@ -20,7 +20,7 @@ $(function() {
                 "background": "#0E4C92",
                 "color": "white",
                 "position": "absolute",
-                "width": "90px",
+                "width": "110px",
                 "height": "15px",
                 "padding": "10px",
                 "z-index": "30"

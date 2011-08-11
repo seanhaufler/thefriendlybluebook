@@ -244,7 +244,6 @@ body
 }
 
 .searchPage .searchRendering .friendResults, 
-.searchPage .searchRendering .courseResults,
 .searchPage .searchRendering .friendResults .noResults,
 .searchPage .searchRendering .courseResults .courseResult .flyout .noResults
 {
@@ -426,3 +425,38 @@ body
 {
     font-style: italic;
 }
+
+
+
+/* Cancelled course listings (overwrites everything else) */
+.searchPage .searchRendering .results .courseResults .cancelled,
+.searchPage .searchRendering .results .courseResults .cancelled .addendum
+{
+    color: gray;
+}
+
+
+.searchPage .searchRendering .results .courseResults .cancelled
+{
+    background: #FF7373;
+    font-style: italic;
+}
+
+.searchPage .searchRendering .results .courseResults .cancelled a
+{
+    color: #0E4C92;
+}
+
+.searchPage .searchRendering .results .courseResults .cancelled .notice
+{
+    font-style: normal; 
+    font-weight: bold; 
+    color: #000;
+}
+
+.searchPage .searchRendering .results .courseResults .cancelled .flyout
+{
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+

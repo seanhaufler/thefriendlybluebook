@@ -20,12 +20,12 @@
             <%= render 'search/results/friends', :preventNoResults => true %>
         <% else %>
             <div class="mapType">
-                <a href="" class="silverButton friendButton activeButton"
+                <a href="" class="silverButton friendButton"
                    style="border-right: none;" 
                    onclick="return Bluebook.Search.showPeopleMap()">
                     My Friends
                 </a>
-                <a href="" class="silverButton courseButton" 
+                <a href="" class="silverButton courseButton activeButton" 
                    onclick="return Bluebook.Search.showCourseMap()">
                     Courses
                 </a>
@@ -34,10 +34,6 @@
             <div class="clear"></div>
             
             <div class="results">
-                <div class="loadingResults">
-                    Loading, please do not reload the page...<br />
-                    <%= image_tag "search/loading.gif" %>
-                </div>
                 <%= render 'search/results/courses' %>
                 <%= render 'search/results/friends', :preventNoResults => nil %>
                 <script><%= render 'search/results/scripts.js.erb' %></script>

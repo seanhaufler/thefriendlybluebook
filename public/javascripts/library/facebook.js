@@ -53,7 +53,6 @@ Bluebook.Facebook.getFriends = function() {
         if (!$(".friendResult").length)
             $(".friendResults .noResults").show();
         $(".loadingResults").hide();
-        $(".friendResults").show();
     });
 }
 
