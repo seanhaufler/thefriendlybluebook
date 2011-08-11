@@ -45,8 +45,8 @@ Bluebook.Facebook.getFriends = function() {
 
         // Set the margins for friend results ad-hoc
         $.each($(".friendResult"), function(index, friend) {
-            if (index % 2 == 0)
-                $(friend).css("margin-right", "10px");
+            if (index % 2 !== 0)
+                $(friend).css("margin-right", "0px");
         });
 
         // Iterate through each set of friend renderings for flyout and check
