@@ -43,6 +43,12 @@ Bluebook.Facebook.getFriends = function() {
         $.each($(".courseFlyoutFriend"), Bluebook.Facebook.removeFromDOM);
         $.each($(".comment"), Bluebook.Facebook.removeFromDOM);
 
+        // Set the margins for friend results ad-hoc
+        $.each($(".friendResult"), function(index, friend) {
+            if (index % 2 == 0)
+                $(friend).css("margin-right", "10px");
+        });
+
         // Iterate through each set of friend renderings for flyout and check
         $.each($(".courseResult .flyout .taking"), 
             Bluebook.Facebook.showNull);
