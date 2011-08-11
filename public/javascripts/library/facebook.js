@@ -14,10 +14,12 @@ Bluebook.Facebook = function() {};
 Bluebook.Facebook.updateInfo = function() {
     // Change information in DB
     FB.api('/me', function(response) {
-        Bluebook.request.open("POST", ("/update?email=" + response.email + 
-            "&name=" + response.name), true);
-        Bluebook.request.send();
-
+        if (response.name) {
+            Bluebook.request.open("POST", ("/update?email=" + response.email + 
+                "&name=" + response.name), true);
+            Bluebook.request.send();
+        }
+        
         // Update the user's name
         Bluebook.User.username = response.name;
         Bluebook.User.facebook_id = response.id;
