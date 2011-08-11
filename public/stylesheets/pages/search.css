@@ -245,6 +245,7 @@ body
 
 .searchPage .searchRendering .friendResults, 
 .searchPage .searchRendering .friendResults .noResults,
+.searchPage .searchRendering .friendResults .friendResult,
 .searchPage .searchRendering .courseResults .courseResult .flyout .noResults
 {
     display: none;
