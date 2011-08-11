@@ -52,6 +52,8 @@ Bluebook.Facebook.getFriends = function() {
         // Display all the friend results (if any) or a null message
         if (!$(".friendResult").length)
             $(".friendResults .noResults").show();
+        else
+            $(".friendResults .friendResult").show();
         $(".loadingResults").hide();
     });
 }
