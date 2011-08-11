@@ -54,6 +54,10 @@ Bluebook.Facebook.getFriends = function() {
             $(".friendResults .noResults").show();
         else
             $(".friendResults .friendResult").show();
+
+        // If we're on the home page show all the friends
+        if (!$(".courseResults").length)
+            $(".friendResults").show();
         $(".loadingResults").hide();
     });
 }
