@@ -15,9 +15,11 @@
             <%= image_tag "search/loading.gif" %>
         </div>
     <% end %>
-    
+
+    <% i = 0 %>
     <% @friends.each do |friend| %>
-        <div class="friendResult result round drop_shadow" 
+        <div class="friendResult result round drop_shadow
+              <% i % 2 != 0 ? "omega": "" %>" 
              data-fb-id="<%= friend[:user].facebook_id %>"
              onmouseover="$('#friendFlyout<%= friend[:user].id %>').show()"
              onmouseout="$('#friendFlyout<%= friend[:user].id %>').hide()" >
@@ -110,5 +112,6 @@
                 <% end %>
             </div>
         </div>
+        <% i = i + 1 %>
     <% end %>
 </div>
