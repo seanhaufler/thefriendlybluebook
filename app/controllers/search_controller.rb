@@ -182,14 +182,15 @@ class SearchController < ApplicationController
       
       # Execute the main DB query
       results.concat(Course.where(query, params[:subject], 
-        params[:subject], "#{params[:course]}%", "% #{params[:instructor]}%", 
+        params[:subject].upcase, 
+        "#{params[:course]}%", "% #{params[:instructor]}%", 
         "#{params[:instructor]}% %").order("department, number, section"))
 
     # No course number or instructor, search as such
     else
       # Execute the main DB query
       results.concat(Course.where(query, params[:subject], 
-        params[:subject]).order("department, number, section"))
+        params[:subject].upcase).order("department, number, section"))
     end
 
     @results = results.uniq
