@@ -19,6 +19,7 @@ $(function() {
                 "font-weight": "bold",
                 "background": "#0E4C92",
                 "color": "white",
+                "text-align": "center",
                 "position": "absolute",
                 "width": "110px",
                 "height": "15px",
