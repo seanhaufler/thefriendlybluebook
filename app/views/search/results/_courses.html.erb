@@ -6,8 +6,8 @@
     <% end %>
 
     <% @results.each do |result| %>
-        <div class="courseResult result round drop_shadow draggable
-              <%= result.cancelled ? "cancelled": "" %>" 
+        <div class="courseResult result round drop_shadow
+              <%= result.cancelled ? "cancelled": "draggable" %>" 
              data-id="<%= result.id %>"
              onmouseover="$('#courseFlyout<%= result.id %>').show()"
              onmouseout="$('#courseFlyout<%= result.id %>').hide()">
