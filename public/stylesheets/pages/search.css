@@ -225,7 +225,12 @@ body
 
 .searchPage .searchRendering .mapType
 {
-    margin: 38px 0px 24px 408px;
+    margin: 31px 0px;
+}
+
+.searchPage .searchRendering .mapType .silverButton
+{
+    width: 257px;
 }
 
 .searchPage .searchRendering .activeButton
