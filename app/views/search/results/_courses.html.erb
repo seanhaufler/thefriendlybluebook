@@ -37,7 +37,10 @@
 
             <div class="addendum">
                 <%= result.time_string %>
-                <%= result.final_exam_time ? "Final exam" : "No final exam" %>
+                <%= result.final_exam_time ? 
+                      "Final Exam (#{result.final_exam_time[
+                        result.final_exam_time.index(")") + 2..
+                        result.final_exam_time.length]})" : "No final exam" %>
                 <%= result.reading_period ? ", Meets during reading period" : "" %>
                 <%= result.readings_in_translation ? 
                       ", Has readings in translation" : "" %>

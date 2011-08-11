@@ -9,164 +9,188 @@
     </div>
 
     <div class="section">
-      <div>
-          <input name="course" type="text" class="textInput
-              <%= (params[:course] and params[:course] != "Enter Course Number...") ? 
-                    "" : "textInputHint" %>"
-            value="<%= (params[:course] || "Enter Course Number...") %>"
-              onfocus="Bluebook.Search.clearForm(this, 'Enter Course Number...')"
-              onblur="Bluebook.Search.restoreForm(this, 'Enter Course Number...')" />
-      </div>
-      <div>
-          <input name="instructor" type="text" class="textInput
-              <%= (params[:instructor] and params[:instructor] != "Enter Instructor Name...") ? 
-                    "" : "textInputHint" %>"
-            value="<%= (params[:instructor] || "Enter Instructor Name...") %>"
-              onfocus="Bluebook.Search.clearForm(this, 'Enter Instructor Name...')"
-              onblur="Bluebook.Search.restoreForm(this, 'Enter Instructor Name...')"/>
-      </div>
+          <div>
+              <input name="course" type="text" class="textInput
+                  <%= (params[:course] and params[:course] != 
+                        "Enter Course Number...") ? "" : "textInputHint" %>"
+                value="<%= (params[:course] || "Enter Course Number...") %>"
+                  onfocus="Bluebook.Search.clearForm(this, 
+                      'Enter Course Number...')"
+                  onblur="Bluebook.Search.restoreForm(this, 
+                      'Enter Course Number...')" />
+          </div>
+          <div>
+              <input name="instructor" type="text" class="textInput
+                  <%= (params[:instructor] and params[:instructor] != 
+                        "Enter Instructor Name...") ? "" : "textInputHint" %>"
+                value="<%= (params[:instructor] || 
+                    "Enter Instructor Name...") %>"
+                onfocus="Bluebook.Search.clearForm(this, 
+                    'Enter Instructor Name...')"
+                onblur="Bluebook.Search.restoreForm(this, 
+                    'Enter Instructor Name...')"/>
+          </div>
     </div>
 
-    <select name="term" class="selectMenu">
-        <!-- <option>Select Term</option>
-        <option value=200903>Fall 2009</option>
-        <option value=201001>Spring 2010</option>
-        <option value=201002>Summer 2010</option>
-        <option value=201003>Fall 2010</option>
-        <option value=201101>Spring 2011</option>
-        <option value=201102>Summer 2011</option> -->
-        <option value=201103 SELECTED>Fall 2011</option>
-        <!-- <option value=201201>Spring 2012</option> -->
-    </select><br />
+    <div class="section">
+        <select name="term" class="selectMenu">
+            <!-- <option>Select Term</option>
+            <option value=200903>Fall 2009</option>
+            <option value=201001>Spring 2010</option>
+            <option value=201002>Summer 2010</option>
+            <option value=201003>Fall 2010</option>
+            <option value=201101>Spring 2011</option>
+            <option value=201102>Summer 2011</option> -->
+            <option value=201103 SELECTED>Fall 2011</option>
+            <!-- <option value=201201>Spring 2012</option> -->
+        </select><br />
 
-    <select name="group" class="selectMenu">
-        <option>Course Category</option>
-        <option id="groupU" value="U">Undergraduate</option>
-        <option id="groupG" value="G">Graduate</option>
-        <option id="groupP" value="P">Professional</option>
-    </select><br />
+        <select name="group" class="selectMenu">
+            <option>Course Category</option>
+            <option id="groupU" value="U">Undergraduate</option>
+            <option id="groupG" value="G">Graduate</option>
+            <option id="groupP" value="P">Professional</option>
+        </select><br />
 
-    <div>
-        <input name="subject" type="text" id="ycpsSubject"
-            class="textInput 
-                <%= (params[:subject] and params[:subject] != "Enter Subject of Study...") ? 
-                      "" : "textInputHint" %>""
-            value="<%= (params[:subject] || "Enter Subject of Study...") %>" 
-            autocomplete="off"
-            onkeydown="return Bluebook.Search.preventKeystrokes()"
-            onkeyup="return Bluebook.Search.autocomplete(this)"
-            onfocus="Bluebook.Search.clearForm(this, 'Enter Subject of Study...')"
-            onblur="Bluebook.Search.restoreForm(this, 'Enter Subject of Study...');
-              $('#ycpsSuggestions').hide();"/>
-        <div id="ycpsSuggestions"></div>
-    </div>
+        <div>
+            <input name="subject" type="text" id="ycpsSubject"
+                class="textInput 
+                    <%= (params[:subject] and params[:subject] != "Enter Subject of Study...") ? 
+                          "" : "textInputHint" %>""
+                value="<%= (params[:subject] || "Enter Subject of Study...") %>" 
+                autocomplete="off"
+                onkeydown="return Bluebook.Search.preventKeystrokes()"
+                onkeyup="return Bluebook.Search.autocomplete(this)"
+                onfocus="Bluebook.Search.clearForm(this, 'Enter Subject of Study...')"
+                onblur="Bluebook.Search.restoreForm(this, 'Enter Subject of Study...');
+                  $('#ycpsSuggestions').hide();"/>
+            <div id="ycpsSuggestions"></div>
+        </div>
 
-    <div class="dow">
-        Mon
-        <input type="checkbox" class="checkbox" name="dow[]"  value="1"
-            <%= (params[:dow] and params[:dow].include?("1")) ? "checked" : "" %> />
-        Tue
-        <input type="checkbox" class="checkbox" name="dow[]"  value="2"
-            <%= (params[:dow] and params[:dow].include?("2")) ? "checked" : "" %> />
-        Wed
-        <input type="checkbox" class="checkbox" name="dow[]"  value="3"
-            <%= (params[:dow] and params[:dow].include?("3")) ? "checked" : "" %> />
-        Thur
-        <input type="checkbox" class="checkbox" name="dow[]"  value="4"
-            <%= (params[:dow] and params[:dow].include?("4")) ? "checked" : "" %> />
-        Fri
-        <input type="checkbox" class="checkbox" name="dow[]"  value="5"
-            style="margin-right: 0px"
-            <%= (params[:dow] and params[:dow].include?("5")) ? "checked" : "" %> />
-    </div>
+        <div class="dow">
+            Mon
+            <input type="checkbox" class="checkbox" name="dow[]"  value="1"
+                <%= (params[:dow] and params[:dow].include?("1")) ? "checked" : "" %> />
+            Tue
+            <input type="checkbox" class="checkbox" name="dow[]"  value="2"
+                <%= (params[:dow] and params[:dow].include?("2")) ? "checked" : "" %> />
+            Wed
+            <input type="checkbox" class="checkbox" name="dow[]"  value="3"
+                <%= (params[:dow] and params[:dow].include?("3")) ? "checked" : "" %> />
+            Thur
+            <input type="checkbox" class="checkbox" name="dow[]"  value="4"
+                <%= (params[:dow] and params[:dow].include?("4")) ? "checked" : "" %> />
+            Fri
+            <input type="checkbox" class="checkbox" name="dow[]"  value="5"
+                style="margin-right: 0px"
+                <%= (params[:dow] and params[:dow].include?("5")) ? "checked" : "" %> />
+        </div>
 
-    <select name="from" class="selectMenu" style="width: 151px">
-        <option> Beginning Time </option>
-        <option id="from08" value="08">8:00 am</option>
-        <option id="from09" value="09">9:00 am</option>
-        <option id="from10" value="10">10:00 am</option>
-        <option id="from11" value="11">11:00 am</option>
-        <option id="from12" value="12">12 noon</option>
-        <option id="from13" value="13">1:00 pm</option>
-        <option id="from14" value="14">2:00 pm</option>
-        <option id="from15" value="15">3:00 pm</option>
-        <option id="from16" value="16">4:00 pm</option>
-        <option id="from17" value="17">5:00 pm</option>
-        <option id="from18" value="18">6:00 pm</option>
-        <option id="from19" value="19">7:00 pm</option>
-    </select>
+        <select name="from" class="selectMenu" style="width: 151px">
+            <option> Beginning Time </option>
+            <option id="from08" value="08">8:00 am</option>
+            <option id="from09" value="09">9:00 am</option>
+            <option id="from10" value="10">10:00 am</option>
+            <option id="from11" value="11">11:00 am</option>
+            <option id="from12" value="12">12 noon</option>
+            <option id="from13" value="13">1:00 pm</option>
+            <option id="from14" value="14">2:00 pm</option>
+            <option id="from15" value="15">3:00 pm</option>
+            <option id="from16" value="16">4:00 pm</option>
+            <option id="from17" value="17">5:00 pm</option>
+            <option id="from18" value="18">6:00 pm</option>
+            <option id="from19" value="19">7:00 pm</option>
+        </select>
 
-    to
+        to
 
-    <select name="to" class="selectMenu" style="width: 150px">
-        <option> Ending Time </option>
-        <option id="to10" value="10">10:00 am</option>
-        <option id="to11" value="11">11:00 am</option>
-        <option id="to12" value="12">12 noon</option>
-        <option id="to13" value="13">1:00 pm</option>
-        <option id="to14" value="14">2:00 pm</option>
-        <option id="to15" value="15">3:00 pm</option>
-        <option id="to16" value="16">4:00 pm</option>
-        <option id="to17" value="17">5:00 pm</option>
-        <option id="to18" value="18">6:00 pm</option>
-        <option id="to19" value="19">7:00 pm</option>
-        <option id="to20" value="20">8:00 pm</option>
-        <option id="to21" value="21">9:00 pm</option>
-    </select>
-    <br />
-
-    <div class="checkboxContainer" style="width: 150px">
-        L1 <input type="checkbox" name="L1" value="L1" class="checkbox" 
-            <%= params[:L1] ? "checked" : "" %> />
-        L2 <input type="checkbox" name="L2" value="L2" class="checkbox" 
-            <%= params[:L2] ? "checked" : "" %>  />
-        L3 <input type="checkbox" name="L3" value="L3" class="checkbox" 
-            <%= params[:L3] ? "checked" : "" %>  />
+        <select name="to" class="selectMenu" style="width: 150px">
+            <option> Ending Time </option>
+            <option id="to10" value="10">10:00 am</option>
+            <option id="to11" value="11">11:00 am</option>
+            <option id="to12" value="12">12 noon</option>
+            <option id="to13" value="13">1:00 pm</option>
+            <option id="to14" value="14">2:00 pm</option>
+            <option id="to15" value="15">3:00 pm</option>
+            <option id="to16" value="16">4:00 pm</option>
+            <option id="to17" value="17">5:00 pm</option>
+            <option id="to18" value="18">6:00 pm</option>
+            <option id="to19" value="19">7:00 pm</option>
+            <option id="to20" value="20">8:00 pm</option>
+            <option id="to21" value="21">9:00 pm</option>
+        </select>
         <br />
-        L4 <input type="checkbox" name="L4" value="L4" class="checkbox" 
-            <%= params[:L4] ? "checked" : "" %>  />
-        L5 <input type="checkbox" name="L5" value="L5" class="checkbox" 
-            <%= params[:L5] ? "checked" : "" %>  />
+
+        <div class="checkboxContainer" style="width: 150px">
+            L1 <input type="checkbox" name="L1" value="L1" class="checkbox" 
+                <%= params[:L1] ? "checked" : "" %> />
+            L2 <input type="checkbox" name="L2" value="L2" class="checkbox" 
+                <%= params[:L2] ? "checked" : "" %>  />
+            L3 <input type="checkbox" name="L3" value="L3" class="checkbox" 
+                <%= params[:L3] ? "checked" : "" %>  />
+            <br />
+            L4 <input type="checkbox" name="L4" value="L4" class="checkbox" 
+                <%= params[:L4] ? "checked" : "" %>  />
+            L5 <input type="checkbox" name="L5" value="L5" class="checkbox" 
+                <%= params[:L5] ? "checked" : "" %>  />
+        </div>
+
+        <div class="checkboxContainer">
+            QR <input type="checkbox" name="QR" value="QR" class="checkbox"  
+                  <%= params[:QR] ? "checked" : "" %> /><br />
+            WR <input type="checkbox" name="WR" value="WR" class="checkbox" 
+                  <%= params[:WR] ? "checked" : "" %>  
+                  style="margin-right: 0px"/>
+        </div>
+
+        <div class="checkboxContainer" style="padding-left: 20px">
+          Hu
+          <input type="checkbox" name="Hu" value="Hu" class="checkbox" 
+              <%= params[:Hu] ? "checked" : "" %>  />
+          Sc
+          <input type="checkbox" name="Sc" value="Sc" class="checkbox" 
+              <%= params[:Sc] ? "checked" : "" %>   
+              style="margin-right: 0px" /><br />
+          So
+          <input type="checkbox" name="So" value="So" class="checkbox" 
+              <%= params[:So] ? "checked" : "" %>  />
+        </div>
+        <div class="clear"></div>
     </div>
 
-    <div class="checkboxContainer">
-        QR <input type="checkbox" name="QR" value="QR" class="checkbox"  
-              <%= params[:QR] ? "checked" : "" %> /><br />
-        WR <input type="checkbox" name="WR" value="WR" class="checkbox" 
-              <%= params[:WR] ? "checked" : "" %>  
-              style="margin-right: 0px"/>
+    <div class="grid_3 width_3 alpha">
+        <input type="checkbox" name="gut" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:gut] ? "checked" : "" %>  /> 
+        Gut<br />
+        <input type="checkbox" name="new" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:new] ? "checked" : "" %>  /> 
+        New<br />
+        <input type="checkbox" name="cancelled" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:cancelled] ? "checked" : "" %>  /> 
+        Cancelled<br />
+        <input type="checkbox" name="no_final" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:no_final] ? "checked" : "" %>  /> 
+        No Final Exam
     </div>
-
-    <div class="checkboxContainer" style="padding-left: 20px">
-      Hu
-      <input type="checkbox" name="Hu" value="Hu" class="checkbox" 
-          <%= params[:Hu] ? "checked" : "" %>  />
-      Sc
-      <input type="checkbox" name="Sc" value="Sc" class="checkbox" 
-          <%= params[:Sc] ? "checked" : "" %>   
-          style="margin-right: 0px" /><br />
-      So
-      <input type="checkbox" name="So" value="So" class="checkbox" 
-          <%= params[:So] ? "checked" : "" %>  />
+    <div class="grid_5 width_5 omega" style="margin-bottom:15px">
+        <input type="checkbox" name="readings_in_translation" value="yes" 
+               class="checkbox" style="margin-right: 0px" 
+               <%= params[:readings_in_translation] ? "checked" : "" %>  />
+        Readings in Translation<br />
+        <input type="checkbox" name="reading_period" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:reading_period] ? "checked" : "" %>  /> 
+        Meets During Reading Period<br />
+        <input type="checkbox" name="not_reading_period" value="yes" class="checkbox"  
+               style="margin-right: 0px" 
+               <%= params[:not_reading_period] ? "checked" : "" %>  /> 
+        Doesn't Meet During Reading<div style="margin-left: 16px;">Period</div>
     </div>
     <div class="clear"></div>
-
-    <input type="checkbox" name="no_final" value="yes" class="checkbox"  
-           style="margin-right: 0px" 
-           <%= params[:no_final] ? "checked" : "" %>  /> 
-    No Final Exam<br />
-    <input type="checkbox" name="readings_in_translation" value="yes" 
-           class="checkbox" style="margin-right: 0px" 
-           <%= params[:readings_in_translation] ? "checked" : "" %>  />
-    Readings in Translation<br />
-    <input type="checkbox" name="reading_period" value="yes" class="checkbox"  
-           style="margin-right: 0px" 
-           <%= params[:reading_period] ? "checked" : "" %>  /> 
-    Meets During Reading Period<br />
-    <input type="checkbox" name="not_reading_period" value="yes" class="checkbox"  
-           style="margin-right: 0px" 
-           <%= params[:not_reading_period] ? "checked" : "" %>  /> 
-    Doesn't Meet During Reading Period<br />
       
     <%= submit_tag "Search...", :class => "blueButton" %>
 <% end %>

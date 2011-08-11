@@ -6,6 +6,11 @@ module UsersHelper
   Get a user from the current facebook cookie
 =end
   def get_user
+    if $DEBUG_MODE 
+      @user = User.first
+      return 
+    end
+
     args = get_facebook_cookie
 
     # Valid user

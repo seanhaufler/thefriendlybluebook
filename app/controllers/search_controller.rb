@@ -159,6 +159,17 @@ class SearchController < ApplicationController
       query = query + " AND (" + checks.join(" OR ") + ")"
     end
 
+    # Check for gut, new, or cancelled
+    if params[:gut] == "yes"
+      query = query + " AND gut = true "
+    end
+    if params[:new] == "yes"
+      query = query + " AND courses.new = true "
+    end
+    if params[:cancelled] == "yes"
+      query = query + " AND cancelled = true "
+    end
+    
     # Check for final exam, reading_period and readings_in_translation
     if params[:no_final] == "yes"
       query = query + " AND final_exam_time IS NULL "
