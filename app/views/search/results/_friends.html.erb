@@ -18,11 +18,11 @@
 
     <% i = 0 %>
     <% @friends.each do |friend| %>
-        <div class="friendResult result round drop_shadow
-              <% i % 2 != 0 ? "omega": "" %>" 
+        <div class="friendResult result round drop_shadow" 
              data-fb-id="<%= friend[:user].facebook_id %>"
              onmouseover="$('#friendFlyout<%= friend[:user].id %>').show()"
-             onmouseout="$('#friendFlyout<%= friend[:user].id %>').hide()" >
+             onmouseout="$('#friendFlyout<%= friend[:user].id %>').hide()"
+             <%= i % 2 != 0 ? "style='margin-right: 0px'": "" %>>
             <div class="image grid_2 alpha">
                 <%= image_tag "https://graph.facebook.com/#{
                       friend[:user].facebook_id}/picture" %>
