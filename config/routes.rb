@@ -5,6 +5,7 @@ Bluebook::Application.routes.draw do
   match "/update", :to => "Users#update", :via => :post
   match "/add", :to => "Users#add", :via => :post
   match "/remove", :to => "Users#remove", :via => :post
+  match "/ical", :to => "Users#ical", :via => :get
   
   match "/comment", :to => "Courses#comment", :via => :post
 
