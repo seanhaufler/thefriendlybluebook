@@ -125,7 +125,7 @@ class UsersController < ApplicationController
       courses = @user.ical.map{|c|
         {:course => Course.find(c), :cancel => true}
       }
-      courses.concat(@user.taking + @user.shopping).uniq.map{|c| 
+      courses.concat((@user.taking + @user.shopping).uniq.map{|c| 
         {:course => Course.find(c), :cancel => false}
       })
       courses.each do |hash|
