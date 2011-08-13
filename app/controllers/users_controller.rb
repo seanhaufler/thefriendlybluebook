@@ -131,7 +131,12 @@ class UsersController < ApplicationController
       courses.each do |hash|
         # Extract the actual course
         course = hash[:course]
-        
+
+        # Not a cancellation, add it to the new iCal set
+        if not hash[:cancel]
+          iCal << course.id
+        end
+                      
         # Make sure you set a recurrence for all times
         days = ["one", "two", "three", "four", "five"]
         days.each do |i|
@@ -156,10 +161,6 @@ class UsersController < ApplicationController
             cancellation = nil
             if hash[:cancel]
               cancellation = "\nSEQUENCE: 1\nSTATUS: CANCELLED"
-
-            # No, we're not, add it to the new iCal set
-            else
-              iCal << course.id
             end
 
             # Finally, write the output for the event to the file
