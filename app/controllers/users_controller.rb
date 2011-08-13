@@ -79,6 +79,7 @@ class UsersController < ApplicationController
     #   start date
     ical_time_format = "%Y%m%dT%H%M%S"      
     classes_start = Time.utc(2011, 8, 31, 0, 0, 0)
+    iCal = Array.new
   
     # Next, we dynamically generate the ICS file (standard header)
     File.open("#{RAILS_ROOT}/tmp/#{@user.name}'s Courses.ics", "wb") { |f| 
@@ -121,8 +122,16 @@ class UsersController < ApplicationController
         "S" => 3, "Su" => 4}
 
       # We have to iterate through the taking and shopping buckets
-      courses = (@user.taking + @user.shopping).uniq.map{|c| Course.find(c)}
-      courses.each do |course|
+      courses = (@user.taking + @user.shopping).uniq.map{|c| 
+        {:course => Course.find(c), :cancel => false}
+      }
+      courses.concat(@user.ical.map{|c|
+        {:course => Course.find(c), :cancel => true}
+      })
+      courses.each do |hash|
+        # Extract the actual course
+        course = hash.course
+        
         # Make sure you set a recurrence for all times
         days = ["one", "two", "three", "four", "five"]
         days.each do |i|
@@ -143,9 +152,18 @@ class UsersController < ApplicationController
               end_hour)
             end_minute = end_time.split(".")[1].to_i
 
+            # Are we cancelling an old event?
+            if hash.cancel
+              cancellation = "\nSEQUENCE: 1\nSTATUS: CANCELLED"
+
+            # No, we're not, add it to the new iCal set
+            else
+              iCal << course.id
+            end
+
             # Finally, write the output for the event to the file
             f.write(
-              "\nBEGIN:VEVENT
+              "\nBEGIN:VEVENT#{cancellation}
                DTSTART;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
                     (begin_hour * 3600) + (begin_minute * 60)
@@ -171,7 +189,10 @@ class UsersController < ApplicationController
       f.write("\nEND:VCALENDAR")
     }
 
-    # Next, we send the file down to the user
+    # Next, we update the events exported to the user's iCal
+    @user.ical = iCal
+
+    # Finally, we send the file down to the user
     send_file "#{RAILS_ROOT}/tmp/#{@user.name}'s Courses.ics", 
       :type => "text/calendar"
   end
