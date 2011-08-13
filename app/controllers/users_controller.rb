@@ -130,7 +130,7 @@ class UsersController < ApplicationController
       })
       courses.each do |hash|
         # Extract the actual course
-        course = hash.course
+        course = hash[:course]
         
         # Make sure you set a recurrence for all times
         days = ["one", "two", "three", "four", "five"]
