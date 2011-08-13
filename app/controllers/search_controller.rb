@@ -71,7 +71,8 @@ class SearchController < ApplicationController
     results = Array.new
 
     # Take the department parameter
-    if params[:subject] != "Enter Subject of Study..."
+    if params[:subject] != "Enter Subject of Study..." and
+       params[:subject] != "All Subjects of Instruction"
       query = query + " AND (department = ? OR department_abbr = ?) "
     end
 
