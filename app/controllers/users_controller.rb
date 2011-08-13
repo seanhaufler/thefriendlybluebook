@@ -191,7 +191,7 @@ class UsersController < ApplicationController
     }
 
     # Next, we update the events exported to the user's iCal
-    @user.ical = iCal
+    @user.ical = iCal and @user.save
 
     # Finally, we send the file down to the user
     send_file "#{RAILS_ROOT}/tmp/#{@user.name}'s Courses.ics", 
