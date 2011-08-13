@@ -157,15 +157,9 @@ class UsersController < ApplicationController
               end_hour)
             end_minute = end_time.split(".")[1].to_i
 
-            # Are we cancelling an old event?
-            cancellation = nil
-            if hash[:cancel]
-              cancellation = "\nSEQUENCE: 2\nMETHOD: CANCEL\nSTATUS: CANCELLED"
-            end
-
             # Finally, write the output for the event to the file
             f.write(
-              "\nBEGIN:VEVENT#{cancellation}
+              "\nBEGIN:VEVENT
                DTSTART;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
                     (begin_hour * 3600) + (begin_minute * 60)
@@ -175,8 +169,8 @@ class UsersController < ApplicationController
                     (begin_hour * 3600) + (begin_minute * 60)
                   ).strftime(ical_time_format)}
                SUMMARY:#{course.title}
-               #{hash[:cancel]? "" : 
-                  "RRULE:FREQ=WEEKLY;UNTIL=20111203T000000;INTERVAL=1"}
+               RRULE:FREQ=WEEKLY;UNTIL=#{hash[:cancel]? "10000000" : 
+                  "20111203"}T000000;INTERVAL=1
                UID:#{course.id}_#{i}
                DTEND;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
