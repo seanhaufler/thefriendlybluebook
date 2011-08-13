@@ -85,6 +85,7 @@ class UsersController < ApplicationController
       f.write(
        "BEGIN:VCALENDAR
         CALSCALE:GREGORIAN
+        X-WR-RELCALID: FBB#{@user.facebook_id}#{@user.id}
         X-WR-TIMEZONE;VALUE=TEXT:America/New_York
         METHOD:PUBLISH
         PRODID:-//The Friendly Bluebook//iCal Exporter V1.0//EN
