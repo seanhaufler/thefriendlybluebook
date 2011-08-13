@@ -75,7 +75,12 @@ class UsersController < ApplicationController
   The following takes a user's schedule and creates an iCal feed for it
 =end
   def ical
-    # First, we dynamically generate the ICS file
+    # First, we create a couple of variables for the ical time format and class
+    #   start date
+    ical_time_format = "%Y%m%dT%H%M%SZ"      
+    classes_start = Time.utc(2011, 8, 31, 0, 0, 0)
+  
+    # Next, we dynamically generate the ICS file (standard header)
     File.open("#{RAILS_ROOT}/tmp/#{@user.name}'s Courses.ics", "wb") { |f| 
       f.write(
        "BEGIN:VCALENDAR
@@ -88,7 +93,7 @@ class UsersController < ApplicationController
 
         BEGIN:VTIMEZONE
         TZID:America/New_York
-        LAST-MODIFIED: #{Time.now.strftime("%Y%m%dT%H%M%SZ")}
+        LAST-MODIFIED: #{Time.now.strftime(ical_time_format)}
 
         BEGIN:STANDARD
         DTSTART:20071104T020000
@@ -106,31 +111,68 @@ class UsersController < ApplicationController
         TZNAME:EDT
         END:DAYLIGHT
 
-        END:VTIMEZONE
-
-######## SAMPLE EVENT #######
-        BEGIN:VEVENT
-        SEQUENCE:5
-        DTSTART;TZID=US/Pacific:20021028T140000
-        DTSTAMP:20021028T011706Z
-        SUMMARY:Coffee with Jason
-        UID:EC9439B1-FF65-11D6-9973-003065F99D04
-        DTEND;TZID=US/Pacific:20021028T150000
-        BEGIN:VALARM
-        TRIGGER;VALUE=DURATION:-P1D
-        ACTION:DISPLAY
-        DESCRIPTION:Event reminder
-        END:VALARM
-        END:VEVENT
-
-
-        END:VCALENDAR".strip.gsub(/        /, "")
+        END:VTIMEZONE\n".gsub(/        /, "")
       )
+
+      # Create a map of days to how far in the future (from a start day of
+      #   wednesday) they are
+      distance = {"M" => 5, "T" => 6, "W" => 0, "Th" => 1, "F" => 2, 
+        "S" => 3, "Su" => 4}
+
+      # We have to iterate through the taking and shopping buckets
+      courses = (@user.taking + @user.shopping).uniq.map{|c| Course.find(c)}
+      courses.each do |course|
+        # Make sure you set a recurrence for all times
+        days = ["one", "two", "three", "four", "five"]
+        days.each do |i|
+          # Only do the work if there is an actual time
+          if course["time_#{i}_start"]
+            day = course["time_#{i}_start"].split(" ")[0]
+
+            # Calculate the exact beginning time
+            begin_time = course["time_#{i}_start"].split(" ")[1]
+            begin_hour = begin_time.split(".")[0].to_i
+            begin_hour = (begin_hour < 8 ? begin_hour + 12 : begin_hour)
+            begin_minute = begin_time.split(".")[1].to_i
+
+            # Calculate the exact ending time
+            end_time = course["time_#{i}_end"].split(" ")[1]
+            end_hour = end_time.split(".")[0].to_i
+            end_hour = ((end_hour < 9 or end_time == "9.00") ? end_hour + 12 : 
+              end_hour)
+            end_minute = end_time.split(".")[1].to_i
+
+            # Finally, write the output for the event to the file
+            f.write(
+              "\nBEGIN:VEVENT
+               DTSTART;TZID=America/New_York:#{(classes_start + 
+                    (distance[day] * 3600 * 24) +
+                    (begin_hour * 3600) + (begin_minute * 60)
+                  ).strftime(ical_time_format)}
+               DTSTAMP:#{(classes_start + 
+                    (distance[day] * 3600 * 24) +
+                    (begin_hour * 3600) + (begin_minute * 60)
+                  ).strftime(ical_time_format)}
+               SUMMARY:#{course.title}
+               RRULE:FREQ=WEEKLY;UNTIL=20111203T000000;INTERVAL=1
+               UID:#{course.id}
+               DTEND;TZID=America/New_York:#{(classes_start + 
+                    (distance[day] * 3600 * 24) +
+                    (end_hour * 3600) + (end_minute * 60)
+                  ).strftime(ical_time_format)}
+               END:VEVENT\n".gsub(/               /, "")
+             )
+          end
+        end
+      end
+
+      # Write the ending of the ICS to the file
+      f.write("\nEND:VCALENDAR")
     }
 
     # Next, we send the file down to the user
     send_file "#{RAILS_ROOT}/tmp/#{@user.name}'s Courses.ics", 
-      :type => "text/calendar", :x_sendfile => true
+      :type => "text/calendar"
   end
 
 end
