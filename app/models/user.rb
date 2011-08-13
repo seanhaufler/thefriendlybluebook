@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   serialize :shopping
   serialize :avoiding
 
+  serialize :ical
+
 =begin
     PRIVATE METHOD SECTION
 =end
@@ -30,6 +32,7 @@ class User < ActiveRecord::Base
       self.taking = []
       self.shopping = []
       self.avoiding = []
+      self.ical = []
 
       # Save the updated user
       self.save
