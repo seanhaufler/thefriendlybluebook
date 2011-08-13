@@ -153,6 +153,7 @@ class UsersController < ApplicationController
             end_minute = end_time.split(".")[1].to_i
 
             # Are we cancelling an old event?
+            cancellation = nil
             if hash.cancel
               cancellation = "\nSEQUENCE: 1\nSTATUS: CANCELLED"
 
