@@ -159,7 +159,7 @@ class UsersController < ApplicationController
 
             # Finally, write the output for the event to the file
             f.write(
-              "\nBEGIN:VEVENT
+              "\nBEGIN:VEVENT#{hash[:cancel]? "\nSEQUENCE: 1" : ""}
                DTSTART;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
                     (begin_hour * 3600) + (begin_minute * 60)
