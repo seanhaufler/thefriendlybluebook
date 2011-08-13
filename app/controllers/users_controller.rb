@@ -160,7 +160,7 @@ class UsersController < ApplicationController
             # Are we cancelling an old event?
             cancellation = nil
             if hash[:cancel]
-              cancellation = "\nSEQUENCE: 1\nSTATUS: CANCELLED"
+              cancellation = "\nSEQUENCE: 2\nMETHOD: CANCEL\nSTATUS: CANCELLED"
             end
 
             # Finally, write the output for the event to the file
@@ -175,7 +175,8 @@ class UsersController < ApplicationController
                     (begin_hour * 3600) + (begin_minute * 60)
                   ).strftime(ical_time_format)}
                SUMMARY:#{course.title}
-               RRULE:FREQ=WEEKLY;UNTIL=20111203T000000;INTERVAL=1
+               #{hash[:cancel]? "" : 
+                  "RRULE:FREQ=WEEKLY;UNTIL=20111203T000000;INTERVAL=1"}
                UID:#{course.id}_#{i}
                DTEND;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
