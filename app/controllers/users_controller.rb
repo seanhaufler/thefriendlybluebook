@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   def ical
     # First, we create a couple of variables for the ical time format and class
     #   start date
-    ical_time_format = "%Y%m%dT%H%M%SZ"      
+    ical_time_format = "%Y%m%dT%H%M%S"      
     classes_start = Time.utc(2011, 8, 31, 0, 0, 0)
   
     # Next, we dynamically generate the ICS file (standard header)
@@ -98,16 +98,16 @@ class UsersController < ApplicationController
         BEGIN:STANDARD
         DTSTART:20071104T020000
         RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11
-        TZOFFSETFROM:+0300
-        TZOFFSETTO:+0400
+        TZOFFSETFROM:-0400
+        TZOFFSETTO:-0500
         TZNAME:EST
         END:STANDARD
 
         BEGIN:DAYLIGHT
         DTSTART:20080309T020000
         RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3
-        TZOFFSETFROM:+0400
-        TZOFFSETTO:+0300
+        TZOFFSETFROM:-0500
+        TZOFFSETTO:-0400
         TZNAME:EDT
         END:DAYLIGHT
 
@@ -155,7 +155,7 @@ class UsersController < ApplicationController
                   ).strftime(ical_time_format)}
                SUMMARY:#{course.title}
                RRULE:FREQ=WEEKLY;UNTIL=20111203T000000;INTERVAL=1
-               UID:#{course.id}
+               UID:#{course.id}_#{i}
                DTEND;TZID=America/New_York:#{(classes_start + 
                     (distance[day] * 3600 * 24) +
                     (end_hour * 3600) + (end_minute * 60)
