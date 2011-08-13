@@ -154,7 +154,7 @@ class UsersController < ApplicationController
 
             # Are we cancelling an old event?
             cancellation = nil
-            if hash.cancel
+            if hash[:cancel]
               cancellation = "\nSEQUENCE: 1\nSTATUS: CANCELLED"
 
             # No, we're not, add it to the new iCal set
