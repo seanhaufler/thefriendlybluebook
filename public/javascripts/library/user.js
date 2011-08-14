@@ -100,7 +100,7 @@ Bluebook.User.refreshBucket = function(bucket) {
                 "</div>" +
                 "<div class='clear''></div>" +
                 "<div class='desc'>" +
-                    Bluebook.truncate(course.description, 120) + 
+                    Bluebook.truncate(course.description, 80) + 
                 "</div>"
             ).attr({
                 "class": "courseItem",
