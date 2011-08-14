@@ -122,9 +122,10 @@ class UsersController < ApplicationController
         "S" => 3, "Su" => 4}
 
       # We have to iterate through the taking and shopping buckets
-      courses = @user.ical.map{|c|
+      courses = Array.new
+      courses.concat(@user.ical.map{|c|
         {:course => Course.find(c), :cancel => true}
-      }
+      })
       courses.concat((@user.taking + @user.shopping).uniq.map{|c| 
         {:course => Course.find(c), :cancel => false}
       })

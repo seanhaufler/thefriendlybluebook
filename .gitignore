@@ -2,3 +2,14 @@
 db/*.sqlite3
 log/*.log
 tmp/
+tmp/*
+tmp/*/*
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store
+*~
+*/*~
+*/*/*~
+*/*/*/*~
+*/*/*/*/*~
