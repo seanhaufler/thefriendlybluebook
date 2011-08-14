@@ -340,7 +340,7 @@ body
 {
     display: none;
     position: absolute;
-    width: 300px;
+    width: 380px;
 
     background: white;
     padding: 0px 10px 10px 10px;
@@ -361,7 +361,7 @@ body
 .searchPage .searchRendering .result .flyout .arrow
 {
     position: absolute;
-    left: 320px;
+    left: 400px;
     z-index: 20;
     top: 10px;
 }
