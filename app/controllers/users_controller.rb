@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   
     # First, we iterate through each of the user's buckets
     @courses = Array.new
-    buckets = ["taking", "shopping"]
+    buckets = ["taking", "shopping", "avoiding"]
     buckets.each do |bucket|
       # Iterate through each course in the bucket and get it's info
       @user[bucket].map{|c| Course.find(c)}.each do |course|
@@ -91,6 +91,9 @@ class UsersController < ApplicationController
             if bucket == "shopping"
               background = "#FFB140"
               color = "#FF9700"
+            elsif bucket == "avoiding"
+              background = "#FF7D7D"
+              color = "red"
             end
 
             # Calculate the proper height and offset from top
@@ -116,6 +119,7 @@ class UsersController < ApplicationController
 
     # Final page rendering work
     @stylesheets = ["pages/calendar"]
+    @javascripts = ["pages/calendar"]
   end
 
 =begin

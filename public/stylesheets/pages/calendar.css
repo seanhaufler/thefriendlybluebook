@@ -17,6 +17,24 @@ body
     padding: 20px;
 }
 
+.calendarPage .parameters
+{
+    margin-bottom: 20px;
+}
+
+.calendarPage .parameters .options
+{
+    float: left;
+    padding-top: 4px;
+}
+
+.calendarPage .parameters .print
+{
+    float: right;
+    font-size: 10px;
+    width: 150px;
+}
+
 .calendarPage .leftCal,
 .calendarPage .rightCal
 {
@@ -81,7 +99,7 @@ body
 .calendarPage .rightCal .calendar .course
 {
     position: absolute;
-    width: 135px;
+    z-index: 20;
     
     border: solid 2px;
     margin-left: 1px;
@@ -92,4 +110,9 @@ body
 
     opacity: 0.75;
     filter: alpha(opacity=0.75);
+}
+
+.calendarPage .rightCal .calendar .avoiding
+{
+    display: none;
 }

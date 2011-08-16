@@ -1,5 +1,23 @@
 <%= render "layouts/header", :subtitle => "Your Schedule Worksheet" %>
 <div class="calendarPage">
+    <div class="parameters">
+        <div class="options">
+            Show Me Courses I Am:
+            <input type="checkbox" onchange="$('.taking').toggle();
+                Bluebook.Calendar.loadCourses()" checked /> 
+            Taking
+            <input type="checkbox" onchange="$('.shopping').toggle();
+                Bluebook.Calendar.loadCourses()" checked /> 
+            Shopping
+            <input type="checkbox" onchange="$('.avoiding').toggle();
+                Bluebook.Calendar.loadCourses()" /> 
+            Avoiding
+        </div>
+        <%= link_to "Download for iCal and Outlook", ical_path, 
+              :class => "print blueButton" %>
+        <div class="clear"></div>
+    </div>
+    
     <div class="leftCal">
         <div class="times">
             <div class="hour"> 9 A.M. </div>
@@ -39,18 +57,8 @@
                         <%= course[:title] %>
                     </span>
                 </div>
-                <script>
-                    $.each($(".course[style*='top: <%= course[:top] %>px']"), 
-                        function(index, value) { 
-                            var nums = $(".course[style*='top: 56px']").length;
-                            $(value).css({
-                                "width": ((150 / nums - 15) + "px"),
-                                "left": parseInt($(value).css("left")) + 
-                                    (index * 150 / nums) + "px", 
-                              });
-                        });
-                </script>
             <% end %>
+            <script>Bluebook.Calendar.loadCourses()</script>
         </div>
     </div>
     <div class="clear"></div>

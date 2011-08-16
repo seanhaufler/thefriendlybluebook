@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804033443) do
+ActiveRecord::Schema.define(:version => 20110813193121) do
 
   create_table "courses", :force => true do |t|
     t.string   "department"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110804033443) do
     t.text     "taken"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "ical"
   end
 
 end
