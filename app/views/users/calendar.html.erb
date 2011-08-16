@@ -1,0 +1,57 @@
+<%= render "layouts/header", :subtitle => "Your Schedule Worksheet" %>
+<div class="calendarPage">
+    <div class="leftCal">
+        <div class="times">
+            <div class="hour"> 9 A.M. </div>
+            <div class="hour"> 10 A.M. </div>
+            <div class="hour"> 11 A.M. </div>
+            <div class="hour"> Noon </div>
+            <div class="hour"> 1 P.M. </div>
+            <div class="hour"> 2 P.M. </div>
+            <div class="hour"> 3 P.M. </div>
+            <div class="hour"> 4 P.M. </div>
+            <div class="hour"> 5 P.M. </div> 
+            <div class="hour"> 6 P.M. </div>
+            <div class="hour"> 7 P.M. </div>
+            <div class="hour"> 8 P.M. </div>
+            <div class="hour"> 9 P.M. </div>
+        </div>
+    </div>
+    <div class="rightCal">
+        <div class="days">
+            <div class="day"> Monday </div>
+            <div class="day" style="left: 150px"> Tuesday </div>
+            <div class="day" style="left: 300px"> Wednesday </div>
+            <div class="day" style="left: 450px"> Thursday </div>
+            <div class="day" style="left: 600px; border-right: solid 1px;"> Friday </div>
+        </div>
+        <div class="clear"></div>
+        <div class="calendar">
+            <% @courses.each do |course| %>
+                <div class="course round <%= course[:bucket] %>"
+                     style="top: <%= course[:top] %>px; 
+                        left: <%= course[:left] %>px;
+                        color: <%= course[:color] %>;
+                        background: <%= course[:background] %>;
+                        height: <%= course[:height] %>px;">
+                    <span class="black">
+                        <span class="bold"><%= course[:listing] %></span>: 
+                        <%= course[:title] %>
+                    </span>
+                </div>
+                <script>
+                    $.each($(".course[style*='top: <%= course[:top] %>px']"), 
+                        function(index, value) { 
+                            var nums = $(".course[style*='top: 56px']").length;
+                            $(value).css({
+                                "width": ((150 / nums - 15) + "px"),
+                                "left": parseInt($(value).css("left")) + 
+                                    (index * 150 / nums) + "px", 
+                              });
+                        });
+                </script>
+            <% end %>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

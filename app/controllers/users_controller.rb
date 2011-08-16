@@ -72,6 +72,58 @@ class UsersController < ApplicationController
   @before_filter: get_user
   @method: GET
 
+  The following takes a user's schedule and creates a visual calendar for it
+=end
+  def calendar
+    # Create a standard mapping from day to left pos
+    left_pos = {"M" => 0, "T" => 150, "W" => 300, "Th" => 450, "F" => 600}
+  
+    # First, we iterate through each of the user's buckets
+    @courses = Array.new
+    buckets = ["taking", "shopping"]
+    buckets.each do |bucket|
+      # Iterate through each course in the bucket and get it's info
+      @user[bucket].map{|c| Course.find(c)}.each do |course|
+        $POSSIBLE_TIMES.each do |i|
+          if course["time_#{i}_start"]
+            background = "#63DC90"
+            color = "#00B945"
+            if bucket == "shopping"
+              background = "#FFB140"
+              color = "#FF9700"
+            end
+
+            # Calculate the proper height and offset from top
+            begin_hour = course["time_#{i}_start"].split(" ")[1].split(".")[0].to_i
+            begin_minute = course["time_#{i}_start"].split(" ")[1].split(".")[1].to_i
+            end_hour = course["time_#{i}_end"].split(" ")[1].split(".")[0].to_i
+            end_minute = course["time_#{i}_end"].split(" ")[1].split(".")[1].to_i
+            time_length = ((end_hour - begin_hour) % 12) * 60 + 
+              end_minute - begin_minute
+            offset = ((begin_hour - 8) % 12) * 60 + begin_minute
+
+            # Push on the course info
+            @courses.push({ :id => course.id, :title => course.title,
+              :listing => "#{course.department_abbr} #{course.number}",
+              :left => left_pos[course["time_#{i}_start"].split(" ")[0]],
+              :top => offset * 2 / 3, :height => time_length * 2 / 3 - 10, 
+              :color => color, :background => background, :bucket => bucket
+            })
+          end
+        end
+      end
+    end
+
+    # Final page rendering work
+    @stylesheets = ["pages/calendar"]
+  end
+
+=begin
+  @params: none
+  @path: /ical
+  @before_filter: get_user
+  @method: GET
+
   The following takes a user's schedule and creates an iCal feed for it
 =end
   def ical
@@ -139,8 +191,7 @@ class UsersController < ApplicationController
         end
                       
         # Make sure you set a recurrence for all times
-        days = ["one", "two", "three", "four", "five"]
-        days.each do |i|
+        $POSSIBLE_TIMES.each do |i|
           # Only do the work if there is an actual time
           if course["time_#{i}_start"]
             day = course["time_#{i}_start"].split(" ")[0]

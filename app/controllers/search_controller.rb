@@ -193,10 +193,18 @@ class SearchController < ApplicationController
       query = query + "professor ILIKE ?)"
       
       # Execute the main DB query
-      results.concat(Course.where(query, params[:subject], 
-        params[:subject].upcase, 
-        "#{params[:course]}%", "% #{params[:instructor]}%", 
-        "#{params[:instructor]}% %").order("department, number, section"))
+      # Take the department parameter
+      if params[:subject] != "Enter Subject of Study..." and
+         params[:subject] != "All Subjects of Instruction"
+          results.concat(Course.where(query, params[:subject], 
+            params[:subject].upcase, 
+            "#{params[:course]}%", "% #{params[:instructor]}%", 
+            "#{params[:instructor]}% %").order("department, number, section"))
+      else
+          results.concat(Course.where(query, "#{params[:course]}%", 
+            "% #{params[:instructor]}%", 
+            "#{params[:instructor]}% %").order("department, number, section"))
+      end
 
     # No course number or instructor, search as such
     else

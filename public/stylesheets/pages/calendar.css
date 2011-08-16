@@ -1,0 +1,95 @@
+body 
+{  
+    background: #C0C0C0;
+}
+
+.header
+{
+    padding: 20px 40px;
+    min-width: 500px;
+}
+
+.calendarPage
+{
+    width: 820px;
+    margin: 0px auto;
+    background: #FFF;
+    padding: 20px;
+}
+
+.calendarPage .leftCal,
+.calendarPage .rightCal
+{
+    float: left;
+    position: relative;
+    height: 604px;
+}
+
+.calendarPage .leftCal
+{
+    text-align: right;
+}
+
+.calendarPage .leftCal .times
+{
+    margin: 72px 20px 0px 0px;
+}
+
+.calendarPage .leftCal .times,
+.calendarPage .rightCal .days
+{
+    color: #B1B1B1;
+}
+
+.calendarPage .leftCal .times .hour
+{
+    margin-bottom: 21px;
+}
+
+.calendarPage .rightCal .days
+{
+    position: relative;    
+}
+
+.calendarPage .rightCal .days .day
+{
+    padding: 10px 0px;
+
+    border-top: solid 1px;
+    border-left: solid 1px;
+    
+    position: absolute;
+    z-index: 10;
+    height: 580px;    
+    width: 150px;
+
+    font-size: 15px;
+    text-align: center;
+    float: left;
+}
+
+.calendarPage .rightCal .calendar
+{
+    background: url("/images/calendar/background.png") #FFF;
+    width: 752px;
+    height: 561px;
+
+    position: relative;
+    top: 40px;
+}
+
+.calendarPage .rightCal .calendar .course
+{
+    position: absolute;
+    width: 135px;
+    
+    border: solid 2px;
+    margin-left: 1px;
+    padding: 5px;
+    
+    overflow: hidden;
+    font-size: 11px;
+
+    opacity: 0.75;
+    filter: alpha(opacity=0.75);
+}

@@ -6,6 +6,7 @@ body
 .header
 {
     padding: 20px 40px;
+    min-width: 500px;
 }
 
 .searchPage

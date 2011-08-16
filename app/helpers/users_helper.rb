@@ -7,7 +7,7 @@ module UsersHelper
 =end
   def get_user
     if $DEBUG_MODE 
-      @user = User.first
+      @user = User.find(1)
       return 
     end
 

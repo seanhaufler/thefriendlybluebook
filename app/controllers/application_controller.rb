@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  $DEBUG_MODE = false
+  $DEBUG_MODE = true
 
   # Facebook App Secrets
   $FB_APP_ID = "102218646546092"
@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
   $COMMENT_USER = 1
   $COMMENT_CONTENT = 2
   $COMMENT_DATE = 3
+
+  $POSSIBLE_TIMES = ["one", "two", "three", "four", "five"]
 
   # Design considerations
   $STANDARD_STYLESHEETS = ["bluebook/classes", "bluebook/colors", 

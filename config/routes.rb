@@ -1,13 +1,14 @@
 Bluebook::Application.routes.draw do
 
-  match "/search", :to => "Search#index"
+  match "/search",    :to => "Search#index"
 
-  match "/update", :to => "Users#update", :via => :post
-  match "/add", :to => "Users#add", :via => :post
-  match "/remove", :to => "Users#remove", :via => :post
-  match "/ical", :to => "Users#ical", :via => :get
+  match "/add",       :to => "Users#add",         :via => :post
+  match "/calendar",  :to => "Users#calendar",    :via => :get
+  match "/ical",      :to => "Users#ical",        :via => :get
+  match "/remove",    :to => "Users#remove",      :via => :post
+  match "/update",    :to => "Users#update",      :via => :post
   
-  match "/comment", :to => "Courses#comment", :via => :post
+  match "/comment",   :to => "Courses#comment",   :via => :post
 
   # Send the user home!
   root :to => "Bluebook#index"
