@@ -26,7 +26,7 @@ body
 .searchPage .searchControls .buckets
 {
     position: relative;
-    margin: 20px 0px 10px 15px;
+    margin: 15px 0px 10px 15px;
 }
 
 .searchPage .searchControls .buckets .count,
@@ -206,7 +206,7 @@ body
 .searchPage .searchRendering .firstRun
 {
     font-size: 15px;
-    margin: 50px 0px 20px 0px;
+    margin: 40px 0px 20px 0px;
     padding: 20px 50px;
     width: 460px;
 }
@@ -226,7 +226,7 @@ body
 
 .searchPage .searchRendering .mapType
 {
-    margin: 31px 0px;
+    margin: 25px 0px 17px 0px;
 }
 
 .searchPage .searchRendering .mapType .silverButton

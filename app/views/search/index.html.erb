@@ -3,6 +3,11 @@
     <div class="searchControls">
         <%= render "search/buckets/containers.html.erb" %>
         <script><%= render "search/buckets/scripts.js.erb" %></script>
+        <%= link_to "View Your Schedule Worksheet", "", 
+              :onclick => "window.open('/calendar', 'Schedule Worksheet',
+                  'width=860,height=767,resizable=0,scrollbars=0'); return false",
+              :class => "blueButton", 
+              :style => "width: 337px; margin-top: -15px; margin-bottom: 10px" %>
 
         <div class="searchContainer round drop_shadow">
             <%= render "search/form/form" %>

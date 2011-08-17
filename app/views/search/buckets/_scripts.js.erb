@@ -16,7 +16,9 @@ Bluebook.User.refreshBucket("avoiding");
 
 // Create a scroll listener to keep the item scrolling
 window.onscroll = function() {
-    if (window.scrollY > 75)
+    if (window.scrollY > 75 && 
+          parseInt($(".searchPage .searchRendering").css("height")) > 
+          parseInt($(".searchPage .searchControls").css("height")))
         $(".searchPage .searchControls").css("position", "fixed");
     else
         $(".searchPage .searchControls").css("position", "absolute");
