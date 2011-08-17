@@ -37,7 +37,7 @@ Bluebook.Facebook.loadFriendResults = function(response) {
     if (!$(".friendResults").length) {
         setTimeout(function() { 
                 Bluebook.Facebook.loadFriendResults(response); 
-            }, 1000);
+            }, 500);
         return;
     }
 
