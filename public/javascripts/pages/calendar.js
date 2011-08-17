@@ -50,7 +50,7 @@ Bluebook.Calendar.loadCourses = function() {
         });
 
         // Store the total number of overlapping
-        courseInfo[$(course).attr("data-id")] = {
+        courseInfo[$(course).attr("data-uid")] = {
             "overlapping": overlapping,
             "colCourses": colCourses
         }
@@ -65,7 +65,7 @@ Bluebook.Calendar.loadCourses = function() {
     // Next, we go through all the courses and change their left positions
     $.each(courses, function(index, course) {
         // Do some legwork to get the overlap, interval width, and init left
-        var courseInformation = courseInfo[$(course).attr("data-id")];
+        var courseInformation = courseInfo[$(course).attr("data-uid")];
         var intervals = (Bluebook.Calendar.COLUMN_WIDTH / 
             courseInformation.overlapping);
         var dayLeft = Bluebook.Calendar.OFFSET_BY_DAY[$(course).attr("data-day")];

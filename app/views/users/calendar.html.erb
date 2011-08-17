@@ -49,6 +49,7 @@
                 <div class="course round <%= course[:bucket] %>"
                      data-id="<%= course[:id] %>"
                      data-day="<%= course[:day] %>"
+                     data-uid="<%= "#{course[:day]}#{course[:id]}" %>"
                      style="top: <%= course[:top] %>px; 
                         left: <%= course[:left] %>px;
                         color: <%= course[:color] %>;
