@@ -59,8 +59,8 @@
                           "" : "textInputHint" %>""
                 value="<%= (params[:subject] || "Enter Subject of Study...") %>" 
                 autocomplete="off"
-                onkeydown="return Bluebook.Search.preventKeystrokes()"
-                onkeyup="return Bluebook.Search.autocomplete(this)"
+                onkeydown="return Bluebook.Search.preventKeystrokes(event)"
+                onkeyup="return Bluebook.Search.autocomplete(event, this)"
                 onfocus="Bluebook.Search.clearForm(this, 'Enter Subject of Study...')"
                 onblur="Bluebook.Search.restoreForm(this, 'Enter Subject of Study...');
                   $('#ycpsSuggestions').hide();"/>

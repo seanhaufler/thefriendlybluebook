@@ -47,7 +47,7 @@ Bluebook.Search.showCourseMap = function() {
 };
 
 // commentKeydown(): Bind an onkeydown listener to the comment form
-Bluebook.Search.commentKeydown = function(field) {
+Bluebook.Search.commentKeydown = function(event, field) {
     // First, we capture the event and normalize for IE
     e = event || window.event;
 
@@ -64,7 +64,7 @@ Bluebook.Search.commentKeydown = function(field) {
 };
 
 // commentKeyup(): Bind an onkeyup listener to the comment form
-Bluebook.Search.commentKeyup = function(field) {
+Bluebook.Search.commentKeyup = function(event, field) {
     // First, we capture the event and normalize for IE
     e = event || window.event;
 
@@ -128,7 +128,7 @@ Bluebook.Search.commentKeyup = function(field) {
 };
 
 // preventKeystrokes(): Take actions in autocomplete based on keystrokes
-Bluebook.Search.preventKeystrokes = function() {
+Bluebook.Search.preventKeystrokes = function(event) {
     // First, we capture the event and normalize for IE
     e = event || window.event;
     
@@ -164,7 +164,7 @@ Bluebook.Search.preventKeystrokes = function() {
 };
 
 // autocomplete(): Fill in the datalist options using binary search
-Bluebook.Search.autocomplete = function(Object) {
+Bluebook.Search.autocomplete = function(event, Object) {
     // First, we capture the event and normalize for IE
     e = event || window.event;
     if (e.keyCode == 40 || e.keyCode == 38 || e.keyCode == 13)

@@ -73,7 +73,7 @@ class SearchController < ApplicationController
     # Take the department parameter
     if params[:subject] != "Enter Subject of Study..." and
        params[:subject] != "All Subjects of Instruction"
-      query = query + " AND (department = ? OR department_abbr = ?) "
+      query = query + " AND (department ILIKE ? OR department_abbr = ?) "
     end
 
     # Check which category was selected

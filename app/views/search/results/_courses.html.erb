@@ -152,8 +152,8 @@
                         'Say Something About This Course...')",
                       :onblur => "Bluebook.Search.restoreForm(this, 
                         'Say Something About This Course...')",
-                      :onkeydown => "return Bluebook.Search.commentKeydown(this);",
-                      :onkeyup => "Bluebook.Search.commentKeyup(this)"  
+                      :onkeydown => "return Bluebook.Search.commentKeydown(event, this);",
+                      :onkeyup => "Bluebook.Search.commentKeyup(event, this)"  
                 %>
                 <% result.comments.each do |comment| %>
                     <div class="comment comment<%= comment[$COMMENT_FB_ID] %>"
