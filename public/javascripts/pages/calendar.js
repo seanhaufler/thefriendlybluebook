@@ -76,7 +76,7 @@ Bluebook.Calendar.loadCourses = function() {
         var dayLeft = Bluebook.Calendar.OFFSET_BY_DAY[$(course).attr("data-day")];
 
         // Iterate through the overlapping and find an empty slot
-        var left = 0;
+        var left = 3;
         for (var i = 0; i < courseInformation.overlapping; i++) {
             var currentPos = i * intervals;
             var inCurrentPos = courseInformation.colCourses.filter(function(i) {
