@@ -13,6 +13,7 @@ Bluebook.Calendar = function() {};
 
 // Set up global variables for search page for config variables
 Bluebook.Calendar.COLUMN_WIDTH = 150;
+Bluebook.Calendar.PADDING = 6;
 Bluebook.Calendar.OFFSET_BY_DAY = {
     "M": 0,
     "T": 150,
@@ -31,7 +32,8 @@ Bluebook.Calendar.loadCourses = function() {
         // Extract relevant CSS for the current course
         var cTop = parseInt($(course).css("top"));
         var cLeft = parseInt($(course).css("left"));
-        var cHeight = parseInt($(course).css("height")) + 10;
+        var cHeight = parseInt($(course).css("height")) + 
+            Bluebook.Calendar.PADDING;
         var colCourses = $(".course[data-day='" + $(course).attr("data-day") + 
             "']").filter(":visible")
 
@@ -41,7 +43,8 @@ Bluebook.Calendar.loadCourses = function() {
         var index;
         $.each(colCourses, function(overNum, overCourse) {
             overTop = parseInt($(overCourse).css("top"));
-            overHeight = parseInt($(overCourse).css("height")) + 10;
+            overHeight = parseInt($(overCourse).css("height")) + 
+                Bluebook.Calendar.PADDING;
 
             // Overlap occurred, add one to the count of overlaps
             if ((cTop > overTop && cTop - overTop < overHeight) || 

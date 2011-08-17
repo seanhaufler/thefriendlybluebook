@@ -110,7 +110,7 @@ class UsersController < ApplicationController
               :day => course["time_#{i}_start"].split(" ")[0],
               :listing => "#{course.department_abbr} #{course.number}",
               :left => left_pos[course["time_#{i}_start"].split(" ")[0]],
-              :top => offset * 2 / 3, :height => time_length * 2 / 3 - 10, 
+              :top => offset * 2 / 3, :height => time_length * 2 / 3 - 6, 
               :color => color, :background => background, :bucket => bucket
             })
           end
