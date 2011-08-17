@@ -62,7 +62,7 @@ Bluebook.Calendar.loadCourses = function() {
 
         // Change the width and left based on our calculated values
         $(course).css({
-            "width": ((Bluebook.Calendar.COLUMN_WIDTH / overlapping - 15) + 
+            "width": ((Bluebook.Calendar.COLUMN_WIDTH / overlapping - 13) + 
                       "px"),
         });
     });
@@ -76,7 +76,7 @@ Bluebook.Calendar.loadCourses = function() {
         var dayLeft = Bluebook.Calendar.OFFSET_BY_DAY[$(course).attr("data-day")];
 
         // Iterate through the overlapping and find an empty slot
-        var left = 3;
+        var left = 2;
         for (var i = 0; i < courseInformation.overlapping; i++) {
             var currentPos = i * intervals;
             var inCurrentPos = courseInformation.colCourses.filter(function(i) {
