@@ -47,6 +47,8 @@
         <div class="calendar">
             <% @courses.each do |course| %>
                 <div class="course round <%= course[:bucket] %>"
+                     data-id="<%= course[:id] %>"
+                     data-day="<%= course[:day] %>"
                      style="top: <%= course[:top] %>px; 
                         left: <%= course[:left] %>px;
                         color: <%= course[:color] %>;

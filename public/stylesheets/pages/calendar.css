@@ -108,8 +108,8 @@ body
     overflow: hidden;
     font-size: 11px;
 
-    opacity: 0.75;
-    filter: alpha(opacity=0.75);
+    opacity: 0.85;
+    filter: alpha(opacity=0.85);
 }
 
 .calendarPage .rightCal .calendar .avoiding
