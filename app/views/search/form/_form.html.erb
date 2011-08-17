@@ -196,15 +196,15 @@
 <% end %>
 
 <script>
-    <% if params[:group] != "Course Category" %>
+    <% if params[:group] and params[:group] != "Course Category" %>
       document.getElementById("group<%= params[:group] %>").selected = "selected";
     <% end %>
 
-    <% if params[:from] != "Beginning Time" %>
+    <% if params[:from] and params[:from] != "Beginning Time" %>
       document.getElementById("from<%= params[:from] %>").selected = "selected";
     <% end %>
 
-    <% if params[:to] != "Ending Time" %>
+    <% if params[:to] and params[:to] != "Ending Time" %>
       document.getElementById("to<%= params[:to] %>").selected = "selected";
     <% end %>
 </script>

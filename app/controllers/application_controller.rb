@@ -28,5 +28,5 @@ class ApplicationController < ActionController::Base
     "bluebook/elements", "bluebook/typography", "gs/gs", "gs/reset", "gs/text",
     "jquery/ui"]
   $STANDARD_JAVASCRIPTS = ["jquery/jquery.min", "jquery/jquery-ui.min",
-    "application", "rails"]
+    "application"]
 end
