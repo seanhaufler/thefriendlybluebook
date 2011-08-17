@@ -392,14 +392,14 @@ body
 
 .searchPage .searchRendering .courseResult .flyout .commentForm
 {
-    width: 285px;
+    width: 365px;
     height: 15px;
     margin: 20px 0px 5px 0px;
 }
 
 .searchPage .searchRendering .courseResult .flyout .comment .user
 {
-    width: 206px;
+    width: 286px;
     font-weight: bold;
     float:left;
 }
