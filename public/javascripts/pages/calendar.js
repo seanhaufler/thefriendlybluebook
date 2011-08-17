@@ -11,6 +11,7 @@ Bluebook.Calendar = function() {};
  * @methods: loadCourses
  */
 
+// Set up global variables for search page for config variables
 Bluebook.Calendar.COLUMN_WIDTH = 150;
 Bluebook.Calendar.OFFSET_BY_DAY = {
     "M": 0,

@@ -127,7 +127,7 @@ class UsersController < ApplicationController
   @params: none
   @path: /ical
   @before_filter: get_user
-  @method: GET
+  @method: POST
 
   The following takes a user's schedule and creates an iCal feed for it
 =end
@@ -178,14 +178,21 @@ class UsersController < ApplicationController
       distance = {"M" => 5, "T" => 6, "W" => 0, "Th" => 1, "F" => 2, 
         "S" => 3, "Su" => 4}
 
-      # We have to iterate through the taking and shopping buckets
+      # We have to iterate through the previously added courses
       courses = Array.new
       courses.concat(@user.ical.map{|c|
         {:course => Course.find(c), :cancel => true}
       })
-      courses.concat((@user.taking + @user.shopping).uniq.map{|c| 
-        {:course => Course.find(c), :cancel => false}
-      })
+
+      # Get the buckets from the command line
+      buckets = params[:buckets] & $BUCKETS
+      buckets.each do |bucket|
+        courses.concat(@user[bucket].uniq.map{|c| 
+          {:course => Course.find(c), :cancel => false}
+        })
+      end
+
+      # Iterate through each of the courses available
       courses.each do |hash|
         # Extract the actual course
         course = hash[:course]

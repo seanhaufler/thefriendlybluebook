@@ -1,20 +1,25 @@
 <%= render "layouts/header", :subtitle => "Your Schedule Worksheet" %>
 <div class="calendarPage">
     <div class="parameters">
-        <div class="options">
-            Show Me Courses I Am:
-            <input type="checkbox" onchange="$('.taking').toggle();
-                Bluebook.Calendar.loadCourses()" checked /> 
-            Taking
-            <input type="checkbox" onchange="$('.shopping').toggle();
-                Bluebook.Calendar.loadCourses()" checked /> 
-            Shopping
-            <input type="checkbox" onchange="$('.avoiding').toggle();
-                Bluebook.Calendar.loadCourses()" /> 
-            Avoiding
-        </div>
-        <%= link_to "Download for iCal and Outlook", ical_path, 
-              :class => "print blueButton" %>
+        <%= form_tag ical_path do -%>
+            <div class="options">
+                Show Me Courses I Am:
+                <input type="checkbox" onchange="$('.taking').toggle();
+                    Bluebook.Calendar.loadCourses()"
+                    name = "buckets[]" value="taking" checked /> 
+                Taking
+                <input type="checkbox" onchange="$('.shopping').toggle();
+                    Bluebook.Calendar.loadCourses()"
+                    name = "buckets[]" value="shopping" checked /> 
+                Shopping
+                <input type="checkbox" onchange="$('.avoiding').toggle();
+                    Bluebook.Calendar.loadCourses()" 
+                    name = "buckets[]" value="avoiding" /> 
+                Avoiding
+            </div>
+            <%= submit_tag "Download Courses Shown to iCal and Outlook",
+                  :class => "print blueButton" %>
+        <% end %>
         <div class="clear"></div>
     </div>
     

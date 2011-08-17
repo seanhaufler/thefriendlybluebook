@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   $COMMENT_DATE = 3
 
   $POSSIBLE_TIMES = ["one", "two", "three", "four", "five"]
+  $BUCKETS = ["taking", "shopping", "avoiding"]
 
   # Design considerations
   $STANDARD_STYLESHEETS = ["bluebook/classes", "bluebook/colors", 
