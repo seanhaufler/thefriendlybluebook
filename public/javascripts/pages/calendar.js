@@ -78,7 +78,7 @@ Bluebook.Calendar.loadCourses = function() {
         // Iterate through the overlapping and find an empty slot
         var left = 2;
         for (var i = 0; i < courseInformation.overlapping; i++) {
-            var currentPos = i * intervals;
+            var currentPos = Math.floor(i * intervals);
             var inCurrentPos = courseInformation.colCourses.filter(function(i) {
                 return $(this).css("left") == (dayLeft + currentPos) + "px";
               });
