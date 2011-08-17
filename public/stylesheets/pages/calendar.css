@@ -32,7 +32,8 @@ body
 {
     float: right;
     font-size: 10px;
-    width: 230px;
+    width: 222px;
+    margin-right: 3px;
 }
 
 .calendarPage .leftCal,
