@@ -36,7 +36,7 @@ Bluebook.Calendar.loadCourses = function() {
 
         // Iterate through each of the courses in the current column
         var overlapping = 0;
-        var taken = {};
+        var overlappingCourses = new Array();
         var index;
         $.each(colCourses, function(overNum, overCourse) {
             overTop = parseInt($(overCourse).css("top"));
@@ -46,13 +46,14 @@ Bluebook.Calendar.loadCourses = function() {
             if ((cTop > overTop && cTop - overTop < overHeight) || 
                 (cTop <= overTop && overTop - cTop < cHeight)) {
                 overlapping++;
+                overlappingCourses.push(overCourse);
             }
         });
 
         // Store the total number of overlapping
         courseInfo[$(course).attr("data-uid")] = {
             "overlapping": overlapping,
-            "colCourses": colCourses
+            "colCourses": overlappingCourses
         }
 
         // Change the width and left based on our calculated values
