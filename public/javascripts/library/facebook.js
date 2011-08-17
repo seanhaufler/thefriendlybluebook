@@ -29,45 +29,55 @@ Bluebook.Facebook.updateInfo = function() {
 // getFriends(): Queue off a request for the user's friends
 Bluebook.Facebook.getFriends = function() {
     // Send a request to FB API
-    FB.api('/me/friends', function(response) {
-        friends = response.data;
+    FB.api('/me/friends', Bluebook.Facebook.loadFriendResults);
+}
 
-        // Create a shortlist of id's of friends
-        Bluebook.Facebook.friends = new Array();
-        for (i in friends) {
-            Bluebook.Facebook.friends.push(friends[i].id);
-        }
+Bluebook.Facebook.loadFriendResults = function(response) {
+    // First, we check to make sure the elements are in the DOM, otherwise hold
+    if (!$(".friendResults").length) {
+        setTimeout(function() { 
+                Bluebook.Facebook.loadFriendResults(response); 
+            }, 1000);
+        return;
+    }
 
-        // Remove results from the DOM that aren't from friends
-        $.each($(".friendResult"), Bluebook.Facebook.removeFromDOM);
-        $.each($(".courseFlyoutFriend"), Bluebook.Facebook.removeFromDOM);
-        $.each($(".comment"), Bluebook.Facebook.removeFromDOM);
+    friends = response.data;
 
-        // Set the margins for friend results ad-hoc
-        $.each($(".friendResult"), function(index, friend) {
-            if (index % 2 !== 0)
-                $(friend).css("margin-right", "0px");
-        });
+    // Create a shortlist of id's of friends
+    Bluebook.Facebook.friends = new Array();
+    for (i in friends) {
+        Bluebook.Facebook.friends.push(friends[i].id);
+    }
 
-        // Iterate through each set of friend renderings for flyout and check
-        $.each($(".courseResult .flyout .taking"), 
-            Bluebook.Facebook.showNull);
-        $.each($(".courseResult .flyout .shopping"), 
-            Bluebook.Facebook.showNull);
-        $.each($(".courseResult .flyout .avoiding"), 
-            Bluebook.Facebook.showNull);
+    // Remove results from the DOM that aren't from friends
+    $.each($(".friendResult"), Bluebook.Facebook.removeFromDOM);
+    $.each($(".courseFlyoutFriend"), Bluebook.Facebook.removeFromDOM);
+    $.each($(".comment"), Bluebook.Facebook.removeFromDOM);
 
-        // Display all the friend results (if any) or a null message
-        if (!$(".friendResult").length)
-            $(".friendResults .noResults").show();
-        else
-            $(".friendResults .friendResult").show();
-
-        // If we're on the home page show all the friends
-        if (!$(".courseResults").length)
-            $(".friendResults").show();
-        $(".loadingResults").hide();
+    // Set the margins for friend results ad-hoc
+    $.each($(".friendResult"), function(index, friend) {
+        if (index % 2 !== 0)
+            $(friend).css("margin-right", "0px");
     });
+
+    // Iterate through each set of friend renderings for flyout and check
+    $.each($(".courseResult .flyout .taking"), 
+        Bluebook.Facebook.showNull);
+    $.each($(".courseResult .flyout .shopping"), 
+        Bluebook.Facebook.showNull);
+    $.each($(".courseResult .flyout .avoiding"), 
+        Bluebook.Facebook.showNull);
+
+    // Display all the friend results (if any) or a null message
+    if (!$(".friendResult").length)
+        $(".friendResults .noResults").show();
+    else
+        $(".friendResults .friendResult").show();
+
+    // If we're on the home page show all the friends
+    if (!$(".courseResults").length)
+        $(".friendResults").show();
+    $(".loadingResults").hide();
 }
 
 // removeFromDOM(): Remove a given element from the DOM in an iterator
