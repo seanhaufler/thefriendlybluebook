@@ -13,7 +13,7 @@ Bluebook.Calendar = function() {};
 
 // Set up global variables for search page for config variables
 Bluebook.Calendar.COLUMN_WIDTH = 150;
-Bluebook.Calendar.PADDING = 6;
+Bluebook.Calendar.PADDING = 2;
 Bluebook.Calendar.OFFSET_BY_DAY = {
     "M": 0,
     "T": 150,
