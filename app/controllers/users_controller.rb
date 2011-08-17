@@ -191,6 +191,7 @@ class UsersController < ApplicationController
           {:course => Course.find(c), :cancel => false}
         })
       end
+      courses.uniq!
 
       # Iterate through each of the courses available
       courses.each do |hash|
