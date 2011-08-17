@@ -53,7 +53,7 @@ Bluebook.Calendar.loadCourses = function() {
         // Store the total number of overlapping
         courseInfo[$(course).attr("data-uid")] = {
             "overlapping": overlapping,
-            "colCourses": overlappingCourses
+            "colCourses": $(overlappingCourses)
         }
 
         // Change the width and left based on our calculated values

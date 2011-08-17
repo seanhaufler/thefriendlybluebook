@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  $DEBUG_MODE = false
+  $DEBUG_MODE = true
 
   # Facebook App Secrets
   $FB_APP_ID = "102218646546092"
