@@ -264,10 +264,11 @@ class SearchController < ApplicationController
 
       if not added
           # See if the user is taking, shopping, or avoiding any of the results
-          taking = (u.taking & result_ids)[0..2].map{|course| Course.find(course)}
-          shopping = (u.shopping & result_ids)[0..2].map{|course| 
+          taking = (u.taking & result_ids).map{|course| 
             Course.find(course)}
-          avoiding = (u.avoiding & result_ids)[0..2].map{|course| 
+          shopping = (u.shopping & result_ids).map{|course| 
+            Course.find(course)}
+          avoiding = (u.avoiding & result_ids).map{|course| 
             Course.find(course)}
 
           # We add the user in if there was an overlap
