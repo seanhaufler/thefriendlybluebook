@@ -9,10 +9,11 @@ $(function() {
             top: 18,
             left: 55 
         },
+        appendTo: 'body',
         helper: function(event) {
             // Make the item smaller and capture it's contents
             course = $(this).children(".number").html();
-            layover = $(this).clone();
+            layover = document.createElement("div");
             $(layover).html(
                 course.substring(0, course.indexOf(":"))
             ).css({
@@ -25,6 +26,9 @@ $(function() {
                 "height": "15px",
                 "padding": "10px",
                 "z-index": "30"
+            }).attr({
+                "class": "round drop_shadow",
+                "data-id": $(this).attr("data-id")
             });
 
             return layover;
@@ -32,6 +36,7 @@ $(function() {
       
         start: function(event, ui) {
             // Hide all the extraneous things
+            $(".flyout").hide();
             $(".flyout").css("opacity", "0");
         },
 

@@ -369,7 +369,8 @@ body
 
 .searchPage .searchRendering .result .flyout .listing
 {
-    margin: 5px 0px 0px 10px;
+    margin-top: 0px;
+    padding: 5px 10px 5px 10px;
     font-size: 12px;
     text-align: left;
 }
@@ -467,3 +468,8 @@ body
     filter:alpha(opacity=0);
 }
 
+/* DRAGGABLE CUE */
+.searchPage .searchRendering .draggable:hover
+{
+    background: #F0F8FF;
+}

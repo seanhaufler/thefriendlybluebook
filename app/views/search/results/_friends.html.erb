@@ -64,13 +64,22 @@
                     </div>
                 <% end %>
                 <% friend[:taking_full].each do |course| %>
-                    <div class="listing">
-                        <span class="courseTitle">
-                            <%= "#{course.department_abbr} #{course.number}" %>:
-                        </span>
-                        <%= course.title %>,
-                        <span class="professor"><%= course.professor %></span>
+                    <div style="margin-top: 5px">
+                        <a href="" onclick="return false;" 
+                             style="text-decoration: none;"
+                             class="listing draggable black"
+                             data-id="<%= course.id %>">
+                            <span class="number courseTitle">
+                                <%= "#{course.department_abbr} 
+                                     #{course.number}" %>:
+                            </span>
+                            <%= course.title %>,
+                            <span class="professor"><%= course.professor %></span>
+                        </a>
                     </div>
+                    <script>
+                        Bluebook.Search.courses.push(<%= to_JSON(course) %>);
+                    </script>
                 <% end %>
 
                 <div class="header" style='color: #FF9700'>
@@ -82,13 +91,22 @@
                     </div>
                 <% end %>
                 <% friend[:shopping_full].each do |course| %>
-                    <div class="listing">
-                        <span class="courseTitle">
-                            <%= "#{course.department_abbr} #{course.number}" %>:
-                        </span>
-                        <%= course.title %>, 
-                        <span class="professor"><%= course.professor %></span>
+                    <div style="margin-top: 5px">
+                        <a href="" onclick="return false;" 
+                             style="text-decoration: none;"
+                             class="listing draggable black"
+                             data-id="<%= course.id %>">
+                            <span class="number courseTitle">
+                                <%= "#{course.department_abbr} 
+                                     #{course.number}" %>:
+                            </span>
+                            <%= course.title %>, 
+                            <span class="professor"><%= course.professor %></span>
+                        </a>
                     </div>
+                    <script>
+                        Bluebook.Search.courses.push(<%= to_JSON(course) %>);
+                    </script>
                 <% end %>
 
                 <div class="header" style='color: red'>
@@ -100,13 +118,22 @@
                     </div>
                 <% end %>
                 <% friend[:avoiding_full].each do |course| %>
-                    <div class="listing">
-                        <span class="courseTitle">
-                            <%= "#{course.department_abbr} #{course.number}" %>:
-                        </span>
-                        <%= course.title %>,
-                        <span class="professor"><%= course.professor %></span>
+                    <div style="margin-top: 5px">
+                        <a href="" onclick="return false;" 
+                             style="text-decoration: none;"
+                             class="listing draggable black"
+                             data-id="<%= course.id %>">
+                            <span class="number courseTitle">
+                                <%= "#{course.department_abbr} 
+                                     #{course.number}" %>:
+                            </span>
+                            <%= course.title %>,
+                            <span class="professor"><%= course.professor %></span>
+                        </a>
                     </div>
+                    <script>
+                        Bluebook.Search.courses.push(<%= to_JSON(course) %>);
+                    </script>
                 <% end %>
             </div>
         </div>
