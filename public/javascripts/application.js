@@ -48,7 +48,6 @@ $(function() {
 		});
 		
 		$(".droppable").droppable({
-			  
         /* Dropping Function */
         drop: function(event, ui) {
             var img = $(this).children(".bucketImage");
@@ -57,8 +56,9 @@ $(function() {
 			      type = $(img).attr("data-type");
 			      id = ui.draggable.attr("data-id");
 			      if (!Bluebook.User.findCourseByBucket(type, id)) {
-                // Add the single item to the user's bucket
+                // Add the single item to the user's bucket and hide the helper
                 Bluebook.User.addItem(type, id);
+                ui.helper.hide();
 
                 // Make a flash for the count
                 $("#count" + Bluebook.capitalize(type)).switchClass("count", 
