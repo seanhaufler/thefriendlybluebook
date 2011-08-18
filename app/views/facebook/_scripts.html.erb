@@ -4,8 +4,10 @@
   window.fbAsyncInit = function() {
     FB.init({appId: '102218646546092', status: true, cookie: true,
              xfbml: true});
-    Bluebook.Facebook.updateInfo();
-    Bluebook.Facebook.getFriends();
+    <% if update %>
+        Bluebook.Facebook.updateInfo();
+        Bluebook.Facebook.getFriends();
+    <% end %>
   };
   (function() {
     var e = document.createElement('script');

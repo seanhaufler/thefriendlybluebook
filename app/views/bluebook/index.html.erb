@@ -1,19 +1,4 @@
-<div id="fb-root"></div>
-<script>
-  /* ---- FACEBOOK INITIALIZATION ---- */
-  window.fbAsyncInit = function() {
-    FB.init({appId: '102218646546092', status: true, cookie: true,
-             xfbml: true});
-  };
-  (function() {
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.src = document.location.protocol +
-      '//connect.facebook.net/en_US/all.js';
-    e.async = true;
-    document.getElementById('fb-root').appendChild(e);
-  }());
-</script>
+<%= render "facebook/scripts", :update => false %>
 <div class="landingPage">
     The Friendly Bluebook
     <div class="login round drop_shadow">
