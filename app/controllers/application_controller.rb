@@ -48,11 +48,11 @@ class ApplicationController < ActionController::Base
   private
     def render_not_found(exception)
         logger.error exception.backtrace
-        Emailer.exception_report(exception, request.fullpath, @user, params).deliver
+        Emailer.deliver_exception_report(exception, request.fullpath, @user, params)
     end
 
     def render_error(exception)
         logger.error exception.backtrace
-        Emailer.exception_report(exception, request.fullpath, @user, params).deliver
+        Emailer.deliver_exception_report(exception, request.fullpath, @user, params)
     end
 end
