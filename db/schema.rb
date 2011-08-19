@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813193121) do
+ActiveRecord::Schema.define(:version => 20110819021021) do
 
   create_table "courses", :force => true do |t|
     t.string   "department"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20110813193121) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "facebook_id"
     t.string   "email"
     t.string   "name"
     t.text     "taking"
@@ -67,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20110813193121) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "ical"
+    t.string   "fb_id"
+    t.string   "facebook_id"
   end
 
 end

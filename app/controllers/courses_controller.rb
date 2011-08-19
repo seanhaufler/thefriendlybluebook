@@ -16,6 +16,9 @@ class CoursesController < ApplicationController
     course.comments.insert(0, [@user.facebook_id, @user.name, params[:content],
       Time.now])
     course.save
+
+    # No rendering
+    render :nothing => true and return
   end
 
 end

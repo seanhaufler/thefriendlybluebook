@@ -62,8 +62,8 @@ module ApplicationHelper
       end
 
       # Do the extra work of queuing the user creation if the user doesn't exist
-      if kvpair.first == "uid" and not User.find_by_facebook_id(kvpair.last.to_i)
-          User.create(:facebook_id => kvpair.last.to_i)
+      if kvpair.first == "uid" and not User.find_by_facebook_id(kvpair.last)
+          User.create(:facebook_id => kvpair.last)
           @firstTime = true
       end
     end
