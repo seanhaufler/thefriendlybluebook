@@ -46,8 +46,9 @@ body
 
 .searchPage .searchControls .buckets .count
 {
-    width: 19px;
-    height: 19px;
+    width: 21px;
+    height: 20px;
+    padding-top: 1px;
     top: 27px;
 }
 
