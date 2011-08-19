@@ -306,7 +306,6 @@ body
     left: -15px;
 }
 
-
 .searchPage .searchRendering .friendResult
 {
     width: 245px;
@@ -355,10 +354,12 @@ body
 
 .searchPage .searchRendering .result .flyout .header
 {
-    font-size: 15px;
+    min-width: 300px;
     padding: 0px;
-    text-decoration: underline;
     margin-top: 10px;
+
+    font-size: 15px;
+    text-decoration: underline;
 }
 
 .searchPage .searchRendering .result .flyout .arrow
@@ -373,6 +374,8 @@ body
 {
     margin-top: 0px;
     padding: 5px 10px 5px 10px;
+    width: 360px;
+    
     font-size: 12px;
     text-align: left;
 }
