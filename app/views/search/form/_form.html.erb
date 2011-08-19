@@ -63,7 +63,7 @@
                 onkeyup="return Bluebook.Search.autocomplete(event, this)"
                 onfocus="Bluebook.Search.clearForm(this, 'Enter Subject of Study...')"
                 onblur="Bluebook.Search.restoreForm(this, 'Enter Subject of Study...');
-                  $('#ycpsSuggestions').hide();"/>
+                  setTimeout('$(\'#ycpsSuggestions\').hide();', 100)"/>
             <div id="ycpsSuggestions"></div>
         </div>
 

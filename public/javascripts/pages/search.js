@@ -181,9 +181,10 @@ Bluebook.Search.autocomplete = function(event, Object) {
     Bluebook.Search.autohighlighted = -1;
 
     // Loop through the YCPS listing and find the matches
+    var val = Object.value.toLowerCase();
     for (i = 0; i < ycps.length; i++) {
         // Find out where (if any) the location is
-        var index = ycps[i][5].toLowerCase().indexOf(Object.value);
+        var index = ycps[i][5].toLowerCase().indexOf(val);
 
         // Matches beginning of string
         if (index == 0)
@@ -201,7 +202,7 @@ Bluebook.Search.autocomplete = function(event, Object) {
     // Create a document element for each result
     for (i = 0; i < totalResults.length; i++) {
         // Mark up the result with emphasis
-        index = totalResults[i].toLowerCase().indexOf(Object.value)
+        index = totalResults[i].toLowerCase().indexOf(val)
         var markedUpResult = totalResults[i].substring(0, index) +
             "<span>" + totalResults[i].substring(index, index + Object.value.length) + 
             "</span>" + totalResults[i].substring(index + Object.value.length);
