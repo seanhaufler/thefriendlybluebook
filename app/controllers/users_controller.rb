@@ -175,9 +175,13 @@ class UsersController < ApplicationController
 
       # Create a map of days to how far in the future (from a start day of
       #   wednesday) they are
-      distance = {"M" => 5, "T" => 6, "W" => 0, "Th" => 1, "F" => 2, 
-        "S" => 3, "Su" => 4}
-
+      distance = {"MO" => 5, "TU" => 6, "WE" => 0, "TH" => 1, "FR" => 2, 
+        "SA" => 3, "SU" => 4}
+      iCalDays = {
+          "M" => "MO", "T" => "TU", "W" => "WE", "Th" => "TH", "F" => "FR",
+          "S" => "SA", "Su" => "SU",
+      }
+        
       # We have to iterate through the previously added courses
       courses = Array.new
       courses.concat(@user.ical.map{|c|
@@ -204,46 +208,65 @@ class UsersController < ApplicationController
         end
                       
         # Make sure you set a recurrence for all times
+        days = Array.new
+        times = Array.new
         $POSSIBLE_TIMES.each do |i|
           # Only do the work if there is an actual time
           if course["time_#{i}_start"]
-            day = course["time_#{i}_start"].split(" ")[0]
+            day = iCalDays[course["time_#{i}_start"].split(" ")[0]]
+            b_time = course["time_#{i}_start"].split(" ")[1]
+            e_time = course["time_#{i}_end"].split(" ")[1]
 
-            # Calculate the exact beginning time
-            begin_time = course["time_#{i}_start"].split(" ")[1]
-            begin_hour = begin_time.split(".")[0].to_i
-            begin_hour = (begin_hour < 8 ? begin_hour + 12 : begin_hour)
-            begin_minute = begin_time.split(".")[1].to_i
+            # Check to see if we've already seen this time
+            time = "#{b_time} - #{e_time}"
+            if times.index(time)
+              days[times.index(time)].push(day)
 
-            # Calculate the exact ending time
-            end_time = course["time_#{i}_end"].split(" ")[1]
-            end_hour = end_time.split(".")[0].to_i
-            end_hour = ((end_hour < 9 or end_time == "9.00") ? end_hour + 12 : 
-              end_hour)
-            end_minute = end_time.split(".")[1].to_i
-
-            # Finally, write the output for the event to the file
-            f.write(
-              "\nBEGIN:VEVENT#{hash[:cancel]? "\nSEQUENCE: 1" : ""}
-               DTSTART;TZID=America/New_York:#{(classes_start + 
-                    (distance[day] * 3600 * 24) +
-                    (begin_hour * 3600) + (begin_minute * 60)
-                  ).strftime(ical_time_format)}
-               DTSTAMP:#{(classes_start + 
-                    (distance[day] * 3600 * 24) +
-                    (begin_hour * 3600) + (begin_minute * 60)
-                  ).strftime(ical_time_format)}
-               SUMMARY:#{course.title}
-               RRULE:FREQ=WEEKLY;UNTIL=#{hash[:cancel]? "10000000" : 
-                  "20111203"}T000000;INTERVAL=1
-               UID:#{course.id}_#{i}
-               DTEND;TZID=America/New_York:#{(classes_start + 
-                    (distance[day] * 3600 * 24) +
-                    (end_hour * 3600) + (end_minute * 60)
-                  ).strftime(ical_time_format)}
-               END:VEVENT\n".gsub(/               /, "")
-             )
+            # We haven't seen it, push it on
+            else
+              times.push(time)
+              days.push([day])
+            end
           end
+        end
+
+        # Go through each time
+        times.each_index do |i|
+          # Calculate the exact beginning time
+          begin_time = times[i].split(" - ")[0]
+          begin_hour = begin_time.split(".")[0].to_i
+          begin_hour = (begin_hour < 8 ? begin_hour + 12 : begin_hour)
+          begin_minute = begin_time.split(".")[1].to_i
+
+          # Calculate the exact ending time
+          end_time = times[i].split(" - ")[1]
+          end_hour = end_time.split(".")[0].to_i
+          end_hour = ((end_hour < 9 or end_time == "9.00") ? end_hour + 12 : 
+            end_hour)
+          end_minute = end_time.split(".")[1].to_i
+
+          # Finally, write the output for the event to the file
+          days[i].sort!{|x, y| distance[x] <=> distance[y]}
+          f.write(
+            "\nBEGIN:VEVENT#{hash[:cancel]? "\nSEQUENCE: 1" : ""}
+             DTSTART;TZID=America/New_York:#{(classes_start + 
+                  (distance[days[i][0]] * 3600 * 24) +
+                  (begin_hour * 3600) + (begin_minute * 60)
+                ).strftime(ical_time_format)}
+             DTSTAMP:#{(classes_start + 
+                  (distance[days[i][0]] * 3600 * 24) +
+                  (begin_hour * 3600) + (begin_minute * 60)
+                ).strftime(ical_time_format)}
+             SUMMARY:#{course.title}
+             RRULE:FREQ=WEEKLY;UNTIL=#{hash[:cancel]? "10000000" : 
+                "20111203"}T000000;BYDAY=#{days[i].join(",")}
+             UID:#{course.id}_#{i}
+             DTEND;TZID=America/New_York:#{(classes_start + 
+                  (distance[days[i][0]] * 3600 * 24) +
+                  (end_hour * 3600) + (end_minute * 60)
+                ).strftime(ical_time_format)}
+             END:VEVENT\n".gsub(/             /, "")
+           )
         end
       end
 
