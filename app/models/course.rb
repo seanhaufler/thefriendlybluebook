@@ -84,6 +84,9 @@ class Course < ActiveRecord::Base
     time_output
   end
 
+=begin
+    PRIVATE METHOD SECTION
+=end
   private
     after_create :set_defaults
     def set_defaults
