@@ -94,7 +94,7 @@ body
 .searchPage .searchRendering .courseResult .description
 {
     font-size: 11px;
-    color: gray;
+    color: #666;
 }
 
 .searchPage .searchControls .buckets .tooltip .title
@@ -124,7 +124,7 @@ body
 .searchPage .searchRendering .results .courseResults .courseResult a
 {
     font-size: 11px;
-    color: #4B94D9;
+    color: #3063A5;
 }
 
 .searchPage .searchControls .buckets img:first-child
@@ -295,7 +295,7 @@ body
 .searchPage .searchRendering .courseResult .addendum
 {
     font-size: 12px;
-    color: #0E4C92;
+    color: #555;
 }
 
 .searchPage .searchRendering .courseResult .badge

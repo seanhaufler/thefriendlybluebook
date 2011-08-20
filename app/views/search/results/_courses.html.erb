@@ -69,10 +69,18 @@
                 <% end %>
             </div>
 
+            <%= link_to "Is this listing incorrect, this course a gut, or this
+                  course new? Click Here", 
+                  "mailto:contact@thefriendlybluebook.com?subject=Need to Update Listing&body=Check out #{result.department_abbr} #{result.number}.%0A%0AMy comments:%0A%0A", 
+                  :class => "hover_under", 
+                  :style => "float: left; padding-top: 7px" %>
+
             <%= link_to "Click Here for OCI Listing", 
                 "http://students.yale.edu/oci/resultDetail.jsp?course=#{
                   result.oci_id}&term=201103", :class => "hover_under",
-                  :target => "_blank" %>
+                  :target => "_blank", 
+                  :style => "float: right; padding-top: 7px" %>
+            <div class="clear"></div>
 
             <%= render 'search/results/course/flyout', :result => result %>
         </div>
