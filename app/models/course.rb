@@ -83,5 +83,11 @@ class Course < ActiveRecord::Base
     end
     time_output
   end
+
+  private
+    after_create :set_defaults
+    def set_defaults
+      self.comments = []
+    end
   
 end
