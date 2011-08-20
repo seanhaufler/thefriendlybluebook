@@ -91,6 +91,7 @@ class Course < ActiveRecord::Base
     after_create :set_defaults
     def set_defaults
       self.comments = []
+      self.save
     end
   
 end
