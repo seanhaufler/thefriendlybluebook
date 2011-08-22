@@ -30,7 +30,7 @@
                 <%= "#{result.department_abbr} #{result.number}" %>
                 (<%= result.section %>): 
             </span>
-            <%= result.title %><%= result.starred ? "*" : "" %>,
+            <%= raw(result.title) %><%= result.starred ? "*" : "" %>,
             <span class="professor"><%= result.professor %></span>
 
             <br />
