@@ -71,7 +71,7 @@ class SearchController < ApplicationController
     results = Array.new
 
     # Take the department parameter
-    if params[:subject] != "Enter Subject of Study..." and
+    if params[:subject] and params[:subject] != "Enter Subject of Study..." and
        params[:subject] != "All Subjects of Instruction"
       query = query + " AND (department ILIKE ? OR department_abbr = ?) "
     end
@@ -186,15 +186,15 @@ class SearchController < ApplicationController
     end
 
     # Next, if the user searched with course number or instructor
-    if params[:course] != "Enter Course Number..." or 
-       params[:instructor] != "Enter Instructor Name..."
+    if (params[:course] and params[:course] != "Enter Course Number...") or 
+       (params[:instructor] and params[:instructor] != "Enter Instructor Name...")
       query = query + "AND ((department_abbr || ' ' || number) ILIKE ? OR "
       query = query + "professor ILIKE ? OR "
       query = query + "professor ILIKE ?)"
       
       # Execute the main DB query
       # Take the department parameter
-      if params[:subject] != "Enter Subject of Study..." and
+      if params[:subject] and params[:subject] != "Enter Subject of Study..." and
          params[:subject] != "All Subjects of Instruction"
           results.concat(Course.where(query, params[:subject], 
             params[:subject].upcase, 
@@ -209,8 +209,8 @@ class SearchController < ApplicationController
     # No course number or instructor, search as such
     else
       # Execute the main DB query
-      results.concat(Course.where(query, params[:subject], 
-        params[:subject].upcase).order("department, number, section"))
+      results.concat(Course.where(query, params[:subject].to_s, 
+        params[:subject].to_s.upcase).order("department, number, section"))
     end
 
     @results = results.uniq

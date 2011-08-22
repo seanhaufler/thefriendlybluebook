@@ -120,7 +120,7 @@ class UsersController < ApplicationController
 
     # Final page rendering work
     @stylesheets = ["pages/calendar"]
-    @javascripts = ["pages/calendar"]
+    @javascripts = ["pages/calendar", "library/facebook", "library/user"]
   end
 
 =begin

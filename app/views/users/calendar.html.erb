@@ -1,3 +1,4 @@
+<%= render "facebook/scripts", :update => true %>
 <%= render "layouts/header", :subtitle => "Your Schedule Worksheet" %>
 <div class="calendarPage">
     <div class="parameters">
@@ -19,6 +20,14 @@
             </div>
             <%= submit_tag "Download Courses Shown to iCal and Outlook",
                   :class => "print blueButton" %>
+            <div class="facebookButton" onclick="Bluebook.Calendar.publish()">
+                <a class="link" href="" onclick="return false;" >
+                  <%= image_tag "index/facebook.png", :class => "image", 
+                        :width => 24 %>
+                  <span class="text">Publish Schedule</span>
+                  <div class="clear"></div>
+                </a>
+            </div>
         <% end %>
         <div class="clear"></div>
     </div>
