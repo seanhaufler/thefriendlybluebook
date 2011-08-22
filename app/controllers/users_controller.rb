@@ -208,27 +208,13 @@ class UsersController < ApplicationController
         end
                       
         # Make sure you set a recurrence for all times
-        days = Array.new
-        times = Array.new
-        $POSSIBLE_TIMES.each do |i|
-          # Only do the work if there is an actual time
-          if course["time_#{i}_start"]
-            day = iCalDays[course["time_#{i}_start"].split(" ")[0]]
-            b_time = course["time_#{i}_start"].split(" ")[1]
-            e_time = course["time_#{i}_end"].split(" ")[1]
-
-            # Check to see if we've already seen this time
-            time = "#{b_time} - #{e_time}"
-            if times.index(time)
-              days[times.index(time)].push(day)
-
-            # We haven't seen it, push it on
-            else
-              times.push(time)
-              days.push([day])
-            end
-          end
-        end
+        datetime_array = course.time_string.split(",")
+        times = datetime_array.map{|t| t.split(" ")[1..3].join(" ")}
+        days = datetime_array.map{ |t| 
+            t.split(" ")[0].gsub(/Th|M|T|W|F|Su|S/, '\0 ').split(" ").map{ |day| 
+              iCalDays[day]
+            }
+        }
 
         # Go through each time
         times.each_index do |i|

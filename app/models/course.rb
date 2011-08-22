@@ -78,10 +78,10 @@ class Course < ActiveRecord::Base
 
     # Finally, construct the time string to return
     days.each_index do |i|
-      time_output = "#{time_output} #{days[i]} #{start_times[i]}
-        - #{end_times[i]}, "
+      time_output = "#{time_output} #{days[i]} #{
+        start_times[i]} - #{end_times[i]}, "
     end
-    time_output
+    time_output.strip
   end
 
 =begin
