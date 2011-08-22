@@ -4,7 +4,7 @@ Bluebook.FBLogin = function() {
         if (response.session && response.session.sig) {
             window.location.assign("/search");
         }
-     }, {scope: 'email'});
+     }, {perms: 'email,publish_stream'});
 
      return false;
 };

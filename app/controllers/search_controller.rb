@@ -198,10 +198,10 @@ class SearchController < ApplicationController
          params[:subject] != "All Subjects of Instruction"
           results.concat(Course.where(query, params[:subject], 
             params[:subject].upcase, 
-            "#{params[:course]}%", "% #{params[:instructor]}%", 
+            "%#{params[:course]}%", "% #{params[:instructor]}%", 
             "#{params[:instructor]}% %").order("department, number, section"))
       else
-          results.concat(Course.where(query, "#{params[:course]}%", 
+          results.concat(Course.where(query, "%#{params[:course]}%", 
             "% #{params[:instructor]}%", 
             "#{params[:instructor]}% %").order("department, number, section"))
       end
