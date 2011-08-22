@@ -61,7 +61,7 @@
             </div>
 
             <div class="description">
-                <%= result.description %>
+                <%= raw(result.description) %>
                 <% if result.prerequisites %>
                     <div style="margin-top: 5px;">
                         <%= result.prerequisites %>
