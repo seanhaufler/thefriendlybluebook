@@ -106,9 +106,23 @@ Bluebook.Calendar.loadCourses = function() {
 
 /* publish(): Publish the current user's calendar to Facebook */
 Bluebook.Calendar.publish = function() {
+    // Prompt the user first
+    var answer = confirm("Please confirm that you want to publish " +
+        "a link to your bluebook schedule on Facebook.");
+    if (!answer) { return; }
+
     // Compose the message
     var body = "I posted what classes I'm going to take on " +
         "The Friendly Bluebook.  See them here!" + 
         "http://thefriendlybluebook.com/search?utf8=%E2%9C%93&query=" +
         escape(Bluebook.User.username);
+        
+    // Post it to Facebook
+    FB.api('/me/feed', 'post', { message: body }, function(response) {
+        if (!response || response.error) {
+            alert("We're sorry, an error occurred.  Please try again");
+        } else {
+            alert("A link to your calendar was successfully posted!");
+        }
+    });
 }
