@@ -209,7 +209,7 @@ class SearchController < ApplicationController
     # No course number or instructor, search as such
     else
       # Execute the main DB query
-      results.concat(Course.where(query, params[:subject].to_s, 
+      results.concat(Course.where(query, params[:subject].to_sg, 
         params[:subject].to_s.upcase).order("department, number, section"))
     end
 

@@ -114,8 +114,8 @@ Bluebook.Calendar.publish = function() {
     // Compose the message
     var body = "I posted what classes I'm going to take on " +
         "The Friendly Bluebook.  See them here!";
-    var url = "http://thefriendlybluebook.com/search?utf8=%E2%9C%93&query=" +
-        escape(Bluebook.User.username);
+    var url = "http://thefriendlybluebook.com/search?fb=yes&utf8=%E2%9C%93" +
+        "&query=" + escape(Bluebook.User.username);
     var pic = "http://thefriendlybluebook.com/favicon.ico";
         
     // Post it to Facebook
