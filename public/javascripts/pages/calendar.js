@@ -113,7 +113,7 @@ Bluebook.Calendar.publish = function() {
 
     // Compose the message
     var body = "I posted what classes I'm going to take on " +
-        "The Friendly Bluebook.  See them here!" + 
+        "The Friendly Bluebook.  See them here!\n\n" + 
         "http://thefriendlybluebook.com/search?utf8=%E2%9C%93&query=" +
         escape(Bluebook.User.username);
         
