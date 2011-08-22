@@ -116,10 +116,11 @@ Bluebook.Calendar.publish = function() {
         "The Friendly Bluebook.  See them here!";
     var url = "http://thefriendlybluebook.com/search?utf8=%E2%9C%93&query=" +
         escape(Bluebook.User.username);
-    var pic = "http://thefriendlybluebook.com/favicon.ico"
+    var pic = "http://thefriendlybluebook.com/favicon.ico";
         
     // Post it to Facebook
-    FB.api('/me/feed', 'post', { message: body, link: url, picture: pic }, 
+    FB.api('/me/feed', 'post', 
+        { message: body, link: url, picture: pic, icon: pic }, 
         function(response) {
             if (!response || response.error) {
                 alert("We're sorry, an error occurred.  Please try again");
