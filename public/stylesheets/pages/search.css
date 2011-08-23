@@ -486,7 +486,8 @@ body
 
 /* DRAGGABLE CUE */
 .searchPage .searchRendering .draggable:hover,
-.searchPage .searchControls .buckets .tooltip .courseItem .number:hover
+.searchPage .searchControls .buckets .tooltip .courseItem .number:hover,
+.searchPage .searchRendering .result .flyout .courseFlyoutFriend:hover
 {
     background: #C6E2FF;
 }

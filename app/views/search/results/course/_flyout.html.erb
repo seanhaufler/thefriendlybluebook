@@ -14,12 +14,15 @@
         <% (@takingMap[result.id] || []).each do |user| %>
             <div class="courseFlyoutFriend listing"
                  data-fb-id="<%= user.facebook_id %>" >
-                <%= image_tag "https://graph.facebook.com/#{
-                      user.facebook_id}/picture", :width => 20 %>
-                <div class="text">
-                    <%= user.name %>
-                </div>
-                <div class="clear"></div>
+                <a href="/search?fb=yes&utf8=%E2%9C%93&query=<%= 
+                    user.name %>" style="text-decoration: none">
+                    <%= image_tag "https://graph.facebook.com/#{
+                          user.facebook_id}/picture", :width => 20 %>
+                    <div class="text black" style="font-size: 12px">
+                        <%= user.name %>
+                    </div>
+                    <div class="clear"></div>
+                </a>
             </div>
         <% end %>
     </div>
@@ -34,12 +37,15 @@
         <% (@shoppingMap[result.id] || []).each do |user| %>
             <div class="courseFlyoutFriend listing"
                  data-fb-id="<%= user.facebook_id %>">
-                <%= image_tag "https://graph.facebook.com/#{
-                      user.facebook_id}/picture", :width => 20 %>
-                <div class="text">
-                    <%= user.name %>
-                </div>
-                <div class="clear"></div>
+                <a href="/search?fb=yes&utf8=%E2%9C%93&query=<%= 
+                    user.name %>" style="text-decoration: none">
+                    <%= image_tag "https://graph.facebook.com/#{
+                          user.facebook_id}/picture", :width => 20 %>
+                    <div class="text black" style="font-size: 12px">
+                        <%= user.name %>
+                    </div>
+                    <div class="clear"></div>
+                </a>
             </div>
         <% end %>
     </div>
@@ -54,12 +60,15 @@
         <% (@avoidingMap[result.id] || []).each do |user| %>
             <div class="courseFlyoutFriend listing"
                  data-fb-id="<%= user.facebook_id %>">
-                <%= image_tag "https://graph.facebook.com/#{
+                <a href="/search?fb=yes&utf8=%E2%9C%93&query=<%= 
+                    user.name %>" style="text-decoration: none">
+                    <%= image_tag "https://graph.facebook.com/#{
                       user.facebook_id}/picture", :width => 20 %>
-                <div class="text">
-                    <%= user.name %>
-                </div>
-                <div class="clear"></div>
+                    <div class="text black" style="font-size: 12px">
+                        <%= user.name %>
+                    </div>
+                    <div class="clear"></div>
+                </a>
             </div>
         <% end %>
     </div>

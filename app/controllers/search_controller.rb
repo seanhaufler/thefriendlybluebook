@@ -237,7 +237,7 @@ class SearchController < ApplicationController
       added = false
       queries = params[:query].split(" ").map{|q| q.to_s.downcase}
       queries.each do |q|
-        if u.name.to_s.index(q) or u.email.to_s.index(q)
+        if u.name.to_s.downcase.index(q) or u.email.to_s.downcase.index(q)
           # Map out each course the user is taking, shopping, and avoiding
           taking = u.taking.map{ |course| Course.find(course) }
           shopping = u.shopping.map{ |course| Course.find(course) }
