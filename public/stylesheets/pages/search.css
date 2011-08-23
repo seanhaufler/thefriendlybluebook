@@ -80,14 +80,25 @@ body
     
     top: 60px;
     left: -55px;
-    width: 400px;
-    padding: 20px;
+    width: 440px;
+}
+
+.searchPage .searchControls .buckets .tooltip .bucketHeader,
+.searchPage .searchControls .buckets .tooltip .tooltipEmpty
+{
+    padding: 10px;
 }
 
 .searchPage .searchControls .buckets .tooltip .bucketHeader
 {
     font-size: 15px;
+    display: block;
     text-decoration: underline;
+}
+
+.searchPage .searchControls .buckets .tooltip .tooltipEmpty
+{
+    padding-top: 0px;
 }
 
 .searchPage .searchControls .buckets .tooltip .desc,
@@ -97,24 +108,24 @@ body
     color: #666;
 }
 
-.searchPage .searchControls .buckets .tooltip .title
+.searchPage .searchControls .buckets .tooltip .courseItem .number
+{
+    border-top: solid 1px #A9A9A9;
+    padding: 0px 10px 10px 10px;
+}
+
+.searchPage .searchControls .buckets .tooltip .courseItem .title
 {
     margin-top: 10px;
     float: left;
 }
 
-.searchPage .searchControls .buckets .tooltip .title .number
+.searchPage .searchControls .buckets .tooltip .courseItem .title .dept
 {
     font-weight: bold;
 }
 
-.searchPage .searchControls .buckets .tooltip .courseItem
-{
-    border-top: solid 1px #A9A9A9;
-    padding-bottom: 10px;
-}
-
-.searchPage .searchControls .buckets .tooltip .remove
+.searchPage .searchControls .buckets .tooltip .courseItem .remove
 {
     padding-top: 6px;
     float: right;
@@ -474,7 +485,8 @@ body
 }
 
 /* DRAGGABLE CUE */
-.searchPage .searchRendering .draggable:hover
+.searchPage .searchRendering .draggable:hover,
+.searchPage .searchControls .buckets .tooltip .courseItem .number:hover
 {
     background: #C6E2FF;
 }

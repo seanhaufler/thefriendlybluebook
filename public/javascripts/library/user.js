@@ -88,29 +88,32 @@ Bluebook.User.refreshBucket = function(bucket) {
                 "query=Enter+Search+Query...&course=" +
                 course.department_abbr + "+" + course.number;
                 
-            container = document.createElement("div");
+            container = document.createElement("a");
             $(container).html(
-                "<a href='" + url + "' class='hover_under black'>" +
+                "<div class='number black'> " +
                     "<div class='title'>" + 
-                        "<span class='number'>" + 
+                        "<span class='dept'>" + 
                             course.department_abbr + " " + course.number + 
                         "</span>: " +
                         Bluebook.truncate(course.title, 35) + 
                     "</div>" +
-                "</a>" +
-                "<div class='remove'>" +
-                    "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
-                        bucket + "', '" + course.id + 
-                        "')\" class='hover_under'>Remove</a>" +
-                "</div>" +
-                "<div class='clear''></div>" +
-                "<div class='desc'>" +
-                    Bluebook.truncate(course.description, 80) + 
+                    "<div class='remove'>" +
+                        "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
+                            bucket + "', '" + course.id + 
+                            "')\" class='hover_under'>Remove</a>" +
+                    "</div>" +
+                    "<div class='clear''></div>" +
+                    "<div class='desc'>" +
+                        Bluebook.truncate(course.description, 80) + 
+                    "</div>" +
+                    "<div class='clear'></div>" +
                 "</div>"
             ).attr({
-                "class": "courseItem",
+                "class": "courseItem draggable",
+                "data-id": course.id,
+                "href": url
             }).css({
-                "border": (i == 0 ? "none": "")
+                "text-decoration": "none",
             });
             $("#tooltip" + Bluebook.capitalize(bucket) + 
                 "List").append(container);

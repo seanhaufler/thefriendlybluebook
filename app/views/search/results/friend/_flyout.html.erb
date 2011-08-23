@@ -14,7 +14,9 @@
     <% end %>
     <% friend[:taking_full].each do |course| %>
         <div style="margin-top: 5px">
-            <a href="" onclick="return false;" style="text-decoration: none;"
+            <a href="/search?utf8=%E2%9C%93&query=Enter+Search+Query...&course=<%= 
+                      "#{course.department_abbr}+#{course.number}" %>" 
+                  style="text-decoration: none;"
                class="listing draggable black" data-id="<%= course.id %>">
                 <span class="number courseTitle">
                     <%= "#{course.department_abbr} #{course.number}" %>:
@@ -38,8 +40,10 @@
     <% end %>
     <% friend[:shopping_full].each do |course| %>
         <div style="margin-top: 5px">
-            <a href="" onclick="return false;" style="text-decoration: none;"
-               class="listing draggable black" data-id="<%= course.id %>">
+            <a href="/search?utf8=%E2%9C%93&query=Enter+Search+Query...&course=<%= 
+                      "#{course.department_abbr}+#{course.number}" %>" 
+                  style="text-decoration: none;"
+                  class="listing draggable black" data-id="<%= course.id %>">
                 <span class="number courseTitle">
                     <%= "#{course.department_abbr} #{course.number}" %>:
                 </span>
@@ -62,8 +66,10 @@
     <% end %>
     <% friend[:avoiding_full].each do |course| %>
         <div style="margin-top: 5px">
-            <a href="" onclick="return false;" style="text-decoration: none;"
-               class="listing draggable black" data-id="<%= course.id %>">
+            <a href="/search?utf8=%E2%9C%93&query=Enter+Search+Query...&course=<%= 
+                      "#{course.department_abbr}+#{course.number}" %>" 
+                  style="text-decoration: none;"
+                  class="listing draggable black" data-id="<%= course.id %>">
                 <span class="number courseTitle">
                     <%= "#{course.department_abbr} #{course.number}" %>:
                 </span>
