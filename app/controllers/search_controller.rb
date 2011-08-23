@@ -70,12 +70,6 @@ class SearchController < ApplicationController
     query = "semester = 'Fall 2011'"
     results = Array.new
 
-    # Take the department parameter
-    if params[:subject] and params[:subject] != "Enter Subject of Study..." and
-       params[:subject] != "All Subjects of Instruction"
-      query = query + " AND (department ILIKE ? OR department_abbr = ?) "
-    end
-
     # Check which category was selected
     if params[:group] == "U"
       query = query + " AND category = 'Undergraduate' "
@@ -185,34 +179,34 @@ class SearchController < ApplicationController
       query = query + " AND reading_period IS NULL "
     end
 
-    # Next, if the user searched with course number or instructor
-    if (params[:course] and params[:course] != "Enter Course Number...") or 
-       (params[:instructor] and params[:instructor] != "Enter Instructor Name...")
-      query = query + "AND ((department_abbr || ' ' || number) ILIKE ? OR "
-      query = query + "professor ILIKE ? OR "
-      query = query + "professor ILIKE ?)"
-      
-      # Execute the main DB query
-      # Take the department parameter
-      if params[:subject] and params[:subject] != "Enter Subject of Study..." and
-         params[:subject] != "All Subjects of Instruction"
-          results.concat(Course.where(query, params[:subject], 
-            params[:subject].upcase, 
-            "%#{params[:course]}%", "% #{params[:instructor]}%", 
-            "#{params[:instructor]}% %").order("department, number, section"))
-      else
-          results.concat(Course.where(query, "%#{params[:course]}%", 
-            "% #{params[:instructor]}%", 
-            "#{params[:instructor]}% %").order("department, number, section"))
-      end
+    ##### Initialize a DB Parameter #####
+    dbParameters = Hash.new
 
-    # No course number or instructor, search as such
-    else
-      # Execute the main DB query
-      results.concat(Course.where(query, params[:subject].to_s, 
-        params[:subject].to_s.upcase).order("department, number, section"))
+    # Take the department parameter
+    if params[:subject] and params[:subject] != "Enter Subject of Study..." and
+       params[:subject] != "All Subjects of Instruction"
+      query = query + " AND (department ILIKE :dept OR 
+        department_abbr = :dept_abbr) "
+      dbParameters[:dept] = params[:subject].to_s
+      dbParameters[:dept_abbr] = params[:subject].to_s.upcase
     end
 
+    # Take the course number
+    if params[:course] and params[:course] != "Enter Course Number..."
+      query = query + "AND (department_abbr || ' ' || number) ILIKE :course "
+      dbParameters[:course] = "%#{params[:course]}%"
+    end
+
+    # Take the instructor parameter
+    if params[:instructor] and params[:instructor] != "Enter Instructor Name..."
+      query = query + "AND (professor ILIKE :prof_1 OR professor ILIKE :prof_2)"
+      dbParameters[:prof_1] = "% #{params[:instructor]}%"
+      dbParameters[:prof_2] = "#{params[:instructor]}%"
+    end
+
+    ##### Execute the main DB query #####
+    results.concat(Course.where(query, 
+      dbParameters).order("department, number, section"))
     @results = results.uniq
     
     # Finally, parse down the top level query

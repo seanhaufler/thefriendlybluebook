@@ -1,17 +1,17 @@
 /* Website color scheme */ 
  
-.color1 { color: #0E4C92; }
-.bg1 { background: #0E4C92; }
+.color1 { color: #15446E; }
+.bg1 { background: #15446E; }
 
-.color2 { color: #213984; }
-.bg2 { background: #213984; }
+.color2 { color: #2F6BA2; }
+.bg2 { background: #2F6BA2; }
 
-.color3 { color: #4777AD; }
-.bg3 { background: #4777AD; }
+.color3 { color: #4B94D9; }
+.bg3 { background: #4B94D9; }
 
 /* Themed gradients */
 .bgThemeGradient { 
-    background: #0E4C92;
+    background: #15446E;
     
     background: linear-gradient(#4B94D9, #15446E);  
     background: -webkit-linear-gradient(top, #4B94D9, #15446E);  

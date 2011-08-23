@@ -84,15 +84,20 @@ Bluebook.User.refreshBucket = function(bucket) {
         $("#tooltip" + Bluebook.capitalize(bucket) + "List").empty();
         for (i in Bluebook.User.buckets[bucket]) {
             var course =  Bluebook.User.buckets[bucket][i];
-        
+            var url = "/search?utf8=%E2%9C%93&" + 
+                "query=Enter+Search+Query...&course=" +
+                course.department_abbr + "+" + course.number;
+                
             container = document.createElement("div");
             $(container).html(
-                "<div class='title'>" + 
-                    "<span class='number'>" + 
-                        course.department_abbr + " " + course.number + 
-                    "</span>: " +
-                    Bluebook.truncate(course.title, 35) + 
-                "</div>" +
+                "<a href='" + url + "' class='hover_under black'>" +
+                    "<div class='title'>" + 
+                        "<span class='number'>" + 
+                            course.department_abbr + " " + course.number + 
+                        "</span>: " +
+                        Bluebook.truncate(course.title, 35) + 
+                    "</div>" +
+                "</a>" +
                 "<div class='remove'>" +
                     "<a href='' onclick=\"return Bluebook.User.removeItem('" + 
                         bucket + "', '" + course.id + 

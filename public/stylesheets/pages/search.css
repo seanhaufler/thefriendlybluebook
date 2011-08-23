@@ -123,8 +123,8 @@ body
 .searchPage .searchControls .buckets .tooltip .remove a,
 .searchPage .searchRendering .results .courseResults .courseResult a
 {
-    font-size: 11px;
     color: #3063A5;
+    font-size: 11px;
 }
 
 .searchPage .searchControls .buckets img:first-child
