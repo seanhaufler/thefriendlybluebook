@@ -1,13 +1,25 @@
 <%= render "facebook/scripts", :update => false %>
 <div class="landingPage">
     The Friendly Bluebook
-    <div class="login round drop_shadow">
-        <div class="facebookButton" onclick="return Bluebook.FBLogin();">
-            <a class="link" href="" onclick="return false;" >
-              <%= image_tag "index/facebook.png", :class => "image", :width => 40 %>
-              <span class="text">Login with Facebook</span>
-              <div class="clear"></div>
-            </a>
+    <div class="login drop_shadow" style="border: solid 1px #AAA">
+        <div class="extraPadding">
+            <div class="silentBorder">
+                <div class="facebookButton" 
+                     onclick="return Bluebook.FBLogin();">
+                    <a class="link" href="" onclick="return false;" >
+                      <%= image_tag "index/facebook.png", :class => "image", 
+                            :width => 40 %>
+                      <span class="text">Login with Facebook</span>
+                      <div class="clear"></div>
+                    </a>
+                </div>
+            </div>
         </div>
+        <fb:like-box 
+            href="http://www.facebook.com/apps/application.php?id=102218646546092" 
+            width="498" height="180"
+            show_faces="true" border_color="#FFF" 
+            stream="false" header="false">
+        </fb:like-box>
     </div>
 </div>

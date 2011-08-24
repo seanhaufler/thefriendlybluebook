@@ -6,31 +6,43 @@ body
 .landingPage
 {
     margin: auto;
-    width: 320px;
+    width: 500px;
 
     color: #FFF;
     font-size: 24px;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 .landingPage .login
 {
     background: #FFF;
-    padding: 20px;
 
     color: #000;
     font-size: 15px;
 }
 
-.landingPage .login .facebookButton
+.landingPage .login .extraPadding
 {
-    border: solid 1px #29447E;
-    height: 40px;
-    width: 270px;
-    background: #5F78AB;
+    padding: 10px;
+    padding-bottom: 0px;
 }
 
-.landingPage .login .facebookButton .link
+.landingPage .login .extraPadding .silentBorder
+{
+    border-bottom: solid 1px #0E4C92;
+}
+
+.landingPage .login .extraPadding .silentBorder .facebookButton
+{
+    border: solid 1px #29447E;
+    background: #5F78AB;
+    
+    margin: 10px 0px 20px 100px;
+    height: 40px;
+    width: 270px;
+}
+
+.landingPage .login .extraPadding .silentBorder .facebookButton .link
 {
     font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
     font-size: 18px;
@@ -39,13 +51,13 @@ body
     text-decoration: none;
 }
 
-.landingPage .login .facebookButton .text,
-.landingPage .login .facebookButton .image
+.landingPage .login .extraPadding .silentBorder .facebookButton .text,
+.landingPage .login .extraPadding .silentBorder .facebookButton .image
 {
     float: left;
 }
 
-.landingPage .login .facebookButton .text
+.landingPage .login .extraPadding .silentBorder .facebookButton .text
 {
     padding: 7px 0px 0px 20px;
 }
