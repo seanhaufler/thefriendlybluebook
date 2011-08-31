@@ -132,6 +132,7 @@ Bluebook.Calendar.publish = function() {
 }
 
 /* export(): Send the course results to OCS */
+var windows = [];
 Bluebook.Calendar.export = function() {
     // Prompt the user first
     var answer = confirm("Please confirm that you want to export these " +
@@ -142,8 +143,13 @@ Bluebook.Calendar.export = function() {
 
     // Iterate through each visible course and open a window to add it
     $.each($(".course:visible"), function(index, value) {
-        var win = window.open("https://students.yale.edu/ocs/CourseSelect?" + 
-            "oper=acrt&crn=" + $(value).attr("data-oci"));
-        win.close();
+        windows.push(window.open("https://students.yale.edu/ocs/CourseSelect?" + 
+            "oper=acrt&crn=" + $(value).attr("data-oci")));
     });
+
+    // Set a timeout to close all windows
+    setTimeout(function() {
+        $.each(windows, function(index, value) { value.close(); });
+        windows = [];
+    }, 300);
 }
