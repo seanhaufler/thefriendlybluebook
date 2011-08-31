@@ -108,6 +108,7 @@ class UsersController < ApplicationController
             # Push on the course info
             @courses.push({ :id => course.id, :title => course.title,
               :day => course["time_#{i}_start"].split(" ")[0],
+              :room => course.room,
               :listing => "#{course.department_abbr} #{course.number}",
               :left => left_pos[course["time_#{i}_start"].split(" ")[0]],
               :top => offset * 2 / 3, :height => time_length * 2 / 3 - 2, 
@@ -244,6 +245,7 @@ class UsersController < ApplicationController
                   (begin_hour * 3600) + (begin_minute * 60)
                 ).strftime(ical_time_format)}
              SUMMARY:#{course.title}
+             LOCATION:#{course.room}
              RRULE:FREQ=WEEKLY;UNTIL=#{hash[:cancel]? "10000000" : 
                 "20111203"}T000000;BYDAY=#{days[i].join(",")}
              UID:#{course.id}_#{i}
