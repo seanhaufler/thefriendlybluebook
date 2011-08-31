@@ -137,7 +137,7 @@ Bluebook.Calendar.export = function() {
     // Prompt the user first
     var answer = confirm("Please confirm that you want to export these " +
         "courses to OCS. In order for this to work you must be logged into " + 
-        "SIS.  You may see screens flash quickly.  Please also" +
+        "SIS.  You may see screens flash quickly.  You must also " +
         "disable pop-up blocking for this site.");
     if (!answer) { return; }
 
