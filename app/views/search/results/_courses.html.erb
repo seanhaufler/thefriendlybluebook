@@ -37,6 +37,7 @@
 
             <div class="addendum">
                 <%= result.time_string %>
+                <%= result.room.blank? ? "No Location Listed" : result.room %>,
                 <%= result.final_exam_time ? 
                       "Final Exam (#{result.final_exam_time[
                         result.final_exam_time.index(")") + 2..

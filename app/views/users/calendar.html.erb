@@ -70,8 +70,10 @@
                         background: <%= course[:background] %>;
                         height: <%= course[:height] %>px;">
                     <span class="black">
-                        <span class="bold"><%= course[:listing] %></span>: 
-                        <%= course[:title] %>
+                        <span class="italic"><%= course[:listing] %>: 
+                        <%= course[:title] %></span>
+                        <span class="bold"><%= result.room.blank? ? 
+                            "No Location Listed" : result.room %></span>
                     </span>
                 </div>
             <% end %>
