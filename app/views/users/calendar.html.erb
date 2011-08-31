@@ -72,8 +72,8 @@
                     <span class="black">
                         <span class="italic"><%= course[:listing] %>: 
                         <%= course[:title] %></span>
-                        <span class="bold"><%= result.room.blank? ? 
-                            "No Location Listed" : result.room %></span>
+                        <span class="bold"><%= course[:room].blank? ? 
+                            "No Location" : course[:room] %></span>
                     </span>
                 </div>
             <% end %>
