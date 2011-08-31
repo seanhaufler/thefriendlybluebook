@@ -61,10 +61,10 @@
         <div class="calendar">
             <% @courses.each do |course| %>
                 <div class="course round <%= course[:bucket] %>"
-                     onmouseover="setTimeout(
+                     onmouseover="var t = setTimeout(
                         '$(\'#flyout<%= course[:id] %>\').show()', 
                         1000)"
-                     onmouseout="$('.flyout').hide()"
+                     onmouseout="clearTimeout(t); $('.flyout').hide()"
                      data-id="<%= course[:id] %>"
                      data-day="<%= course[:day] %>"
                      data-uid="<%= "#{course[:day]}#{course[:id]}" %>"
