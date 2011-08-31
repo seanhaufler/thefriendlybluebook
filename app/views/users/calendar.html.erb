@@ -61,6 +61,10 @@
         <div class="calendar">
             <% @courses.each do |course| %>
                 <div class="course round <%= course[:bucket] %>"
+                     onmouseover="setTimeout(
+                        '$(\'#flyout<%= course[:id] %>\').show()', 
+                        1000)"
+                     onmouseout="$('.flyout').hide()"
                      data-id="<%= course[:id] %>"
                      data-day="<%= course[:day] %>"
                      data-uid="<%= "#{course[:day]}#{course[:id]}" %>"
@@ -76,6 +80,7 @@
                             "No Location" : course[:room] %></span>
                     </span>
                 </div>
+                <%= render "users/calendar/flyout", :course => course %>
             <% end %>
             <script>Bluebook.Calendar.loadCourses()</script>
         </div>

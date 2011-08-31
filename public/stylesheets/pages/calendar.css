@@ -143,6 +143,22 @@ body
     filter: alpha(opacity=0.85);
 }
 
+.calendarPage .rightCal .calendar .flyout
+{
+    position: absolute; 
+    width: 810px;
+    top: -100px;
+    left: -70px;
+    
+    border: solid 1px #000;
+    background: #C6E2FF;
+    
+    display: none;
+    z-index: 20;
+    
+    padding: 5px;
+}
+
 .calendarPage .rightCal .calendar .avoiding
 {
     display: none;
