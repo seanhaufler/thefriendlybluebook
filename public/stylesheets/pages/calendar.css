@@ -62,8 +62,16 @@ body
 {
     float: right;
     font-size: 10px;
-    width: 222px;
+    width: 131px;
     margin-right: 3px;
+}
+
+.calendarPage .parameters .ocs
+{
+    float: right;
+    font-size: 10px;
+    width: 91px;
+    margin-right: 10px;
 }
 
 .calendarPage .leftCal,

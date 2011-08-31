@@ -18,8 +18,10 @@
                     name = "buckets[]" value="avoiding" /> 
                 Avoiding
             </div>
-            <%= submit_tag "Download Courses Shown to iCal and Outlook",
+            <%= submit_tag "Export to iCal/Outlook",
                   :class => "print blueButton" %>
+            <input type="button" value="Export to OCS" class="ocs blueButton"
+                onclick="Bluebook.Calendar.export()" />
             <div class="facebookButton" onclick="Bluebook.Calendar.publish()">
                 <a class="link" href="" onclick="return false;" >
                   <%= image_tag "index/facebook.png", :class => "image", 
@@ -64,6 +66,7 @@
                      onmouseover="$('#flyout<%= course[:id] %>').show()"
                      onmouseout="$('.flyout').hide()"
                      data-id="<%= course[:id] %>"
+                     data-oci="<%= course[:oci] %>"
                      data-day="<%= course[:day] %>"
                      data-uid="<%= "#{course[:day]}#{course[:id]}" %>"
                      style="top: <%= course[:top] %>px; 

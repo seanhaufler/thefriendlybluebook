@@ -130,3 +130,20 @@ Bluebook.Calendar.publish = function() {
         }
     );
 }
+
+/* export(): Send the course results to OCS */
+Bluebook.Calendar.export = function() {
+    // Prompt the user first
+    var answer = confirm("Please confirm that you want to export these " +
+        "courses to OCS. In order for this to work you must be logged into " + 
+        "SIS.  You may see screens flash quickly.  Please also" +
+        "disable pop-up blocking for this site.");
+    if (!answer) { return; }
+
+    // Iterate through each visible course and open a window to add it
+    $.each($(".course:visible"), function(index, value) {
+        var win = window.open("https://students.yale.edu/ocs/CourseSelect?" + 
+            "oper=acrt&crn=" + $(value).attr("data-oci"));
+        win.close();
+    });
+}

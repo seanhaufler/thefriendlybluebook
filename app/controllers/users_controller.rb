@@ -109,6 +109,7 @@ class UsersController < ApplicationController
             @courses.push({ :id => course.id, :title => course.title,
               :day => course["time_#{i}_start"].split(" ")[0],
               :room => course.room, :time => course.time_string,
+              :oci => course.oci_id,
               :listing => "#{course.department_abbr} #{course.number}",
               :left => left_pos[course["time_#{i}_start"].split(" ")[0]],
               :top => offset * 2 / 3, :height => time_length * 2 / 3 - 2, 
