@@ -59,9 +59,10 @@
         </div>
         <div class="clear"></div>
         <div class="calendar">
+            <script> var t; </script>
             <% @courses.each do |course| %>
                 <div class="course round <%= course[:bucket] %>"
-                     onmouseover="var t = setTimeout(
+                     onmouseover="t = setTimeout(
                         '$(\'#flyout<%= course[:id] %>\').show()', 
                         1000)"
                      onmouseout="clearTimeout(t); $('.flyout').hide()"
